@@ -1,0 +1,120 @@
+baseURL = 'https://ShuoLvfp.github.io/my-blog/'
+# Language settings
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+theme = "PaperMod"
+
+# Enable robots.txt
+enableRobotsTXT = true
+
+# Build settings
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+# Enable emoji
+enableEmoji = true
+
+# Pagination settings
+pagination = { pagerSize = 5 }
+
+# Language settings
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    title = "Ls's Blog"
+    description = "My Personal Blog"
+    [languages.en.params]
+      author = "Shuo Lv"
+      
+      # Home page information
+      [languages.en.params.homeInfoParams]
+        Title = "Welcome to Ls's Blog"
+        Content = """
+        Hi, I'm Shuo Lv! This is my personal blog where I share my thoughts and experiences.
+
+        - I write about technology, programming, and personal interests
+        - Feel free to explore my posts and get in touch
+        """
+      
+      # Social icons
+      [[languages.en.params.socialIcons]]
+        name = "github"
+        url = "https://github.com/ShuoLvfp"
+      
+      [[languages.en.params.socialIcons]]
+        name = "twitter"
+        url = "https://x.com/aa_blueshark"
+
+# Menu settings
+[languages.en.menu]
+  [[languages.en.menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+    weight = 10
+  
+  [[languages.en.menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+  
+  [[languages.en.menu.main]]
+    identifier = "archives"
+    name = "Archives"
+    url = "/archives/"
+    weight = 30
+  
+  [[languages.en.menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 40
+
+# Main content settings
+[params]
+  # Environment settings
+  env = "production"
+  
+  # Theme settings
+  defaultTheme = "auto"
+  ShowShareButtons = true
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  
+  # Enable archive page
+  disableArchive = false
+  
+  # Show taxonomy terms (categories and tags)
+  showtoc = true
+  ShowTaxonomies = true
+  
+  # Search Configuration
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+# Markdown rendering settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Taxonomy settings
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
