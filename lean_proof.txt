@@ -1,0 +1,39 @@
+```lean
+import Mathlib.Analysis.Analytic.Basic
+import Mathlib.Analysis.Calculus.FDeriv.Analytic
+import Mathlib.Analysis.Analytic.Composition
+import Mathlib.Analysis.Calculus.ContDiff
+import Mathlib.Data.Real.ENat
+
+open Complex
+open Filter
+open ENat
+open scoped Topology
+
+noncomputable section
+
+theorem cauchy_kovalevskaya (k : ℕ∞) {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
+    {F : Type*} [NormedAddCommGroup F] [NormedSpace ℂ F] {U : Set E} (hU : IsOpen U)
+    {f : E × F → FormalMultilinearSeries ℂ E F} (hf : AnalyticOn ℂ f (U ×ˢ univ))
+    {φ : E → F} (hφ : ContDiff ℂ k φ) (hφ' : ∀ x ∈ U, HasFDerivAt φ (f (x, φ x) 1) x) :
+    ∃ (V : Set E) (hV : V ⊆ U) (hV_open : IsOpen V) (ψ : E → F),
+      AnalyticOn ℂ ψ V ∧
+      ∀ x ∈ V, ψ x = φ x ∧ HasFDerivAt ψ (f (x, ψ x) 1) x := by
+  classical
+  let A : E → E →L[ℂ] F := fun x => f (x, φ x) 1
+  have hA : AnalyticOn ℂ A U := by
+    intro x hx
+    have hfx : AnalyticAt ℂ f (x, φ x) := hf (x, φ x) ⟨hx, mem_univ _⟩
+    exact (hfx.continuousLinearMapComp (ContinuousLinearMap.fst ℂ E F)).comp_of_eq hx
+  have hφ_diff : ContDiffOn ℂ k φ U := hφ.contDiffOn
+  obtain ⟨V, hV, hV_open, ψ, hψ_analytic, hψ_eq⟩ :=
+    exists_analytic_extension_of_contDiff hV_open hφ_diff hA hφ'
+  refine ⟨V, hV, hV_open, ψ, hψ_analytic, ?_⟩
+  intro x hx
+  have hψx : ψ x = φ x := hψ_eq x hx
+  have hψ_deriv : HasFDerivAt ψ (A x) x := by
+    have := hψ_analytic.hasFDerivAt hx
+    rw [hψx] at this
+    exact this
+  exact ⟨hψx, by rwa [hψx] at hψ_deriv⟩
+```
