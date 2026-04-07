@@ -1,16 +1,16 @@
 ---
 title: "My First Blog Post"
-date: 2023-01-01
+date: 2026-04-07
 draft: false
 tags: ["Blog", "Hugo"]
-categories: ["Technology"]
+categories: ["Personal"]
 ---
 
 # Welcome to My Blog
 
 This is my first blog post created with Hugo and PaperMod theme.
 
-## Introduction
+<!-- ## Introduction
 
 Here, I will share my thoughts and experiences. Hugo is a powerful static site generator, and PaperMod is a clean, modern theme.
 
@@ -36,4 +36,4 @@ The PaperMod theme has the following features:
 
 ## Conclusion
 
-Thank you for reading my first article! I will continue to update with more interesting content.
+Thank you for reading my first article! I will continue to update with more interesting content. -->
