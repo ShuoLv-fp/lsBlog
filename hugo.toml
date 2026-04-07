@@ -1,4 +1,4 @@
-baseURL = 'https://ShuoLvfp.github.io/my-blog/'
+baseURL = 'https://ShuoLvfp.github.io/lsBlog/'
 # Language settings
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
