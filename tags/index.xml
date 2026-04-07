@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Ls&#39;s Blog</title>
+    <link>https://ShuoLv-fp.github.io/lsBlog/tags/</link>
+    <description>Recent content in Tags on Ls&#39;s Blog</description>
+    <generator>Hugo -- 0.128.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ShuoLv-fp.github.io/lsBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MCP</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/mcp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/mcp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/productivity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technology</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/technology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/technology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Static Site</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/static-site/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/static-site/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Taxonomy</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/taxonomy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/taxonomy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web Development</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/web-development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/web-development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Development</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>https://ShuoLv-fp.github.io/lsBlog/tags/blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ShuoLv-fp.github.io/lsBlog/tags/blog/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
