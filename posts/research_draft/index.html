@@ -11,7 +11,7 @@
 Richards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., &hellip; &amp; Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.
 Liu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., &amp; Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.
 To be continued&hellip;
-Permutation Test Moran&rsquo;s Permutation Test Reference:">
+Permutation Test 置换检验（Permutation Test）是一种基于随机重排的非参数检验方法，其核心逻辑是：">
 <meta name="author" content="Shuo Lv">
 <link rel="canonical" href="https://ShuoLv-fp.github.io/lsBlog/posts/research_draft/">
 <link crossorigin="anonymous" href="/lsBlog/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
@@ -81,7 +81,7 @@ Permutation Test Moran&rsquo;s Permutation Test Reference:">
 Richards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., … &amp; Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.
 Liu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., &amp; Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.
 To be continued…
-Permutation Test Moran’s Permutation Test Reference:">
+Permutation Test 置换检验（Permutation Test）是一种基于随机重排的非参数检验方法，其核心逻辑是：">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -94,7 +94,7 @@ Permutation Test Moran’s Permutation Test Reference:">
 Richards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., &hellip; &amp; Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.
 Liu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., &amp; Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.
 To be continued&hellip;
-Permutation Test Moran&rsquo;s Permutation Test Reference:">
+Permutation Test 置换检验（Permutation Test）是一种基于随机重排的非参数检验方法，其核心逻辑是：">
 
 
 <script type="application/ld+json">
@@ -123,12 +123,12 @@ Permutation Test Moran&rsquo;s Permutation Test Reference:">
   "@type": "BlogPosting",
   "headline": "Research Draft on Cognitive Neuroscience",
   "name": "Research Draft on Cognitive Neuroscience",
-  "description": "Functional Connectivity and its Generation Methods Reference:\nRichards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., \u0026hellip; \u0026amp; Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.\nLiu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., \u0026amp; Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.\nTo be continued\u0026hellip;\nPermutation Test Moran\u0026rsquo;s Permutation Test Reference:",
+  "description": "Functional Connectivity and its Generation Methods Reference:\nRichards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., \u0026hellip; \u0026amp; Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.\nLiu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., \u0026amp; Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.\nTo be continued\u0026hellip;\nPermutation Test 置换检验（Permutation Test）是一种基于随机重排的非参数检验方法，其核心逻辑是：",
   "keywords": [
     "Research"
   ],
-  "articleBody": "Functional Connectivity and its Generation Methods Reference:\nRichards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., … \u0026 Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.\nLiu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., \u0026 Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.\nTo be continued…\nPermutation Test Moran’s Permutation Test Reference:\nWikipedia: Moran’s Permutation Test\nVos de Wael, R., Benkarim, O., Paquola, C., Lariviere, S., Royer, J., Tavakol, S., … \u0026 Bernhardt, B. C. (2020). BrainSpace: a toolbox for the analysis of macroscale gradients in neuroimaging and connectomics datasets. Communications biology, 3(1), 103.\n1. 空间自相关 想象一下，你计算了一张皮层的模式 map（如 FC），并发现某个脑区的模式强度（如 FC 值）与一项认知得分显著相关（例如，Pearson 相关系数 $r=0.5，P\u003c0.001$）。这个发现令人兴奋，但我们能直接相信这个 p 值吗？\n很可能不可信。问题出在空间自相关（Spatial Autocorrelation，SA）。一个 ROI（或 voxel）的结构或功能属性，往往与其空间上相邻的 ROI/voxel 高度相似，这种现象就是空间自相关。\n传统的相关、回归等统计检验（如 Pearson 相关、t 检验）都基于一个核心假设：样本点之间相互独立。但在脑图数据中，由于 SA 的存在，一个脑区的值并不是完全独立的，它在一定程度上依赖于邻居的值。这意味着，有效自由度实际上远小于样本的数量。当传统检验忽略了 SA 时，它会高估数据的自由度，导致标准误被低估，检验统计量（如 t 值）被夸大，从而计算出过于乐观的 P 值。这极大地增加了假阳性的风险：我们可能会报告一个实际上由空间平滑或潜在空间趋势驱动的、并无真实生物学意义的显著关联。\n2. Moran’s I：量化空间自相关 为了应对 SA，我们首先需要一个度量它的工具。Moran’s I 就是这样一个被广泛使用的全局空间自相关指数。它的直观含义是：衡量一个区域的值与其“邻居”值的相似程度，与整体数据变异程度的比值。数学表达如下：\n$$ I = \\frac{N}{\\sum_{i=1}^{N}\\sum_{j=1}^{N}w_{ij}} \\frac{\\sum_{i=1}^{N}\\sum_{j=1}^{N}w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\sum_{i=1}^{N}(x_i - \\bar{x})^2} $$\n其中：\n$N$ 是空间单元的数量（如 ROI 或 voxel 数）。 $x_i$ 和 $x_j$ 是区域 $i$ 和 $j$ 的观测值（如皮层厚度、FC 值）。 $\\bar{x}$ 是所有观测值的平均值。 $w_{ij}$ 是空间权重矩阵（Spatial Weight Matrix，W） 的元素，定义了区域 $i$ 和 $j$ 之间的空间邻近关系。 Moran’s I 的取值范围通常在 -1 到 1 之间：\n$I \u003e 0$: 存在正空间自相关。相似的值（高值或低值）在空间上聚集，这是脑图数据中最常见的情况。 $I \u003c 0$: 存在负空间自相关。相邻区域的值倾向于不相似（高值邻近低值），形成类似棋盘的模式。 $I ≈ 0$: 空间分布是随机的。 3. Moran 谱置换 Moran 谱置换（Moran Spectral Randomization，MSR）是一种生成空间受约束的零模型（spatially constrained null models） 的强大方法。MSR 的核心思想不是直接在原始空间上（如打乱像素点）进行置换，而是通过以下精巧的步骤，生成一系列与原始数据具有相同或极其相似空间自相关结构的替代脑图：\n步骤 1：构建空间权重矩阵\n这是 MSR 的基石。$W$ 是一个 $N×N$ 的矩阵（$N$ 为 ROI 或顶点数），$w_{ij}$ 编码了区域 $i$ 和 $j$ 之间的空间邻近性。构建 $W$ 的方式决定了我们如何定义“邻居”。常见的方法有：\n对于皮层表面数据： 球面邻接/地理距离：利用皮层表面的网格结构，如果两个顶点在测地线（geodesic distance，即沿皮层表面的最短路径）上足够近，则赋予权重。例如，可以定义一个距离阈值，或者使用 n_ring 邻接（一个顶点周围 $n$ 圈的顶点都被视为邻居）。通常权重是距离的倒数，即 $w_{ij} = 1/d_{ij}$。 对于 ROI 数据： 质心距离：计算每个 ROI 的质心坐标。然后计算 ROI 质心之间的欧氏距离（Euclidean distance）或测地距离。同样，权重通常设为距离的倒数。 表面网格邻接：如果 ROI 是基于皮层表面的，可以将在表面上相邻（共享边界）的 ROI 定义为邻居。 步骤 2：双中心化与特征分解，得到 Moran 特征向量图\n获得 $W$ 后，MSR 进行如下操作：\n中心化：对 $W$ 进行双中心化处理，得到矩阵 $M$。这一步类似于协方差矩阵的计算，旨在移除均值效应。 特征分解：对矩阵 $M$ 进行特征分解，得到一系列特征向量（Eigenvectors）和对应的特征值（Eigenvalues）。 $$ M = V \\Lambda V^T $$ 这些特征向量 $V$ 就是 Moran’s Eigenvector Maps。 MEMs 的重要特性：\nMEMs 是一组相互正交的空间模式（基函数），它们捕捉了由 $W$ 定义的空间结构在不同尺度上的变异。 第一个 MEM（对应最大特征值）捕捉了最主要、最平滑的空间趋势（broad-scale pattern），后续的 MEMs 则捕捉了越来越精细、频率越来越高的空间模式（fine-scale patterns）。我们一般考察第一个即可。 任何一个脑图数据，都可以被看作是这些 MEMs 的线性组合。 步骤 3：在特征空间中随机化，生成替代图\n这是 MSR 最精妙的一步。原始数据 $x$ 可以投影到由 MEMs 构成的特征空间中，得到一组系数。MSR 通过随机化这些系数，再将它们重新组合成替代图。这样做既打乱了原始数据与另一变量的特定关联，又因为使用了相同的 MEMs 基底，从而保留了原始的空间自相关结构。通过重复这个随机化过程 n_rep 次（例如 1000 次），我们就得到了一个包含 1000 张替代图的集合。这些图构成了零假设下的分布：即，如果一个脑图与另一个变量的关联仅仅是由于两者共享相似的空间结构所致，那么它们的关联强度应该落在这个分布的范围内。\n4. 与其他置换检验模型的对比 方法 核心思想 优点 缺点与适用场景 Permutations 完全随机地进行随机化。 计算简单。 容易受到空间自相关的误导，且不能考虑各种复杂信息。 Spin Permutations 将皮层数据投影到球面上，进行随机旋转，再投影回皮层。 直观，能精确保留皮层表面的空间自相关结构。是皮层表面数据 的黄金标准。 不适用于有大面积缺失数据（如中线、病变）的脑图，因为旋转可能导致数据点落入空洞。不直接适用于 ROI 数据或皮下核团。 MSR 基于空间权重矩阵的特征分解，在谱空间中随机化。 非常灵活，适用于任何可以定义距离/邻接关系的数据（皮层、皮下、ROI）。对数据缺失（如中线空洞）稳健。 生成的替代图是高斯化的，可能与原始数据分布不完全一致。对 W 的选择敏感。 Variogram Matching 拟合原始数据的变异函数（variogram，描述不同距离下的方差），并据此生成具有相似二阶统计特性的替代图。 能较好地保留非高斯数据分布的特性。BrainSMASH 工具实现了该方法。 计算量较大。对变异函数的拟合参数敏感。 5. 实践建议 研究问题示例：\nFC-行为关联：某个功能连接网络指标（如模块内连接强度、参与系数）或某个主导的 FC 梯度，是否与个体的认知评分（如记忆力、执行功能）显著相关？ 组间差异：病人组与健康对照组在某个 FC 指标上观察到的差异，是否仅仅是由于两组间潜在的脑形态差异（导致空间自相关模式不同）引起的？ 完整统计流程:\n5.1 数据准备 选择分区（Parcellation）：根据研究需求选择合适的 ROI 图谱，如 Schaefer (Schaefer et al., 2018) 或 Glasser (Glasser et al., 2016)。\n提取 ROI 时序：对每个被试的预处理好的 rs-fMRI 数据，提取每个 ROI 的平均时间序列。\n计算个体 FC：对每个被试，计算 $N×N$ 的 FC 矩阵（$N$ 为 ROI 数量），通常是 ROI 时序间的 Pearson 相关，并进行 Fisher’s r-to-z 转换以使其分布更接近正态。\n形成特征向量:\n如果研究整个 FC 矩阵，通常将其向量化，只取上三角部分，形成一个长度为 $N(N-1)/2$ 的向量。注：这种情况下，MSR 无法直接应用，因为 FC 链接不具备直接的物理空间邻接性。 更常见的做法是，基于 FC 矩阵计算出每个 ROI 的一个标量指标。例如： 连接强度：每个 ROI 与全脑其他所有 ROI 的 FC 值的平均值。 网络梯度：对 FC 矩阵进行梯度分析（如使用 BrainSpace），得到每个 ROI 在主梯度上的得分。 网络拓扑指标：使用图论分析，计算每个 ROI 的度中心性、参与系数等。 最终，你将为每个被试得到一个长度为 N 的向量，向量中的每个值对应一个 ROI 的某个属性。群体分析时，通常会对这些值在被试间取平均，得到一张群体水平的脑图（group-level map）。\n5.2 为 ROI 图构建空间权重矩阵 获取 ROI 质心：直接从图谱元数据中获取每个 ROI 在 MNI 空间中的质心坐标，或基于 Cifiti 文件中的坐标信息计算质心坐标。 计算距离矩阵: 欧氏距离：最简单直接的方法，计算质心坐标间的直线距离。 测地距离：如果你的 ROI 主要分布在皮层，更精确的方法是计算沿皮层表面的距离。这通常需要一个高精度的皮层表面模板（如 fsaverage）。 构建 $W$：将距离矩阵 $D$ 取逆，即 $W = 1/D$。通常将对角线元素 $w_{ii}$ 设为 0。 5.3 生成替代图并计算经验 p 值 生成替代图：你可以直接手撕代码生成，或者使用 brainspace 或 neuromaps 等工具生成。 计算观测统计量：计算你的真实 roi_map 和外部行为变量 behavior_scores 之间的相关性（如 Spearman 相关）。 计算零分布：循环计算每个替代图与 other_map 的相关性。 计算经验 $P$ 值：比较观测值在零分布中的位置。 双侧检验： $P$ 值 = (比观测值绝对值更大的零分布值的数量 + 1) / (总置换次数 + 1) 单侧检验 (例如，你假设正相关)：$P$ 值 = (比观测值更大的零分布值的数量 + 1) / (总置换次数 + 1) 多重比较（False Discovery Rate，FDR）：如果你同时检验了多个 FC 指标或多个行为变量，别忘了对得到的 $P$ 值进行 FDR 校正。 Canonical Correlation Analysis Reference:\nWikipedia: Canonical Correlation Analysis\n1. 寻找两组变量的最佳投影 在神经影像研究中，我们常常收集到两组高维数据：一组是影像特征（如数千个功能连接、皮层厚度值），另一组是行为/临床特征（如多个认知测试得分、临床量表项）。我们想问：这两组复杂的变量之间，是否存在一个整体的、潜在的关联模式？简单地进行两两相关分析，不仅会带来严重的多重比较问题，更无法揭示变量集合之间多对多的映射关系。典型相关分析（Canonical Correlation Analysi，CCA）及其变体，正是为解决这类问题设计的。\n假设我们有两组变量，$X$（影像）和 $Y$（行为）。CCA 试图分别找到 $X$ 和 $Y$ 内部变量的线性组合（称为典型变量或 canonical variates），$U = w_X^T X$ 和 $V = w_Y^T Y$，使得这两个新生成的投影变量 $U$ 和 $V$ 之间的相关性最大化。这个最大的相关性，就是第一典型相关（first canonical correlation）。类似于 PCA，CCA 会继续寻找第二对、第三对…投影方向，每一对新的典型变量都与之前的所有典型变量正交，并最大化剩余方差中的相关性。CCA 的数学表达如下：\n$$ \\text{max}_{w_X, w_Y} \\rho = \\text{corr}(U, V) = \\frac{\\text{cov}(w_X^T X, w_Y^T Y)}{\\sqrt{\\text{var}(w_X^T X) \\text{var}(w_Y^T Y)}} $$\n然而，传统的 CCA 存在一些局限：\n过拟合：当变量数远多于样本数时，CCA 很容易找到看似完美（相关性接近 1）但毫无参考价值的虚假关联。 不稳定性：数据中的微小扰动可能导致权重向量 $w_X$ 和 $w_Y$ 发生剧烈变化。 不可解：当 $X$ 或 $Y$ 的协方差矩阵是奇异的（由于共线性），CCA 无法求解。 解释性差：权重向量 $w_X$ 和 $w_Y$ 通常是“稠密”的，即几乎所有变量的权重都不为零，这使得我们很难解释哪些具体的影像和行为特征驱动了这种关联。 2. rCCA 引入正则化 正则化 CCA（Regularized CCA，rCCA）的核心思想是在 CCA 的优化目标中加入正则化项，以惩罚过于复杂的权重向量。最常见的是 L2 正则化。\nrCCA 的目标在于，估计协方差矩阵时加入了一个正则化参数 $\\lambda$： $$ \\hat{\\Sigma}{XX, reg} = \\hat{\\Sigma}{XX} + \\lambda_X I $$ $$ \\hat{\\Sigma}{YY, reg} = \\hat{\\Sigma}{YY} + \\lambda_Y I $$ 这使得协方差矩阵变得非奇异，从而稳定了 CCA 的求解过程。正则化强度 $\\lambda$ 是一个关键的超参数，需要通过交叉验证 (Cross-Validation，CV) 来选择：\n将数据集划分为 $K$ 折 (e.g.，$K=10$)。 对于每一折，将其作为验证集，其余 $K-1$ 折作为训练集。 在训练集上，针对一组候选的正则化参数（如 $\\lambda_X$，$\\lambda_Y$ 从 $10^{-5}$ 到 1 的对数尺度网格），训练 rCCA 模型。 将训练好的模型应用到验证集上，计算验证集上典型变量的样本外相关性 (out-of-sample correlation)。 重复 $K$ 次，对每个参数组合，平均其在 $K$ 个验证集上的表现。 选择那个能带来最高平均样本外相关性的 $\\lambda_X$，$\\lambda_Y$ 组合作为最佳超参数。 3. sCCA 引入稀疏性 稀疏 CCA（Sparse CCA，sCCA）则更进一步。它不仅要稳定模型，还希望实现变量选择，即让大部分不重要的影像和行为特征的权重直接变为零。这通过引入 L1 正则化 (Lasso) 或其他稀疏惩罚项来实现。\nsCCA 的目标在于，在最大化典型相关的同时，对权重向量 $w_X$ 和 $w_Y$ 的 L1 范数施加约束： $$ \\text{max}_{\\mathbf{u}, \\mathbf{v}} \\text{Corr}(\\mathbf{u}^TX, \\mathbf{v}^TY) $$ $$ \\text{s. t. } ||\\mathbf{u}||_1 \\le \\lambda_1, ||\\mathbf{v}||_1 \\le \\lambda_2 $$\n其中 $\\lambda_1$ 和 $\\lambda_2$ 是控制稀疏度的超参数。值越小，权重向量中元素的含量就越少。\nsCCA 特别适用于探索性研究，当你希望从数千个特征中识别出少数几个关键的影像-行为关联通路时。 其结果具有很强的解释性：非零权重的变量构成了驱动该典型相关模式的核心子集。 4. 实践范建议 4.1 变量组织与预处理 影像特征矩阵 $X$（n_subjects × p_features）： ROI-FC 向量：将每个被试的 N×N FC 矩阵的上三角元素拉成一个长向量。 图论指标：每个 ROI 的网络度量（度、聚类系数等）。 VBM/SBM：每个体素/顶点的灰质体积或皮层厚度。 行为/临床矩阵 $Y$（n_subjects × q_features）： 认知测试得分、临床量表总分或子项目得分等。 标准化：对 $X$ 和 $Y$ 的每一列（每个特征）进行 Z-score 标准化（均值为 0，标准差为 1），这是 CCA 家族算法的标准要求。 协变量回归：在进行 CCA 之前，通常需要回归掉年龄、性别、头动（如 FD 均值）、扫描仪站点等混淆变量的影响。即，对 $X$ 和 $Y$ 中的每个特征，分别用协变量做线性回归，然后取残差作为新的输入。 4.2 训练/验证与调参 嵌套交叉验证（Nested CV） 调参：这是进行严格模型评估和调参的黄金标准，能有效避免信息泄露。 外层循环：将数据分为训练集和测试集（留出不用）。 内层循环：在训练集上执行 K-折交叉验证，以选择最佳超参数（如 rCCA 的 $\\lambda$ 或 sCCA 的稀疏度）。 模型评估：使用内层循环选出的最佳超参数，在整个训练集上重新训练模型，然后在从未见过的测试集上评估其最终性能。 留一法（Leave-One-Out）：当样本量非常小时，可以采用留一法交叉验证（每次留一个被试作为验证集）。 4.3 统计显著性评估 CCA 模型找到了一个看起来很强的关联，但这个关联是真的，还是仅仅是数据中的偶然？我们需要进行统计检验。随机打乱 $Y$ 矩阵（行为数据）的行顺序（即打乱被试标签），破坏影像与行为之间的真实对应关系，但保留 $X$ 和 $Y$ 内部的结构。\n4.4 可视化与报告 典型相关：报告第一（或前几个显著的）典型相关系数及其置换检验的 p 值。 载荷热图（Loadings Heatmap）： 载荷（Loadings） 是指典型变量 U 和 V 与原始变量 $X$ 和 $Y$ 之间的相关性。它们比权重（weights）更更容易解释。 将影像特征的载荷和行为特征的载荷分别用热图展示出来。对于 sCCA，这会是一个稀疏的热图。 ROI-行为通路解释：对于 sCCA，重点解读那些具有显著非零权重的影像特征和行为特征。例如，“更高的前额叶网络内部连接”与“更低的冲动性得分”共同构成了一个显著的关联模式。 可视化展示：可以将具有高载荷的 ROI 映射回大脑表面，进行可视化，清晰地展示出特定行为模式相关的脑区。 可以将具有高载荷的 ROI 映射回大脑表面，进行可视化，清晰地展示出与特定行为模式相关的脑区。 ",
-  "wordCount" : "802",
+  "articleBody": "Functional Connectivity and its Generation Methods Reference:\nRichards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., … \u0026 Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience, 22(11), 1761-1770.\nLiu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., \u0026 Zalesky, A. (2025). Deep generation of personalized connectomes based on individual attributes. Medical Image Analysis, 103761.\nTo be continued…\nPermutation Test 置换检验（Permutation Test）是一种基于随机重排的非参数检验方法，其核心逻辑是：\n零假设：实验条件对数据标签没有影响，即数据的标签是可交换的（Exchangeable） 通过随机打乱数据的标签，反复计算统计量，构建零假设下的统计量分布（置换分布） 将观测到的真实统计量与该分布对比，计算观测值 “极端” 的概率，即 p 值 与参数检验不同，置换检验无需假设数据服从正态分布，适配认知神经科学中高维、非正态的神经影像与脑电数据，是领域内的主流推断方法。\nMoran’s Permutation Test Reference:\nWikipedia: Moran’s Permutation Test\nVos de Wael, R., Benkarim, O., Paquola, C., Lariviere, S., Royer, J., Tavakol, S., … \u0026 Bernhardt, B. C. (2020). BrainSpace: a toolbox for the analysis of macroscale gradients in neuroimaging and connectomics datasets. Communications biology, 3(1), 103.\n1. 空间自相关 想象一下，你计算了一张皮层的模式 map（如 FC），并发现某个脑区的模式强度（如 FC 值）与一项认知得分显著相关（例如，Pearson 相关系数 $r=0.5，P\u003c0.001$）。这个发现令人兴奋，但我们能直接相信这个 p 值吗？\n很可能不可信。问题出在空间自相关（Spatial Autocorrelation，SA）。一个 ROI（或 voxel）的结构或功能属性，往往与其空间上相邻的 ROI/voxel 高度相似，这种现象就是空间自相关。\n传统的相关、回归等统计检验（如 Pearson 相关、t 检验）都基于一个核心假设：样本点之间相互独立。但在脑图数据中，由于 SA 的存在，一个脑区的值并不是完全独立的，它在一定程度上依赖于邻居的值。这意味着，有效自由度实际上远小于样本的数量。当传统检验忽略了 SA 时，它会高估数据的自由度，导致标准误被低估，检验统计量（如 t 值）被夸大，从而计算出过于乐观的 P 值。这极大地增加了假阳性的风险：我们可能会报告一个实际上由空间平滑或潜在空间趋势驱动的、并无真实生物学意义的显著关联。\n2. Moran’s I：量化空间自相关 为了应对 SA，我们首先需要一个度量它的工具。Moran’s I 就是这样一个被广泛使用的全局空间自相关指数。它的直观含义是：衡量一个区域的值与其“邻居”值的相似程度，与整体数据变异程度的比值。数学表达如下：\n$$ I = \\frac{N}{\\sum_{i=1}^{N}\\sum_{j=1}^{N}w_{ij}} \\frac{\\sum_{i=1}^{N}\\sum_{j=1}^{N}w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\sum_{i=1}^{N}(x_i - \\bar{x})^2} $$\n其中：\n$N$ 是空间单元的数量（如 ROI 或 voxel 数）。 $x_i$ 和 $x_j$ 是区域 $i$ 和 $j$ 的观测值（如皮层厚度、FC 值）。 $\\bar{x}$ 是所有观测值的平均值。 $w_{ij}$ 是空间权重矩阵（Spatial Weight Matrix，W） 的元素，定义了区域 $i$ 和 $j$ 之间的空间邻近关系。 Moran’s I 的取值范围通常在 -1 到 1 之间：\n$I \u003e 0$: 存在正空间自相关。相似的值（高值或低值）在空间上聚集，这是脑图数据中最常见的情况。 $I \u003c 0$: 存在负空间自相关。相邻区域的值倾向于不相似（高值邻近低值），形成类似棋盘的模式。 $I ≈ 0$: 空间分布是随机的。 3. Moran 谱置换 Moran 谱置换（Moran Spectral Randomization，MSR）是一种生成空间受约束的零模型（spatially constrained null models） 的强大方法。MSR 的核心思想不是直接在原始空间上（如打乱像素点）进行置换，而是通过以下精巧的步骤，生成一系列与原始数据具有相同或极其相似空间自相关结构的替代脑图：\n步骤 1：构建空间权重矩阵\n这是 MSR 的基石。$W$ 是一个 $N×N$ 的矩阵（$N$ 为 ROI 或顶点数），$w_{ij}$ 编码了区域 $i$ 和 $j$ 之间的空间邻近性。构建 $W$ 的方式决定了我们如何定义“邻居”。常见的方法有：\n对于皮层表面数据： 球面邻接/地理距离：利用皮层表面的网格结构，如果两个顶点在测地线（geodesic distance，即沿皮层表面的最短路径）上足够近，则赋予权重。例如，可以定义一个距离阈值，或者使用 n_ring 邻接（一个顶点周围 $n$ 圈的顶点都被视为邻居）。通常权重是距离的倒数，即 $w_{ij} = 1/d_{ij}$。 对于 ROI 数据： 质心距离：计算每个 ROI 的质心坐标。然后计算 ROI 质心之间的欧氏距离（Euclidean distance）或测地距离。同样，权重通常设为距离的倒数。 表面网格邻接：如果 ROI 是基于皮层表面的，可以将在表面上相邻（共享边界）的 ROI 定义为邻居。 步骤 2：双中心化与特征分解，得到 Moran 特征向量图\n获得 $W$ 后，MSR 进行如下操作：\n中心化：对 $W$ 进行双中心化处理，得到矩阵 $M$。这一步类似于协方差矩阵的计算，旨在移除均值效应。 特征分解：对矩阵 $M$ 进行特征分解，得到一系列特征向量（Eigenvectors）和对应的特征值（Eigenvalues）。 $$ M = V \\Lambda V^T $$ 这些特征向量 $V$ 就是 Moran’s Eigenvector Maps。 MEMs 的重要特性：\nMEMs 是一组相互正交的空间模式（基函数），它们捕捉了由 $W$ 定义的空间结构在不同尺度上的变异。 第一个 MEM（对应最大特征值）捕捉了最主要、最平滑的空间趋势（broad-scale pattern），后续的 MEMs 则捕捉了越来越精细、频率越来越高的空间模式（fine-scale patterns）。我们一般考察第一个即可。 任何一个脑图数据，都可以被看作是这些 MEMs 的线性组合。 步骤 3：在特征空间中随机化，生成替代图\n这是 MSR 最精妙的一步。原始数据 $x$ 可以投影到由 MEMs 构成的特征空间中，得到一组系数。MSR 通过随机化这些系数，再将它们重新组合成替代图。这样做既打乱了原始数据与另一变量的特定关联，又因为使用了相同的 MEMs 基底，从而保留了原始的空间自相关结构。通过重复这个随机化过程 n_rep 次（例如 1000 次），我们就得到了一个包含 1000 张替代图的集合。这些图构成了零假设下的分布：即，如果一个脑图与另一个变量的关联仅仅是由于两者共享相似的空间结构所致，那么它们的关联强度应该落在这个分布的范围内。\n4. 与其他置换检验模型的对比 方法 核心思想 优点 缺点与适用场景 Permutations 完全随机地进行随机化。 计算简单。 容易受到空间自相关的误导，且不能考虑各种复杂信息。 Spin Permutations 将皮层数据投影到球面上，进行随机旋转，再投影回皮层。 直观，能精确保留皮层表面的空间自相关结构。是皮层表面数据 的黄金标准。 不适用于有大面积缺失数据（如中线、病变）的脑图，因为旋转可能导致数据点落入空洞。不直接适用于 ROI 数据或皮下核团。 MSR 基于空间权重矩阵的特征分解，在谱空间中随机化。 非常灵活，适用于任何可以定义距离/邻接关系的数据（皮层、皮下、ROI）。对数据缺失（如中线空洞）稳健。 生成的替代图是高斯化的，可能与原始数据分布不完全一致。对 W 的选择敏感。 Variogram Matching 拟合原始数据的变异函数（variogram，描述不同距离下的方差），并据此生成具有相似二阶统计特性的替代图。 能较好地保留非高斯数据分布的特性。BrainSMASH 工具实现了该方法。 计算量较大。对变异函数的拟合参数敏感。 5. 实践建议 研究问题示例：\nFC-行为关联：某个功能连接网络指标（如模块内连接强度、参与系数）或某个主导的 FC 梯度，是否与个体的认知评分（如记忆力、执行功能）显著相关？ 组间差异：病人组与健康对照组在某个 FC 指标上观察到的差异，是否仅仅是由于两组间潜在的脑形态差异（导致空间自相关模式不同）引起的？ 完整统计流程:\n5.1 数据准备 选择分区（Parcellation）：根据研究需求选择合适的 ROI 图谱，如 Schaefer (Schaefer et al., 2018) 或 Glasser (Glasser et al., 2016)。\n提取 ROI 时序：对每个被试的预处理好的 rs-fMRI 数据，提取每个 ROI 的平均时间序列。\n计算个体 FC：对每个被试，计算 $N×N$ 的 FC 矩阵（$N$ 为 ROI 数量），通常是 ROI 时序间的 Pearson 相关，并进行 Fisher’s r-to-z 转换以使其分布更接近正态。\n形成特征向量:\n如果研究整个 FC 矩阵，通常将其向量化，只取上三角部分，形成一个长度为 $N(N-1)/2$ 的向量。注：这种情况下，MSR 无法直接应用，因为 FC 链接不具备直接的物理空间邻接性。 更常见的做法是，基于 FC 矩阵计算出每个 ROI 的一个标量指标。例如： 连接强度：每个 ROI 与全脑其他所有 ROI 的 FC 值的平均值。 网络梯度：对 FC 矩阵进行梯度分析（如使用 BrainSpace），得到每个 ROI 在主梯度上的得分。 网络拓扑指标：使用图论分析，计算每个 ROI 的度中心性、参与系数等。 最终，你将为每个被试得到一个长度为 N 的向量，向量中的每个值对应一个 ROI 的某个属性。群体分析时，通常会对这些值在被试间取平均，得到一张群体水平的脑图（group-level map）。\n5.2 为 ROI 图构建空间权重矩阵 获取 ROI 质心：直接从图谱元数据中获取每个 ROI 在 MNI 空间中的质心坐标，或基于 Cifiti 文件中的坐标信息计算质心坐标。 计算距离矩阵: 欧氏距离：最简单直接的方法，计算质心坐标间的直线距离。 测地距离：如果你的 ROI 主要分布在皮层，更精确的方法是计算沿皮层表面的距离。这通常需要一个高精度的皮层表面模板（如 fsaverage）。 构建 $W$：将距离矩阵 $D$ 取逆，即 $W = 1/D$。通常将对角线元素 $w_{ii}$ 设为 0。 5.3 生成替代图并计算经验 p 值 生成替代图：你可以直接手撕代码生成，或者使用 brainspace 或 neuromaps 等工具生成。 计算观测统计量：计算你的真实 roi_map 和外部行为变量 behavior_scores 之间的相关性（如 Spearman 相关）。 计算零分布：循环计算每个替代图与 other_map 的相关性。 计算经验 $P$ 值：比较观测值在零分布中的位置。 双侧检验： $P$ 值 = (比观测值绝对值更大的零分布值的数量 + 1) / (总置换次数 + 1) 单侧检验 (例如，你假设正相关)：$P$ 值 = (比观测值更大的零分布值的数量 + 1) / (总置换次数 + 1) 多重比较（False Discovery Rate，FDR）：如果你同时检验了多个 FC 指标或多个行为变量，别忘了对得到的 $P$ 值进行 FDR 校正。 Test Strategy 在置换检验中，一般有单边检验（One-tailed Test）和双边检验（Two-tailed Test）两种策略。\n1. 单边检验 假设：仅检验效应在某一个特定方向上的存在性 右尾检验：$$H_0: \\theta \\le 0$$ vs $$H_1: \\theta \u003e 0$$（仅关心正效应） 左尾检验：$$H_0: \\theta \\ge 0$$ vs $$H_1: \\theta \u003c 0$$（仅关心负效应） P 值计算：$$P = \\frac{\\text{置换统计量中，大于/小于观测值的数量}}{\\text{总置换次数}}$$ 特点：统计效力更高（相同数据下，P 值约为双边的 1/2），但完全忽略相反方向 2. 双边检验 假设：检验效应在任意方向上的存在性 $$H_0: \\theta = 0$$ vs $$H_1: \\theta \\neq 0$$（同时关心正、负效应） P 值计算：$$P = \\frac{\\text{置换统计量中，绝对值大于等于观测值绝对值的数量}}{\\text{总置换次数}}$$ 特点：更保守，能检测任何方向的效应，是绝大多数统计检验的默认选择 3. 多重比较校正 在进行多个统计检验时，为了控制假阳性率（False Positive Rate，FPR），通常需要对 $P$ 值进行校正。常用的校正方法有 Bonferroni 校正、FDR 校正 等。\n4. 应用场景 针对脑激活与组间差异分析，我们默认选择双边检验，因为绝大多数情况下，这类研究是探索性的，我们无法完全确定效应的方向。\n任务态不仅可能引发激活（正效应），也可能引发默认网络的去激活（负效应） 组间差异可能是患者组激活更低，也可能是代偿性的激活更高 全脑搜索中，我们可能会发现与预期完全相反的意外效应，这些效应同样具有科学价值 因此，除非有极强的先验假设，否则默认使用双边检验，以保证能检测到所有方向的效应。 当且仅当满足下述条件的时候，我们考虑使用单边检验：\n事前的强先验：基于已有的大量研究，你明确预测效应只能是正的（或负的） 例：你研究视觉皮层对亮度刺激的反应，已有无数研究证明亮度刺激会增强这里的 BOLD 信号 完全不关心相反方向：即使数据出现了很强的相反效应，你也会将其视为随机噪声，不会进行报告或解释 事前声明：在数据收集前，你就已经明确或者假设了检验的方向，且合乎逻辑 例如，典型相关分析默认选择双边检验，因为典型相关系数的取值范围是 $[-1,1]$，绝大多数情况下，我们关心的是 “两组变量之间是否存在关联”，而不管关联的方向是正还是负。在置换过程中，我们记录的是置换得到的典型相关系数的绝对值，只要观测到的相关系数的绝对值足够大，就认为是显著的。比如在脑 - 行为关联的 CCA 研究中，研究者通常会使用这种双边的置换检验，以控制多重比较涵盖不同的关联模式。\nCorrelation Methods Canonical Correlation Analysis Reference:\nWikipedia: Canonical Correlation Analysis\n1. 寻找两组变量的最佳投影 在神经影像研究中，我们常常收集到两组高维数据：一组是影像特征（如数千个功能连接、皮层厚度值），另一组是行为/临床特征（如多个认知测试得分、临床量表项）。我们想问：这两组复杂的变量之间，是否存在一个整体的、潜在的关联模式？简单地进行两两相关分析，不仅会带来严重的多重比较问题，更无法揭示变量集合之间多对多的映射关系。典型相关分析（Canonical Correlation Analysi，CCA）及其变体，正是为解决这类问题设计的。\n假设我们有两组变量，$X$（影像）和 $Y$（行为）。CCA 试图分别找到 $X$ 和 $Y$ 内部变量的线性组合（称为典型变量或 canonical variates），$U = w_X^T X$ 和 $V = w_Y^T Y$，使得这两个新生成的投影变量 $U$ 和 $V$ 之间的相关性最大化。这个最大的相关性，就是第一典型相关（first canonical correlation）。类似于 PCA，CCA 会继续寻找第二对、第三对…投影方向，每一对新的典型变量都与之前的所有典型变量正交，并最大化剩余方差中的相关性。CCA 的数学表达如下：\n$$ \\text{max}_{w_X, w_Y} \\rho = \\text{corr}(U, V) = \\frac{\\text{cov}(w_X^T X, w_Y^T Y)}{\\sqrt{\\text{var}(w_X^T X) \\text{var}(w_Y^T Y)}} $$\n然而，传统的 CCA 存在一些局限：\n过拟合：当变量数远多于样本数时，CCA 很容易找到看似完美（相关性接近 1）但毫无参考价值的虚假关联。 不稳定性：数据中的微小扰动可能导致权重向量 $w_X$ 和 $w_Y$ 发生剧烈变化。 不可解：当 $X$ 或 $Y$ 的协方差矩阵是奇异的（由于共线性），CCA 无法求解。 解释性差：权重向量 $w_X$ 和 $w_Y$ 通常是“稠密”的，即几乎所有变量的权重都不为零，这使得我们很难解释哪些具体的影像和行为特征驱动了这种关联。 2. rCCA 引入正则化 正则化 CCA（Regularized CCA，rCCA）的核心思想是在 CCA 的优化目标中加入正则化项，以惩罚过于复杂的权重向量。最常见的是 L2 正则化。\nrCCA 的目标在于，估计协方差矩阵时加入了一个正则化参数 $\\lambda$： $$ \\hat{\\Sigma}{XX, reg} = \\hat{\\Sigma}{XX} + \\lambda_X I $$ $$ \\hat{\\Sigma}{YY, reg} = \\hat{\\Sigma}{YY} + \\lambda_Y I $$ 这使得协方差矩阵变得非奇异，从而稳定了 CCA 的求解过程。正则化强度 $\\lambda$ 是一个关键的超参数，需要通过交叉验证 (Cross-Validation，CV) 来选择：\n将数据集划分为 $K$ 折 (e.g.，$K=10$)。 对于每一折，将其作为验证集，其余 $K-1$ 折作为训练集。 在训练集上，针对一组候选的正则化参数（如 $\\lambda_X$，$\\lambda_Y$ 从 $10^{-5}$ 到 1 的对数尺度网格），训练 rCCA 模型。 将训练好的模型应用到验证集上，计算验证集上典型变量的样本外相关性 (out-of-sample correlation)。 重复 $K$ 次，对每个参数组合，平均其在 $K$ 个验证集上的表现。 选择那个能带来最高平均样本外相关性的 $\\lambda_X$，$\\lambda_Y$ 组合作为最佳超参数。 3. sCCA 引入稀疏性 稀疏 CCA（Sparse CCA，sCCA）则更进一步。它不仅要稳定模型，还希望实现变量选择，即让大部分不重要的影像和行为特征的权重直接变为零。这通过引入 L1 正则化 (Lasso) 或其他稀疏惩罚项来实现。\nsCCA 的目标在于，在最大化典型相关的同时，对权重向量 $w_X$ 和 $w_Y$ 的 L1 范数施加约束： $$ \\text{max}_{\\mathbf{u}, \\mathbf{v}} \\text{Corr}(\\mathbf{u}^TX, \\mathbf{v}^TY) $$ $$ \\text{s. t. } ||\\mathbf{u}||_1 \\le \\lambda_1, ||\\mathbf{v}||_1 \\le \\lambda_2 $$\n其中 $\\lambda_1$ 和 $\\lambda_2$ 是控制稀疏度的超参数。值越小，权重向量中元素的含量就越少。\nsCCA 特别适用于探索性研究，当你希望从数千个特征中识别出少数几个关键的影像-行为关联通路时。 其结果具有很强的解释性：非零权重的变量构成了驱动该典型相关模式的核心子集。 4. 实践范建议 4.1 变量组织与预处理 影像特征矩阵 $X$（n_subjects × p_features）： ROI-FC 向量：将每个被试的 N×N FC 矩阵的上三角元素拉成一个长向量。 图论指标：每个 ROI 的网络度量（度、聚类系数等）。 VBM/SBM：每个体素/顶点的灰质体积或皮层厚度。 行为/临床矩阵 $Y$（n_subjects × q_features）： 认知测试得分、临床量表总分或子项目得分等。 标准化：对 $X$ 和 $Y$ 的每一列（每个特征）进行 Z-score 标准化（均值为 0，标准差为 1），这是 CCA 家族算法的标准要求。 协变量回归：在进行 CCA 之前，通常需要回归掉年龄、性别、头动（如 FD 均值）、扫描仪站点等混淆变量的影响。即，对 $X$ 和 $Y$ 中的每个特征，分别用协变量做线性回归，然后取残差作为新的输入。 4.2 训练/验证与调参 嵌套交叉验证（Nested CV） 调参：这是进行严格模型评估和调参的黄金标准，能有效避免信息泄露。 外层循环：将数据分为训练集和测试集（留出不用）。 内层循环：在训练集上执行 K-折交叉验证，以选择最佳超参数（如 rCCA 的 $\\lambda$ 或 sCCA 的稀疏度）。 模型评估：使用内层循环选出的最佳超参数，在整个训练集上重新训练模型，然后在从未见过的测试集上评估其最终性能。 留一法（Leave-One-Out）：当样本量非常小时，可以采用留一法交叉验证（每次留一个被试作为验证集）。 4.3 统计显著性评估 CCA 模型找到了一个看起来很强的关联，但这个关联是真的，还是仅仅是数据中的偶然？我们需要进行统计检验。随机打乱 $Y$ 矩阵（行为数据）的行顺序（即打乱被试标签），破坏影像与行为之间的真实对应关系，但保留 $X$ 和 $Y$ 内部的结构。\n4.4 可视化与报告 典型相关：报告第一（或前几个显著的）典型相关系数及其置换检验的 p 值。 载荷热图（Loadings Heatmap）： 载荷（Loadings） 是指典型变量 U 和 V 与原始变量 $X$ 和 $Y$ 之间的相关性。它们比权重（weights）更更容易解释。 将影像特征的载荷和行为特征的载荷分别用热图展示出来。对于 sCCA，这会是一个稀疏的热图。 ROI-行为通路解释：对于 sCCA，重点解读那些具有显著非零权重的影像特征和行为特征。例如，“更高的前额叶网络内部连接”与“更低的冲动性得分”共同构成了一个显著的关联模式。 可视化展示：可以将具有高载荷的 ROI 映射回大脑表面，进行可视化，清晰地展示出特定行为模式相关的脑区。 可以将具有高载荷的 ROI 映射回大脑表面，进行可视化，清晰地展示出与特定行为模式相关的脑区。 Preprocessing Pipelines of fMRI Data 1. Kong2022 ",
+  "wordCount" : "903",
   "inLanguage": "en",
   "datePublished": "2026-04-07T00:00:00Z",
   "dateModified": "2026-04-07T00:00:00Z",
@@ -223,7 +223,7 @@ Permutation Test Moran&rsquo;s Permutation Test Reference:">
     <h1 class="post-title entry-hint-parent">
       Research Draft on Cognitive Neuroscience
     </h1>
-    <div class="post-meta"><span title='2026-04-07 00:00:00 +0000 UTC'>April 7, 2026</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Shuo Lv
+    <div class="post-meta"><span title='2026-04-07 00:00:00 +0000 UTC'>April 7, 2026</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Shuo Lv
 
 </div>
   </header> <div class="toc">
@@ -261,6 +261,22 @@ Permutation Test Moran&rsquo;s Permutation Test Reference:">
                 </li></ul>
                 </li>
                 <li>
+                    <a href="#test-strategy" aria-label="Test Strategy">Test Strategy</a><ul>
+                        
+                <li>
+                    <a href="#1-%e5%8d%95%e8%be%b9%e6%a3%80%e9%aa%8c" aria-label="1. 单边检验">1. 单边检验</a></li>
+                <li>
+                    <a href="#2-%e5%8f%8c%e8%be%b9%e6%a3%80%e9%aa%8c" aria-label="2. 双边检验">2. 双边检验</a></li>
+                <li>
+                    <a href="#3-%e5%a4%9a%e9%87%8d%e6%af%94%e8%be%83%e6%a0%a1%e6%ad%a3" aria-label="3. 多重比较校正">3. 多重比较校正</a></li>
+                <li>
+                    <a href="#4-%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af" aria-label="4. 应用场景">4. 应用场景</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#correlation-methods" aria-label="Correlation Methods">Correlation Methods</a><ul>
+                        
+                <li>
                     <a href="#canonical-correlation-analysis" aria-label="Canonical Correlation Analysis">Canonical Correlation Analysis</a><ul>
                         
                 <li>
@@ -281,12 +297,16 @@ Permutation Test Moran&rsquo;s Permutation Test Reference:">
                 <li>
                     <a href="#43-%e7%bb%9f%e8%ae%a1%e6%98%be%e8%91%97%e6%80%a7%e8%af%84%e4%bc%b0" aria-label="4.3 统计显著性评估">4.3 统计显著性评估</a></li>
                 <li>
-                    <a href="#44-%e5%8f%af%e8%a7%86%e5%8c%96%e4%b8%8e%e6%8a%a5%e5%91%8a" aria-label="4.4 可视化与报告">4.4 可视化与报告</a>
+                    <a href="#44-%e5%8f%af%e8%a7%86%e5%8c%96%e4%b8%8e%e6%8a%a5%e5%91%8a" aria-label="4.4 可视化与报告">4.4 可视化与报告</a></li></ul>
+                </li></ul>
+                </li></ul>
                 </li>
-            </ul>
-            </li>
-            </ul>
-            </li>
+                <li>
+                    <a href="#preprocessing-pipelines-of-fmri-data" aria-label="Preprocessing Pipelines of fMRI Data">Preprocessing Pipelines of fMRI Data</a><ul>
+                        
+                <li>
+                    <a href="#1-kong2022" aria-label="1. Kong2022">1. Kong2022</a>
+                </li>
             </ul>
             </li>
             </ul>
@@ -302,6 +322,13 @@ Liu, Y., Seguin, C., Tian, Y. E., Di Biase, M. A., &amp; Zalesky, A. (2025). <a 
 </blockquote>
 <p>To be continued&hellip;</p>
 <h1 id="permutation-test">Permutation Test<a hidden class="anchor" aria-hidden="true" href="#permutation-test">#</a></h1>
+<p>置换检验（Permutation Test）是一种基于随机重排的非参数检验方法，其核心逻辑是：</p>
+<ol>
+<li><strong>零假设</strong>：实验条件对数据标签没有影响，即数据的标签是可交换的（Exchangeable）</li>
+<li>通过随机打乱数据的标签，反复计算统计量，构建零假设下的统计量分布（置换分布）</li>
+<li>将观测到的真实统计量与该分布对比，计算观测值 “极端” 的概率，即 p 值</li>
+</ol>
+<p>与参数检验不同，置换检验无需假设数据服从正态分布，适配认知神经科学中高维、非正态的神经影像与脑电数据，是领域内的主流推断方法。</p>
 <h2 id="morans-permutation-test">Moran&rsquo;s Permutation Test<a hidden class="anchor" aria-hidden="true" href="#morans-permutation-test">#</a></h2>
 <blockquote>
 <p>Reference:<br>
@@ -457,6 +484,52 @@ $$ M = V \Lambda V^T $$
 </li>
 <li><strong>多重比较（False Discovery Rate，FDR）</strong>：如果你同时检验了多个 FC 指标或多个行为变量，别忘了对得到的 $P$ 值进行 <strong>FDR 校正</strong>。</li>
 </ol>
+<h2 id="test-strategy">Test Strategy<a hidden class="anchor" aria-hidden="true" href="#test-strategy">#</a></h2>
+<p>在置换检验中，一般有单边检验（One-tailed Test）和双边检验（Two-tailed Test）两种策略。</p>
+<h3 id="1-单边检验">1. 单边检验<a hidden class="anchor" aria-hidden="true" href="#1-单边检验">#</a></h3>
+<ul>
+<li>假设：仅检验效应在某一个特定方向上的存在性
+<ul>
+<li>右尾检验：$$H_0: \theta \le 0$$ vs $$H_1: \theta &gt; 0$$（仅关心正效应）</li>
+<li>左尾检验：$$H_0: \theta \ge 0$$ vs $$H_1: \theta &lt; 0$$（仅关心负效应）</li>
+</ul>
+</li>
+<li>P 值计算：$$P = \frac{\text{置换统计量中，大于/小于观测值的数量}}{\text{总置换次数}}$$</li>
+<li>特点：统计效力更高（相同数据下，P 值约为双边的 1/2），但完全忽略相反方向</li>
+</ul>
+<h3 id="2-双边检验">2. 双边检验<a hidden class="anchor" aria-hidden="true" href="#2-双边检验">#</a></h3>
+<ul>
+<li>假设：检验效应在任意方向上的存在性
+<ul>
+<li>$$H_0: \theta = 0$$ vs $$H_1: \theta \neq 0$$（同时关心正、负效应）</li>
+</ul>
+</li>
+<li>P 值计算：$$P = \frac{\text{置换统计量中，绝对值大于等于观测值绝对值的数量}}{\text{总置换次数}}$$</li>
+<li>特点：更保守，能检测任何方向的效应，是绝大多数统计检验的默认选择</li>
+</ul>
+<h3 id="3-多重比较校正">3. 多重比较校正<a hidden class="anchor" aria-hidden="true" href="#3-多重比较校正">#</a></h3>
+<p>在进行多个统计检验时，为了控制假阳性率（False Positive Rate，FPR），通常需要对 $P$ 值进行校正。常用的校正方法有 <strong>Bonferroni 校正</strong>、<strong>FDR 校正</strong> 等。</p>
+<h3 id="4-应用场景">4. 应用场景<a hidden class="anchor" aria-hidden="true" href="#4-应用场景">#</a></h3>
+<p>针对<strong>脑激活与组间差异分析</strong>，我们默认选择双边检验，因为绝大多数情况下，这类研究是探索性的，我们无法完全确定效应的方向。</p>
+<ul>
+<li>任务态不仅可能引发激活（正效应），也可能引发默认网络的去激活（负效应）</li>
+<li>组间差异可能是患者组激活更低，也可能是代偿性的激活更高</li>
+<li>全脑搜索中，我们可能会发现与预期完全相反的意外效应，这些效应同样具有科学价值
+因此，除非有极强的先验假设，否则默认使用双边检验，以保证能检测到所有方向的效应。</li>
+</ul>
+<p>当且仅当满足下述条件的时候，我们考虑使用单边检验：</p>
+<ol>
+<li>事前的强先验：基于已有的大量研究，你明确预测效应只能是正的（或负的）</li>
+</ol>
+<ul>
+<li>例：你研究视觉皮层对亮度刺激的反应，已有无数研究证明亮度刺激会增强这里的 BOLD 信号</li>
+</ul>
+<ol start="2">
+<li>完全不关心相反方向：即使数据出现了很强的相反效应，你也会将其视为随机噪声，不会进行报告或解释</li>
+<li>事前声明：在数据收集前，你就已经明确或者假设了检验的方向，且合乎逻辑</li>
+</ol>
+<p>例如，典型相关分析默认选择双边检验，因为典型相关系数的取值范围是 $[-1,1]$，绝大多数情况下，我们关心的是 “两组变量之间是否存在关联”，而不管关联的方向是正还是负。在置换过程中，我们记录的是置换得到的典型相关系数的绝对值，只要观测到的相关系数的绝对值足够大，就认为是显著的。比如在脑 - 行为关联的 CCA 研究中，研究者通常会使用这种双边的置换检验，以控制多重比较涵盖不同的关联模式。</p>
+<h1 id="correlation-methods">Correlation Methods<a hidden class="anchor" aria-hidden="true" href="#correlation-methods">#</a></h1>
 <h2 id="canonical-correlation-analysis">Canonical Correlation Analysis<a hidden class="anchor" aria-hidden="true" href="#canonical-correlation-analysis">#</a></h2>
 <blockquote>
 <p>Reference:<br>
@@ -541,6 +614,8 @@ $$</p>
 </ul>
 </li>
 </ul>
+<h1 id="preprocessing-pipelines-of-fmri-data">Preprocessing Pipelines of fMRI Data<a hidden class="anchor" aria-hidden="true" href="#preprocessing-pipelines-of-fmri-data">#</a></h1>
+<h2 id="1-kong2022">1. Kong2022<a hidden class="anchor" aria-hidden="true" href="#1-kong2022">#</a></h2>
 
 
   </div>
