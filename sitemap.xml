@@ -2,16 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/categories/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/posts/diseases/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/posts/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/tags/research/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/tags/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ShuoLv-fp.github.io/lsBlog/categories/technology/</loc>
+    <lastmod>2026-04-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ShuoLv-fp.github.io/lsBlog/tags/blog/</loc>
     <lastmod>2026-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ShuoLv-fp.github.io/lsBlog/categories/</loc>
-    <lastmod>2026-04-07T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ShuoLv-fp.github.io/lsBlog/tags/hugo/</loc>
-    <lastmod>2026-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ShuoLv-fp.github.io/lsBlog/</loc>
     <lastmod>2026-04-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ShuoLv-fp.github.io/lsBlog/posts/my-first-post/</loc>
@@ -20,19 +35,7 @@
     <loc>https://ShuoLv-fp.github.io/lsBlog/categories/personal/</loc>
     <lastmod>2026-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ShuoLv-fp.github.io/lsBlog/posts/</loc>
-    <lastmod>2026-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ShuoLv-fp.github.io/lsBlog/tags/research/</loc>
-    <lastmod>2026-04-07T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ShuoLv-fp.github.io/lsBlog/posts/research_draft/</loc>
-    <lastmod>2026-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ShuoLv-fp.github.io/lsBlog/tags/</loc>
-    <lastmod>2026-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ShuoLv-fp.github.io/lsBlog/categories/technology/</loc>
     <lastmod>2026-04-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ShuoLv-fp.github.io/lsBlog/page/about/</loc>
