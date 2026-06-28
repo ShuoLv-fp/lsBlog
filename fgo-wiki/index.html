@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FGO Mini Wiki</title>
+
+</head>
+<body>
+<nav>
+<a class="on" onclick="go(0)">从者</a>
+<a onclick="go(1)">计算器</a>
+<a onclick="go(2)">BOX</a>
+<a onclick="go(3)">导入</a>
+</nav>
+<div class="pg on" id="p0">
+<h1>FGO 从者图鉴</h1>
+<div class="flt">
+<input id="q" placeholder="搜索从者..." oninput="render()">
+<select id="fc" onchange="render()"><option value="">全部职阶</option></select>
+<div class="sf" id="sf"></div>
+</div>
+<div><span style="font-size:13px;color:#888">特性筛选:</span><button class="btn btn-s" onclick="clearTraits()" style="margin-left:6px">清除特性</button>
+<div class="trait-box" id="tb" style="margin-top:6px"></div></div>
+<div class="cnt" id="cnt"></div>
+<div class="grid" id="g"></div>
+</div>
+<div class="pg" id="p1">
+<h1>伤害计算器</h1>
+<div class="cs"><h2>基础参数</h2>
+<p style="font-size:13px;color:#999;margin-bottom:8px">ATK <input type="number" id="catk" value="10000" oninput="calc()"> 力W <input type="number" id="catkw" value="1.5" step="0.1" oninput="calc()"> 特W <input type="number" id="cspw" value="1.0" step="0.1" oninput="calc()"></p>
+<p style="font-size:13px;color:#999;margin-bottom:8px">敌防 <input type="number" id="cdef" value="10000" oninput="calc()"> 补正 <input type="number" id="cclass" value="1.0" step="0.1" oninput="calc()"></p>
+<p style="font-size:13px;color:#999;margin-bottom:8px">被动 <input type="number" id="cpass" value="1.0" step="0.1" oninput="calc()"> Buff <input type="number" id="cbuff" value="1.0" step="0.1" oninput="calc()"></p>
+</div>
+<div class="cs"><h2>计算结果</h2>
+<table class="tbl"><tr><th>类型</th><th>伤害</th></tr>
+<tr><td>平A</td><td id="r1">-</td></tr>
+<tr><td>暴击(2x)</td><td id="r2">-</td></tr>
+<tr><td>宝具(1.2x)</td><td id="r3">-</td></tr>
+</table></div>
+<div class="cs"><h2>NP计算器</h2>
+<p style="font-size:13px;color:#999;margin-bottom:8px">NP获取 <input type="number" id="npct" value="0.3" step="0.01" oninput="calcNP()"> NP Buff <input type="number" id="npbuff" value="1.0" step="0.1" oninput="calcNP()"></p>
+<div style="display:flex;gap:12px;font-size:13px;flex-wrap:wrap">
+<div>平A(3hit): <b id="n1">-</b></div>
+<div>暴击(3hit): <b id="n2">-</b></div>
+<div>宝具(1hit): <b id="n3">-</b></div>
+</div></div>
+</div>
+<div class="pg" id="p2">
+<h1>我的BOX <span class="cnt" id="bcnt"></span></h1>
+<p style="font-size:12px;color:#666;margin-bottom:10px">数据保存在本地浏览器 localStorage</p>
+<div style="margin-bottom:10px"><button class="btn btn-s" onclick="openPicker()">+ 添加从者</button> <button class="btn btn-s btn-d" onclick="clearBox()">清空BOX</button> <button class="btn btn-s" onclick="exportBox()">导出JSON</button></div>
+<div id="box"></div>
+</div>
+<div class="pg" id="p3">
+<h1>导入数据</h1>
+<h2>JSON导入</h2>
+<p style="font-size:12px;color:#666;margin-bottom:6px">粘贴从者ID数组JSON (如 [1,2,3]):</p>
+<div class="imps"><textarea id="impt" placeholder="[1, 2, 3]"></textarea></div>
+<div style="margin-bottom:16px"><button class="btn" onclick="doImport()">导入到BOX</button></div>
+<h2>手动选择</h2>
+<button class="btn" onclick="openPicker()">打开从者选择器</button>
+</div>
+<div class="modal-bg" id="mbg" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<img id="mimg" src="">
+<h3 id="mnm"></h3>
+<p id="mcls"></p>
+<p id="matk"></p>
+<p id="mhp"></p>
+<p id="mtr"></p>
+<button class="btn cls" onclick="closeModal()">关闭</button>
+</div></div>
+<div class="pk" id="pk">
+<div class="pk-in">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<h2>选择从者</h2>
+<div><input id="pkq" placeholder="搜索..." oninput="renderPicker()" style="background:#16213e;border:1px solid #444;color:#e0e0e0;padding:6px;border-radius:4px;font-size:13px;width:200px"> <button class="btn btn-s" onclick="closePicker()">关闭</button></div>
+</div>
+<div class="g" id="pkg"></div>
+</div></div>
+
+<link rel="stylesheet" href="style.css">
+<script src="names.js"></script>
+<script src="da.js"></script>
+<script src="db.js"></script>
+<script src="dc.js"></script>
+<script src="app.js"></script>
+</html>
