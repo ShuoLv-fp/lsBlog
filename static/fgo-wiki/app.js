@@ -1,6 +1,6 @@
-var RAW_FULL=RAW+RAW2;var bin=atob(RAW_FULL),off=0;
-function r16(){var v=(bin.charCodeAt(off)<<8)|bin.charCodeAt(off+1);off+=2;return v}
-function r8(){return bin.charCodeAt(off++)}
+var bytes=H1+H2+H3;var bin=new Uint8Array(bytes.length/2);for(var i=0;i<bin.length;i++)bin[i]=parseInt(bytes.substr(i*2,2),16);var off=0;
+function r16(){var v=(bin[off]<<8)|bin[off+1];off+=2;return v}
+function r8(){return bin[off++]}
 var S=[];
 while(off<bin.length){
 var id=r16(),star=r8(),cls=r8(),atk=r16(),hp=r16(),nt=r8(),tr=[];
