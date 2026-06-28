@@ -7,7 +7,7 @@ var id=r16(),star=r8(),cls=r8(),atk=r16(),hp=r16(),nt=r8(),tr=[];
 for(var i=0;i<nt;i++)tr.push(r8());
 S.push([id,star,cls,tr,atk,hp]);
 }
-var D=S.map(function(s,i){return[s[0],N[i],s[1],CI[s[2]],s[3],s[4],s[5]]});
+var N=N1.concat(N2);var D=S.map(function(s,i){return[s[0],N[i],s[1],CI[s[2]],s[3],s[4],s[5]]});
 var selT=new Set(),selS=0,box=JSON.parse(localStorage.getItem("fgoBox")||"[]");
 function go(i){document.querySelectorAll(".pg").forEach(function(p,j){p.classList.toggle("on",i===j)});document.querySelectorAll("nav a").forEach(function(n,j){n.classList.toggle("on",i===j)});if(i===2)renderBox()}
 function av(i){return"https://media.fgo.wiki/Servant"+String(i).padStart(3,"0")+".jpg"}
