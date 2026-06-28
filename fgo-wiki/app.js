@@ -10,7 +10,7 @@ S.push([id,star,cls,tr,atk,hp]);
 var N=N1.concat(N2);var D=S.map(function(s,i){return[s[0],N[i],s[1],CI[s[2]],s[3],s[4],s[5]]});
 var selT=new Set(),selS=0,box=JSON.parse(localStorage.getItem("fgoBox")||"[]");
 function go(i){document.querySelectorAll(".pg").forEach(function(p,j){p.classList.toggle("on",i===j)});document.querySelectorAll("nav a").forEach(function(n,j){n.classList.toggle("on",i===j)});if(i===2)renderBox()}
-function av(i){var id=String(i).padStart(3,"0");return'<img src="https://media.fgo.wiki/Servant'+id+'.jpg" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'+
+function av(i){var id=String(i).padStart(3,"0");return'<img src="assets/images/avatars/'+id+'.jpg" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'+
 '<div class="card-ph" style="display:none"><span class="ph-cl">'+D[i-1][3].charAt(0)+'</span><span class="ph-star">'+D[i-1][2]+'\u2605</span></div>'}
 function ss(n){var s="";for(var i=0;i<n;i++)s+="\u2605";return n===0?"-":s}
 function gc(){var cs=new Set();D.forEach(function(s){cs.add(s[3])});return Array.from(cs).sort()}
@@ -26,47 +26,41 @@ function flt(){var q=document.getElementById("q").value.trim().toLowerCase();var
 function render(){var r=flt(),g=document.getElementById("g"),cnt=document.getElementById("cnt");cnt.textContent="\u5171 "+r.length+" / "+D.length;var h="";r.forEach(function(s){h+='<div class="card" onclick="sm('+s[0]+')">'+av(s[0])+'<div class="nm">'+s[1]+'</div><div class="st">'+ss(s[2])+" "+s[3]+'</div></div>'});g.innerHTML=h||'<div class="empty">\u6ca1\u6709\u5339\u914d\u7684\u4ece\u8005</div>'}
 function clearTraits(){selT.clear();document.querySelectorAll("#tb input").forEach(function(c){c.checked=false});render()}
 function sm(id){var s=D.find(function(x){return x[0]===id});if(!s)return;
-var dets=DETAIL.split('\n');
-var det=dets[id-1]?dets[id-1].split('~'):['','',''];
-var skills=det[0]?det[0].split('|'):[];
-var np=det[1]||'';
-var passives=det[2]?det[2].split('|'):[];
-var html='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;text-align:left">'+
-'<div style="flex-shrink:0;width:100px">'+av(id)+'</div>'+
-'<div style="flex:1">'+
-'<h3 style="font-size:16px;margin-bottom:4px">'+s[1]+'</h3>'+
-'<p style="color:#7aa2f7;font-size:13px;margin-bottom:6px">'+ss(s[2])+' '+s[3]+'</p>'+
-'<div style="display:flex;gap:12px;font-size:12px">'+
-'<div><span style="color:#e55">ATK</span> '+s[5].toLocaleString()+'</div>'+
-'<div><span style="color:#7aa2f7">HP</span> '+s[6].toLocaleString()+'</div>'+
-'</div></div></div>';
-if(passives.length>0&&passives[0]){
-html+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u88ab\u52a8\u6280\u80fd</p><div style="display:flex;flex-wrap:wrap;gap:3px">';
-passives.forEach(function(p){if(p)html+='<span style="background:#1e2a4a;padding:2px 6px;border-radius:3px;font-size:11px">'+p+'</span>'});
-html+='</div></div>'}
-if(skills.length>0){
-html+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u4e3b\u52a8\u6280\u80fd</p>';
-skills.forEach(function(sk,idx){if(sk)html+='<div style="background:#1e2a4a;padding:6px 8px;border-radius:4px;margin-bottom:3px;font-size:12px"><span style="color:#7aa2f7">'+(idx+1)+'.</span> '+sk+'</div>'});
-html+='</div>'}
-if(np){
-html+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u5b9d\u5177</p>'+
-'<div style="background:#2a1a3a;padding:6px 8px;border-radius:4px;font-size:12px;color:#ffd700">'+np+'</div></div>'}
-var ts=s[4].map(function(i){return TI[i]}).join(", ");
-if(ts){
-html+='<div style="text-align:left;margin-bottom:8px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u7279\u6027</p>'+
-'<div style="display:flex;flex-wrap:wrap;gap:3px">';
-ts.split(", ").forEach(function(t){html+='<span style="background:#333;padding:2px 6px;border-radius:8px;font-size:10px">'+t+'</span>'});
-html+='</div></div>'}
-html+='<div style="text-align:center;margin-top:10px"><button class="btn" onclick="closeModal()" style="font-size:12px;padding:5px 14px">\u5173\u95ed</button></div>';
+var me=document.getElementById("mextra");
+me.innerHTML='<div style="text-align:center;color:#7aa2f7;padding:16px">\u52a0\u8f7d\u8be6\u60c5\u4e2d...</div>';
+me.style.display="block";
 document.getElementById("mimg").style.display="none";
 document.getElementById("mnm").style.display="none";
 document.getElementById("mcls").style.display="none";
 document.getElementById("matk").style.display="none";
 document.getElementById("mhp").style.display="none";
 document.getElementById("mtr").style.display="none";
-document.getElementById("mextra").innerHTML=html;
-document.getElementById("mextra").style.display="block";
-document.getElementById("mbg").classList.add("on")}
+document.getElementById("mbg").classList.add("on");
+fetch("data/servants/"+id+".json").then(function(r){return r.json()}).then(function(d){
+var h='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;text-align:left">'+
+'<div style="flex-shrink:0;width:100px">'+av(id)+'</div>'+
+'<div style="flex:1"><h3 style="font-size:16px;margin-bottom:4px">'+s[1]+'</h3>'+
+'<p style="color:#7aa2f7;font-size:13px;margin-bottom:2px">'+ss(s[2])+' '+s[3]+'</p>'+
+'<p style="font-size:11px;color:#999">'+escf((d.basic||{})["\u58f0\u4f18\u663e\u793a"]||(d.basic||{})["\u58f0\u4f18"]||"")+' / '+escf((d.basic||{})["\u753b\u5e08"]||"")+'</p>'+
+'<div style="display:flex;gap:12px;font-size:12px;margin-top:4px">'+
+'<div><span style="color:#e55">ATK</span> '+s[5].toLocaleString()+'</div>'+
+'<div><span style="color:#7aa2f7">HP</span> '+s[6].toLocaleString()+'</div>'+
+'</div></div></div>';
+var pas=d.passive_skills||[];if(pas.length>0){h+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u88ab\u52a8\u6280\u80fd</p>';pas.forEach(function(p){if(p.name&&p.effect)h+='<div style="background:#1e2a4a;padding:4px 8px;border-radius:4px;margin-bottom:2px;font-size:11px"><b>'+escf(p.name)+'</b> '+escf(p.rank||"")+': '+escf(p.effect)+'</div>'});h+='</div>'}
+var aps=d.active_skills||[];if(aps.length>0){h+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u4e3b\u52a8\u6280\u80fd</p>';aps.slice(0,3).forEach(function(sk,i){h+='<div style="background:#1e2a4a;padding:6px 8px;border-radius:4px;margin-bottom:3px;font-size:12px"><div style="color:#7aa2f7;margin-bottom:2px"><b>'+(i+1)+'. '+escf(sk.name_cn||sk.name_jp||"")+'</b> <span style="font-size:10px;color:#888">CD:'+escf(sk.cooldown||"?")+'</span></div>';var ets=sk.effect_tables||[];ets.forEach(function(et){if(et.has_table){var lvs=et.levels||[];var vals=lvs.slice(0,5).map(function(v){return v||"-"}).join(" / ");h+='<div style="color:#ccc;font-size:10px;margin-top:1px">'+escf(et.effect||"")+": "+vals+'</div>'}else if(et.text){h+='<div style="color:#ffd700;font-size:10px;margin-top:1px">'+escf(et.text)+'</div>'}});h+='</div>'});h+='</div>'}
+var nps=d.noble_phantasms||[];if(nps.length>0){h+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u5b9d\u5177</p>';nps.slice(0,2).forEach(function(np){h+='<div style="background:#2a1a3a;padding:6px 8px;border-radius:4px;margin-bottom:3px;font-size:12px"><div style="color:#ffd700;margin-bottom:2px"><b>'+escf(np["\u4e2d\u6587\u540d"]||"")+'</b> <span style="font-size:10px;color:#aaa">'+escf(np["\u5361\u8272"]||"")+' '+escf(np["\u7c7b\u578b"]||"")+' '+escf(np["\u9636\u7ea7"]||"")+'</span></div>';["\u6548\u679cA","\u6548\u679cB","\u6548\u679cC","\u6548\u679cD"].forEach(function(ek){if(np[ek]){var lk=ek.replace("\u6548\u679c","\u6570\u503c");var vk=lk+"1";var vals=np[vk]?np[vk].split("|").map(function(x){var p=x.split("=");return p[p.length-1]}).slice(0,5).join(" / "):"-";h+='<div style="color:#ccc;font-size:10px;margin-top:1px">'+escf(np[ek])+": "+vals+'</div>'}});h+='</div>'});h+='</div>'}
+var tr=d.trait_list||[];if(tr.length>0){h+='<div style="text-align:left;margin-bottom:8px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u7279\u6027</p><div style="display:flex;flex-wrap:wrap;gap:3px">';tr.forEach(function(t){h+='<span style="background:#333;padding:2px 6px;border-radius:8px;font-size:10px">'+escf(t)+'</span>'});h+='</div></div>'}
+var b=d.basic||{};var cards=[];["\u7b2c\u4e00\u5f20\u5361","\u7b2c\u4e8c\u5f20\u5361","\u7b2c\u4e09\u5f20\u5361","\u7b2c\u56db\u5f20\u5361","\u7b2c\u4e94\u5f20\u5361"].forEach(function(ck){if(b[ck])cards.push(b[ck][0])});var cardstr=cards.join("");
+if(cardstr)h+='<div style="text-align:left;margin-bottom:8px;font-size:11px"><span style="color:#888">\u6307\u4ee4\u5361: </span><span style="color:#ccc">'+cardstr+'</span>';
+var qa=b["Q\u5361np\u7387"]||b["A\u5361np\u7387"]||"";var qh=b["Q\u5361hit\u6570"]||"";var ah=b["A\u5361hit\u6570"]||"";var bh=b["B\u5361hit\u6570"]||"";
+if(qa)h+=' | NP\u7387: '+qa;
+if(qh)h+=' | Hit: '+qh+'/'+ah+'/'+bh;
+h+='</div>';
+h+='<div style="text-align:center;margin-top:10px"><button class="btn" onclick="closeModal()" style="font-size:12px;padding:5px 14px">\u5173\u95ed</button></div>';
+me.innerHTML=h}).catch(function(e){
+me.innerHTML='<div style="text-align:center;color:#e55;padding:16px">\u52a0\u8f7d\u5931\u8d25: '+escf(e.message)+'</div><div style="text-align:center;margin-top:10px"><button class="btn" onclick="closeModal()" style="font-size:12px;padding:5px 14px">\u5173\u95ed</button></div>'
+})}
+function escf(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function closeModal(){document.getElementById("mbg").classList.remove("on");setTimeout(function(){
 document.getElementById("mimg").style.display="block";
 document.getElementById("mnm").style.display="block";
