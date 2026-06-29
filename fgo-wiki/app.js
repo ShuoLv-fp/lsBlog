@@ -25,41 +25,130 @@ function usf(){var sf=document.getElementById("sf");sf.querySelectorAll("span").
 function flt(){var q=document.getElementById("q").value.trim().toLowerCase();var c=document.getElementById("fc").value;return D.filter(function(s){if(q&&s[1].toLowerCase().indexOf(q)<0)return false;if(c&&s[3]!==c)return false;if(selS&&s[2]!==selS)return false;if(selT.size>0){var st=new Set(s[4]);var ok=false;selT.forEach(function(t){if(st.has(t))ok=true});if(!ok)return false}return true})}
 function render(){var r=flt(),g=document.getElementById("g"),cnt=document.getElementById("cnt");cnt.textContent="\u5171 "+r.length+" / "+D.length;var h="";r.forEach(function(s){h+='<div class="card" onclick="sm('+s[0]+')">'+av(s[0])+'<div class="nm">'+s[1]+'</div><div class="st">'+ss(s[2])+" "+s[3]+'</div></div>'});g.innerHTML=h||'<div class="empty">\u6ca1\u6709\u5339\u914d\u7684\u4ece\u8005</div>'}
 function clearTraits(){selT.clear();document.querySelectorAll("#tb input").forEach(function(c){c.checked=false});render()}
+
+var ICO="assets/images/icons/";
+function iconFor(e){
+var m=[
+[/对肃正防御/,"对肃正防御.png"],
+[/无敌贯通/,"无敌贯通.png"],
+[/无敌(?!.*无效)/,"无敌.png"],
+[/回避/,"回避.png"],
+[/毅力/,"毅力.png"],
+[/必中/,"必中.png"],
+[/无视防御/,"无视防御.png"],
+[/目标集中/,"目标集中.png"],
+[/魅惑/,"魅惑.png"],
+[/眩晕/,"眩晕.png"],
+[/封印/,"封印.png"],
+[/睡眠/,"睡眠.png"],
+[/毒(?!.*NP)/,"毒.png"],
+[/灼伤/,"灼伤.png"],
+[/诅咒/,"诅咒.png"],
+[/即死无效/,"即死无效.png"],
+[/即死毅力/,"即死毅力.png"],
+[/即死成功率提升/,"即死成功率提升.png"],
+[/即死成功率下降/,"即死成功率下降.png"],
+[/即死耐性提升/,"即死耐性提升.png"],
+[/即死耐性下降/,"即死耐性下降.png"],
+[/弱化无效/,"弱化无效.png"],
+[/弱化解除耐性下降/,"弱化解除耐性下降.png"],
+[/弱化解除/,"弱化解除.png"],
+[/强化解除耐性提升/,"强化解除耐性提升.png"],
+[/强化解除耐性下降/,"强化解除耐性下降.png"],
+[/强化无效/,"强化无效.png"],
+[/弱化成功率提升/,"弱化成功率提升.png"],
+[/弱化成功率下降/,"弱化成功率下降.png"],
+[/弱化耐性提升/,"弱化耐性提升.png"],
+[/弱化耐性下降/,"弱化耐性下降.png"],
+[/攻击附加强化/,"攻击附加强化.png"],
+[/攻击附加弱化/,"攻击附加弱化.png"],
+[/受击NP获得量提升/,"受击NP获得量提升.png"],
+[/受击NP获得量下降/,"受击NP获得量下降.png"],
+[/NP获得量提升/,"NP获得量提升.png"],
+[/充能阶段上升/,"充能阶段上升.png"],
+[/宝具充能/,"宝具充能.png"],
+[/宝具威力耐性提升/,"宝具威力耐性提升.png"],
+[/宝具威力提升/,"宝具威力提升.png"],
+[/宝具威力下降/,"宝具威力下降.png"],
+[/宝具强化/,"宝具强化.png"],
+[/宝具切换/,"宝具切换状态.png"],
+[/NP增加/,"充能.png"],
+[/Buster.*性能提升|Buster.*性能[大中小]?幅提升/,"红放.png"],
+[/Quick.*性能提升|Quick.*性能[大中小]?幅提升/,"绿放.png"],
+[/Arts.*性能提升|Arts.*性能[大中小]?幅提升/,"蓝放.png"],
+[/三色.*性能提升|Quick.*Arts.*Buster.*性能提升/,"三色魔放.png"],
+[/Buster.*Quick.*性能提升|红绿/,"红绿放.png"],
+[/Arts.*Buster.*性能提升|蓝红/,"红蓝放.png"],
+[/Arts.*Quick.*性能提升|蓝绿/,"蓝绿放.png"],
+[/Buster.*变更|变更为Buster/,"红放.png"],
+[/Quick.*变更|变更为Quick/,"绿放.png"],
+[/Arts.*变更|变更为Arts/,"蓝放.png"],
+[/暴击威力提升/,"暴击威力提升.png"],
+[/暴击威力下降/,"暴击威力下降.png"],
+[/暴击发生率下降/,"暴击发生率下降.png"],
+[/暴击星集中度提升|集星(?!.*下降)/,"集星.png"],
+[/暴击星集中度下降|反集星/,"反集星.png"],
+[/暴击星|获得暴击星/,"暴击星.png"],
+[/回合出星|每回合.*暴击星|回合.*获得.*星/,"回合出星.png"],
+[/出星/,"出星.png"],
+[/掉星率增加/,"掉星率增加.png"],
+[/红卡集星/,"红卡集星.png"],
+[/蓝卡集星/,"蓝卡集星.png"],
+[/每回合HP回复|每回合回复(?!.*量)/,"每回合回复.png"],
+[/HP回复|HP.*回复(?!.*量)/,"HP回复.png"],
+[/回复量提升/,"回复量提升.png"],
+[/血量上升/,"血量上升.png"],
+[/回血/,"回血.png"],
+[/灭气/,"灭气.png"],
+[/回合充能/,"回合充能.png"],
+[/减冷却/,"减冷却.png"],
+[/洗牌/,"洗牌.png"],
+[/特攻/,"特攻.png"],
+[/特殊耐性提升/,"特殊耐性提升.png"],
+[/攻击力.*防御力.*提升/,"加攻加防.png"],
+[/攻击力.*防御力.*下降/,"降攻防.png"],
+[/攻击力提升|加攻/,"加攻.png"],
+[/防御力提升|加防/,"加防.png"],
+[/攻击力.*下降|降攻(?!.*防)/,"降攻.png"],
+[/防御力.*下降|降防/,"降防.png"],
+[/暴击/,"暴击.png"]
+];
+for(var i=0;i<m.length;i++){if(m[i][0].test(e))return ICO+"skills/"+m[i][1];}
+return null;
+}
 function sm(id){var s=D.find(function(x){return x[0]===id});if(!s)return;
-var me=document.getElementById("mextra");
-me.innerHTML='<div style="text-align:center;color:#7aa2f7;padding:16px">\u52a0\u8f7d\u8be6\u60c5\u4e2d...</div>';
-me.style.display="block";
-document.getElementById("mimg").style.display="none";
-document.getElementById("mnm").style.display="none";
-document.getElementById("mcls").style.display="none";
-document.getElementById("matk").style.display="none";
-document.getElementById("mhp").style.display="none";
-document.getElementById("mtr").style.display="none";
-document.getElementById("mbg").classList.add("on");
+var me=document.getElementById("mextra");me.innerHTML='<div style="text-align:center;color:#7aa2f7;padding:20px">加载详情中...</div>';me.style.display="block";
+document.getElementById("mimg").style.display="none";document.getElementById("mnm").style.display="none";document.getElementById("mcls").style.display="none";document.getElementById("matk").style.display="none";document.getElementById("mhp").style.display="none";document.getElementById("mtr").style.display="none";
+var mbg=document.getElementById("mbg");mbg.classList.add("on");
 fetch("data/servants/"+id+".json").then(function(r){return r.json()}).then(function(d){
-var h='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;text-align:left">'+
-'<div style="flex-shrink:0;width:100px">'+av(id)+'</div>'+
-'<div style="flex:1"><h3 style="font-size:16px;margin-bottom:4px">'+s[1]+'</h3>'+
-'<p style="color:#7aa2f7;font-size:13px;margin-bottom:2px">'+ss(s[2])+' '+s[3]+'</p>'+
-'<p style="font-size:11px;color:#999">'+escf((d.basic||{})["\u58f0\u4f18\u663e\u793a"]||(d.basic||{})["\u58f0\u4f18"]||"")+' / '+escf((d.basic||{})["\u753b\u5e08"]||"")+'</p>'+
-'<div style="display:flex;gap:12px;font-size:12px;margin-top:4px">'+
-'<div><span style="color:#e55">ATK</span> '+s[5].toLocaleString()+'</div>'+
-'<div><span style="color:#7aa2f7">HP</span> '+s[6].toLocaleString()+'</div>'+
-'</div></div></div>';
-var pas=d.passive_skills||[];if(pas.length>0){h+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u88ab\u52a8\u6280\u80fd</p>';pas.forEach(function(p){if(p.name&&p.effect)h+='<div style="background:#1e2a4a;padding:4px 8px;border-radius:4px;margin-bottom:2px;font-size:11px"><b>'+escf(p.name)+'</b> '+escf(p.rank||"")+': '+escf(p.effect)+'</div>'});h+='</div>'}
-var aps=d.active_skills||[];if(aps.length>0){h+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u4e3b\u52a8\u6280\u80fd</p>';aps.slice(0,3).forEach(function(sk,i){h+='<div style="background:#1e2a4a;padding:6px 8px;border-radius:4px;margin-bottom:3px;font-size:12px"><div style="color:#7aa2f7;margin-bottom:2px"><b>'+(i+1)+'. '+escf(sk.name_cn||sk.name_jp||"")+'</b> <span style="font-size:10px;color:#888">CD:'+escf(sk.cooldown||"?")+'</span></div>';var ets=sk.effect_tables||[];ets.forEach(function(et){if(et.has_table){var lvs=et.levels||[];var vals=lvs.slice(0,5).map(function(v){return v||"-"}).join(" / ");h+='<div style="color:#ccc;font-size:10px;margin-top:1px">'+escf(et.effect||"")+": "+vals+'</div>'}else if(et.text){h+='<div style="color:#ffd700;font-size:10px;margin-top:1px">'+escf(et.text)+'</div>'}});h+='</div>'});h+='</div>'}
-var nps=d.noble_phantasms||[];if(nps.length>0){h+='<div style="text-align:left;margin-bottom:10px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u5b9d\u5177</p>';nps.slice(0,2).forEach(function(np){h+='<div style="background:#2a1a3a;padding:6px 8px;border-radius:4px;margin-bottom:3px;font-size:12px"><div style="color:#ffd700;margin-bottom:2px"><b>'+escf(np["\u4e2d\u6587\u540d"]||"")+'</b> <span style="font-size:10px;color:#aaa">'+escf(np["\u5361\u8272"]||"")+' '+escf(np["\u7c7b\u578b"]||"")+' '+escf(np["\u9636\u7ea7"]||"")+'</span></div>';["\u6548\u679cA","\u6548\u679cB","\u6548\u679cC","\u6548\u679cD"].forEach(function(ek){if(np[ek]){var lk=ek.replace("\u6548\u679c","\u6570\u503c");var vk=lk+"1";var vals=np[vk]?np[vk].split("|").map(function(x){var p=x.split("=");return p[p.length-1]}).slice(0,5).join(" / "):"-";h+='<div style="color:#ccc;font-size:10px;margin-top:1px">'+escf(np[ek])+": "+vals+'</div>'}});h+='</div>'});h+='</div>'}
-var tr=d.trait_list||[];if(tr.length>0){h+='<div style="text-align:left;margin-bottom:8px"><p style="color:#888;font-size:11px;margin-bottom:3px">\u7279\u6027</p><div style="display:flex;flex-wrap:wrap;gap:3px">';tr.forEach(function(t){h+='<span style="background:#333;padding:2px 6px;border-radius:8px;font-size:10px">'+escf(t)+'</span>'});h+='</div></div>'}
-var b=d.basic||{};var cards=[];["\u7b2c\u4e00\u5f20\u5361","\u7b2c\u4e8c\u5f20\u5361","\u7b2c\u4e09\u5f20\u5361","\u7b2c\u56db\u5f20\u5361","\u7b2c\u4e94\u5f20\u5361"].forEach(function(ck){if(b[ck])cards.push(b[ck][0])});var cardstr=cards.join("");
-if(cardstr)h+='<div style="text-align:left;margin-bottom:8px;font-size:11px"><span style="color:#888">\u6307\u4ee4\u5361: </span><span style="color:#ccc">'+cardstr+'</span>';
-var qa=b["Q\u5361np\u7387"]||b["A\u5361np\u7387"]||"";var qh=b["Q\u5361hit\u6570"]||"";var ah=b["A\u5361hit\u6570"]||"";var bh=b["B\u5361hit\u6570"]||"";
-if(qa)h+=' | NP\u7387: '+qa;
-if(qh)h+=' | Hit: '+qh+'/'+ah+'/'+bh;
-h+='</div>';
-h+='<div style="text-align:center;margin-top:10px"><button class="btn" onclick="closeModal()" style="font-size:12px;padding:5px 14px">\u5173\u95ed</button></div>';
-me.innerHTML=h}).catch(function(e){
-me.innerHTML='<div style="text-align:center;color:#e55;padding:16px">\u52a0\u8f7d\u5931\u8d25: '+escf(e.message)+'</div><div style="text-align:center;margin-top:10px"><button class="btn" onclick="closeModal()" style="font-size:12px;padding:5px 14px">\u5173\u95ed</button></div>'
-})}
+var h='';
+var cardImg=d.card_images&&d.card_images[0]?d.card_images[0].url:"";
+var clsEn=(d.basic||{})["职阶"]||s[3];var clsI=ICO+"classes/"+clsEn.replace(/\s/g,"")+".png";
+h+='<div class="dt-top">';
+if(cardImg)h+='<div class="dt-card-wrap"><img src="'+cardImg+'" class="dt-card" onerror="this.style.display=\'none\'"><div class="dt-card-fb"></div></div>';
+h+='<div class="dt-info"><h3>'+s[1]+'</h3>';
+h+='<p style="color:#7aa2f7;margin:2px 0">'+ss(s[2])+' <img src="'+clsI+'" style="width:18px;height:18px;vertical-align:middle" onerror="this.style.display=\'none\'"> '+s[3]+'</p>';
+h+='<p style="font-size:11px;color:#999">'+escf((d.basic||{})["声优显示"]||(d.basic||{})["声优"]||"")+' / '+escf((d.basic||{})["画师"]||"")+'</p>';
+h+='<div style="display:flex;gap:16px;font-size:12px;margin-top:4px"><div><span style="color:#e55">ATK</span> '+s[5].toLocaleString()+'</div><div><span style="color:#7aa2f7">HP</span> '+s[6].toLocaleString()+'</div></div>';
+h+='</div></div>';
+var pas=d.passive_skills||[];if(pas.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">被动技能</div>';
+pas.forEach(function(p){if(!p.name&&!p.effect)return;var ico=iconFor(p.effect||"");h+='<div class="dt-sk"><div class="dt-sk-hd">'+(ico?'<img src="'+ico+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b>'+escf(p.name||"")+'</b> <span style="color:#888;font-size:10px">'+escf(p.rank||"")+'</span></div><div class="dt-sk-ef">'+escf(p.effect||"")+'</div></div>'});h+='</div>'}
+var aps=d.active_skills||[];if(aps.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">主动技能</div>';
+aps.slice(0,3).forEach(function(sk,i){var ico=null;var ets=sk.effect_tables||[];for(var j=0;j<ets.length;j++){ico=iconFor(ets[j].effect||ets[j].text||"");if(ico)break}if(!ico)ico=iconFor(sk.name_cn||sk.name_jp||"");
+h+='<div class="dt-sk"><div class="dt-sk-hd">'+(ico?'<img src="'+ico+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b>'+(i+1)+'. '+escf(sk.name_cn||sk.name_jp||"")+'</b> <span style="color:#888;font-size:10px">CD:'+escf(sk.cooldown||"?")+'</span></div>';
+ets.forEach(function(et){if(et.has_table){var lvs=et.levels||[];var vals=lvs.slice(0,5).map(function(v){return v||"-"}).join(" / ");h+='<div class="dt-ef">'+escf(et.effect||"")+": "+vals+'</div>'}else if(et.text){h+='<div class="dt-ef" style="color:#ffd700">'+escf(et.text)+'</div>'}});
+h+='</div>'});h+='</div>'}
+var nps=d.noble_phantasms||[];if(nps.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">宝具</div>';
+nps.slice(0,2).forEach(function(np){var nc=np["卡色"]||"";var ci=ICO+"cards/"+nc+".png";var ni=iconFor(np["效果A"]||"");h+='<div class="dt-sk" style="background:#2a1a3a"><div class="dt-sk-hd">'+(ni?'<img src="'+ni+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b style="color:#ffd700">'+escf(np["中文名"]||"")+'</b> <span style="color:#aaa;font-size:10px">'+(ci?'<img src="'+ci+'" style="width:14px;height:14px;vertical-align:middle">':'')+' '+escf(nc)+' '+escf(np["类型"]||"")+' '+escf(np["阶级"]||"")+'</span></div>';
+["效果A","效果B","效果C","效果D"].forEach(function(ek){if(np[ek]){var lk=ek.replace("效果","数值");var vk=lk+"1";var vals=np[vk]?np[vk].split("|").map(function(x){var p=x.split("=");return p[p.length-1]}).slice(0,5).join(" / "):"-";h+='<div class="dt-ef">'+escf(np[ek])+": "+vals+'</div>'}});h+='</div>'});h+='</div>'}
+var profs=d.profiles||[];if(profs.length>0){var pf=profs[0];h+='<div class="dt-sec"><div class="dt-sec-tl" onclick="var n=this.nextElementSibling;n.style.display=n.style.display==\'none\'?\'block\':\'none\'" style="cursor:pointer">背景故事 ▾</div><div style="display:none">';["资料1","资料2","资料3","资料4","资料5","资料6"].forEach(function(k){if(pf[k])h+='<div class="dt-pr"><b>'+k+'</b>：'+escf(pf[k]).replace(/\n/g,"<br>")+'</div>'});h+='</div></div>'}
+var tr=d.trait_list||[];if(tr.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">特性</div><div style="display:flex;flex-wrap:wrap;gap:4px">';tr.forEach(function(t){h+='<span style="background:#333;padding:2px 8px;border-radius:10px;font-size:10px">'+escf(t)+'</span>'});h+='</div></div>'}
+var b=d.basic||{};
+var cards=[];["第一张卡","第二张卡","第三张卡","第四张卡","第五张卡"].forEach(function(ck){if(b[ck]){var v=b[ck];if(Array.isArray(v)&&v.length>1)v=v[1];if(typeof v==="string")cards.push(v);else if(v&&v.name)cards.push(v.name)}});
+if(cards.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">指令卡</div><div style="display:flex;gap:6px;align-items:center">';cards.forEach(function(c){var ci=ICO+"cards/"+c+".png";h+='<div style="display:flex;align-items:center;gap:2px;font-size:11px"><img src="'+ci+'" style="width:16px;height:16px;vertical-align:middle" onerror="this.style.display=\'none\'">'+c+'</div>'});var qa=b["Q卡np率"]||b["A卡np率"]||"";var qh=b["Q卡hit数"]||"";var ah=b["A卡hit数"]||"";var bh=b["B卡hit数"]||"";if(qa||qh){h+='<div style="font-size:10px;color:#888;margin-left:12px">';if(qa)h+='NP率: '+qa;if(qh)h+=' Hit: '+qh+'/'+ah+'/'+bh;h+='</div>'}h+='</div></div>'}
+h+='<div style="text-align:center;margin-top:12px"><button onclick="closeModal()" style="background:#7aa2f7;border:none;color:#000;padding:6px 20px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:bold">关闭</button></div>';
+me.innerHTML=h}).catch(function(e){me.innerHTML='<div style="text-align:center;color:#e55;padding:20px">加载失败: '+escf(e.message)+'</div><div style="text-align:center;margin-top:10px"><button onclick="closeModal()" style="background:#7aa2f7;border:none;color:#000;padding:5px 14px;border-radius:6px;cursor:pointer">关闭</button></div>'})}
+
 function escf(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function closeModal(){document.getElementById("mbg").classList.remove("on");setTimeout(function(){
 document.getElementById("mimg").style.display="block";
