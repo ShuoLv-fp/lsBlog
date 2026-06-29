@@ -27,7 +27,7 @@ function render(){var r=flt(),g=document.getElementById("g"),cnt=document.getEle
 function clearTraits(){selT.clear();document.querySelectorAll("#tb input").forEach(function(c){c.checked=false});render()}
 
 var ICO="assets/images/icons/";
-function iconFor(e){
+function iconFor(e,t){
 var m=[
 [/对肃正防御/,"对肃正防御.png"],
 [/无敌贯通/,"无敌贯通.png"],
@@ -60,6 +60,7 @@ var m=[
 [/弱化成功率下降/,"弱化成功率下降.png"],
 [/弱化耐性提升/,"弱化耐性提升.png"],
 [/弱化耐性下降/,"弱化耐性下降.png"],
+[/弱体耐性提升/,"弱化耐性提升.png"],
 [/攻击附加强化/,"攻击附加强化.png"],
 [/攻击附加弱化/,"攻击附加弱化.png"],
 [/受击NP获得量提升/,"受击NP获得量提升.png"],
@@ -72,32 +73,32 @@ var m=[
 [/宝具威力下降/,"宝具威力下降.png"],
 [/宝具强化/,"宝具强化.png"],
 [/宝具切换/,"宝具切换状态.png"],
-[/NP增加/,"充能.png"],
-[/Buster.*性能提升|Buster.*性能[大中小]?幅提升/,"红放.png"],
-[/Quick.*性能提升|Quick.*性能[大中小]?幅提升/,"绿放.png"],
-[/Arts.*性能提升|Arts.*性能[大中小]?幅提升/,"蓝放.png"],
-[/三色.*性能提升|Quick.*Arts.*Buster.*性能提升/,"三色魔放.png"],
-[/Buster.*Quick.*性能提升|红绿/,"红绿放.png"],
-[/Arts.*Buster.*性能提升|蓝红/,"红蓝放.png"],
-[/Arts.*Quick.*性能提升|蓝绿/,"蓝绿放.png"],
-[/Buster.*变更|变更为Buster/,"红放.png"],
-[/Quick.*变更|变更为Quick/,"绿放.png"],
-[/Arts.*变更|变更为Arts/,"蓝放.png"],
+[/NP增加|(?<!受击)NP(?!.*获得)/,"充能.png"],
+[/Buster.*性能.*提升|Buster.*性能.*上升/,"红放.png"],
+[/Quick.*性能.*提升|Quick.*性能.*上升/,"绿放.png"],
+[/Arts.*性能.*提升|Arts.*性能.*上升/,"蓝放.png"],
+[/三色.*性能.*提升/,"三色魔放.png"],
+[/Buster.*Quick.*性能|红绿/,"红绿放.png"],
+[/Arts.*Buster.*性能|蓝红/,"红蓝放.png"],
+[/Arts.*Quick.*性能|蓝绿/,"蓝绿放.png"],
+[/变更为Buster|Buster.*变更/,"红放.png"],
+[/变更为Quick|Quick.*变更/,"绿放.png"],
+[/变更为Arts|Arts.*变更/,"蓝放.png"],
 [/暴击威力提升/,"暴击威力提升.png"],
 [/暴击威力下降/,"暴击威力下降.png"],
 [/暴击发生率下降/,"暴击发生率下降.png"],
 [/暴击星集中度提升|集星(?!.*下降)/,"集星.png"],
 [/暴击星集中度下降|反集星/,"反集星.png"],
-[/暴击星|获得暴击星/,"暴击星.png"],
-[/回合出星|每回合.*暴击星|回合.*获得.*星/,"回合出星.png"],
+[/暴击星|获得暴击星|获得.*暴击星/,"暴击星.png"],
+[/回合出星|每回合.*获得.*星|每回合.*暴击星/,"回合出星.png"],
 [/出星/,"出星.png"],
 [/掉星率增加/,"掉星率增加.png"],
 [/红卡集星/,"红卡集星.png"],
 [/蓝卡集星/,"蓝卡集星.png"],
 [/每回合HP回复|每回合回复(?!.*量)/,"每回合回复.png"],
-[/HP回复|HP.*回复(?!.*量)/,"HP回复.png"],
+[/HP.*回复|HP回复|HP.*回复(?!.*量)/,"HP回复.png"],
 [/回复量提升/,"回复量提升.png"],
-[/血量上升/,"血量上升.png"],
+[/最大HP|血量上升/,"血量上升.png"],
 [/回血/,"回血.png"],
 [/灭气/,"灭气.png"],
 [/回合充能/,"回合充能.png"],
@@ -107,13 +108,19 @@ var m=[
 [/特殊耐性提升/,"特殊耐性提升.png"],
 [/攻击力.*防御力.*提升/,"加攻加防.png"],
 [/攻击力.*防御力.*下降/,"降攻防.png"],
-[/攻击力提升|加攻/,"加攻.png"],
-[/防御力提升|加防/,"加防.png"],
-[/攻击力.*下降|降攻(?!.*防)/,"降攻.png"],
+[/攻撃力.*防御力.*提升/,"加攻加防.png"],
+[/攻撃力.*防御力.*下降/,"降攻防.png"],
+[/攻撃力提升|攻击力提升|加攻|攻击力.*上升/,"加攻.png"],
+[/防御力提升|加防|防御力.*上升/,"加防.png"],
+[/被伤害减免|伤害减免|伤害减免/,"加防.png"],
+[/攻撃力.*下降|攻击力.*下降|降攻(?!.*防)/,"降攻.png"],
 [/防御力.*下降|降防/,"降防.png"],
 [/暴击/,"暴击.png"]
 ];
 for(var i=0;i<m.length;i++){if(m[i][0].test(e))return ICO+"skills/"+m[i][1];}
+if(t){
+for(var i=0;i<m.length;i++){if(m[i][0].test(t))return ICO+"skills/"+m[i][1];}
+}
 return null;
 }
 function sm(id){var s=D.find(function(x){return x[0]===id});if(!s)return;
@@ -122,30 +129,31 @@ document.getElementById("mimg").style.display="none";document.getElementById("mn
 var mbg=document.getElementById("mbg");mbg.classList.add("on");
 fetch("data/servants/"+id+".json").then(function(r){return r.json()}).then(function(d){
 var h='';
-var cardImg=d.card_images&&d.card_images[0]?d.card_images[0].url:"";
-var clsEn=(d.basic||{})["职阶"]||s[3];var clsI=ICO+"classes/"+clsEn.replace(/\s/g,"")+".png";
+var ci=d.card_images||[];
+var cardImg=ci.length>0?ci[0].url:"";
+var clsEn=s[3];var clsI=ICO+"classes/"+clsEn+".png";
 h+='<div class="dt-top">';
 if(cardImg)h+='<div class="dt-card-wrap"><img src="'+cardImg+'" class="dt-card" onerror="this.style.display=\'none\'"><div class="dt-card-fb"></div></div>';
 h+='<div class="dt-info"><h3>'+s[1]+'</h3>';
-h+='<p style="color:#7aa2f7;margin:2px 0">'+ss(s[2])+' <img src="'+clsI+'" style="width:18px;height:18px;vertical-align:middle" onerror="this.style.display=\'none\'"> '+s[3]+'</p>';
+h+='<p style="color:#7aa2f7;margin:2px 0">'+ss(s[2])+' <img src="'+clsI+'" style="width:18px;height:18px;vertical-align:middle" onerror="this.style.display=\'none\'"> '+clsEn+'</p>';
 h+='<p style="font-size:11px;color:#999">'+escf((d.basic||{})["声优显示"]||(d.basic||{})["声优"]||"")+' / '+escf((d.basic||{})["画师"]||"")+'</p>';
 h+='<div style="display:flex;gap:16px;font-size:12px;margin-top:4px"><div><span style="color:#e55">ATK</span> '+s[5].toLocaleString()+'</div><div><span style="color:#7aa2f7">HP</span> '+s[6].toLocaleString()+'</div></div>';
 h+='</div></div>';
 var pas=d.passive_skills||[];if(pas.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">被动技能</div>';
-pas.forEach(function(p){if(!p.name&&!p.effect)return;var ico=iconFor(p.effect||"");h+='<div class="dt-sk"><div class="dt-sk-hd">'+(ico?'<img src="'+ico+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b>'+escf(p.name||"")+'</b> <span style="color:#888;font-size:10px">'+escf(p.rank||"")+'</span></div><div class="dt-sk-ef">'+escf(p.effect||"")+'</div></div>'});h+='</div>'}
+pas.forEach(function(p){var ef=p.effect||"";var ico=iconFor(ef,p.name||"");h+='<div class="dt-sk"><div class="dt-sk-hd">'+(ico?'<img src="'+ico+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b>'+escf(p.name||p.name_jp||"")+'</b> <span style="color:#888;font-size:10px">'+escf(p.rank||"")+'</span></div><div class="dt-sk-ef">'+escf(ef)+'</div></div>'});h+='</div>'}
 var aps=d.active_skills||[];if(aps.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">主动技能</div>';
-aps.slice(0,3).forEach(function(sk,i){var ico=null;var ets=sk.effect_tables||[];for(var j=0;j<ets.length;j++){ico=iconFor(ets[j].effect||ets[j].text||"");if(ico)break}if(!ico)ico=iconFor(sk.name_cn||sk.name_jp||"");
+aps.slice(0,3).forEach(function(sk,i){var ico=null;var ets=sk.effect_tables||[];for(var j=0;j<ets.length;j++){var txt=ets[j].effect||ets[j].text||"";ico=iconFor(txt,sk.name_cn||sk.name_jp||"");if(ico)break}
 h+='<div class="dt-sk"><div class="dt-sk-hd">'+(ico?'<img src="'+ico+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b>'+(i+1)+'. '+escf(sk.name_cn||sk.name_jp||"")+'</b> <span style="color:#888;font-size:10px">CD:'+escf(sk.cooldown||"?")+'</span></div>';
-ets.forEach(function(et){if(et.has_table){var lvs=et.levels||[];var vals=lvs.slice(0,5).map(function(v){return v||"-"}).join(" / ");h+='<div class="dt-ef">'+escf(et.effect||"")+": "+vals+'</div>'}else if(et.text){h+='<div class="dt-ef" style="color:#ffd700">'+escf(et.text)+'</div>'}});
+ets.forEach(function(et){var txt=et.effect||"";var i2=iconFor(txt);if(et.has_table){var lvs=et.levels||[];var vals=lvs.slice(0,5).map(function(v){return v||"-"}).join(" / ");h+='<div class="dt-ef">'+(i2?'<img src="'+i2+'" style="width:14px;height:14px;vertical-align:middle;margin-right:3px" onerror="this.style.display=\'none\'">':'')+escf(txt)+": "+vals+'</div>'}else if(et.text){h+='<div class="dt-ef" style="color:#ffd700">'+(i2?'<img src="'+i2+'" style="width:14px;height:14px;vertical-align:middle;margin-right:3px" onerror="this.style.display=\'none\'">':'')+escf(et.text)+'</div>'}});
 h+='</div>'});h+='</div>'}
 var nps=d.noble_phantasms||[];if(nps.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">宝具</div>';
-nps.slice(0,2).forEach(function(np){var nc=np["卡色"]||"";var ci=ICO+"cards/"+nc+".png";var ni=iconFor(np["效果A"]||"");h+='<div class="dt-sk" style="background:#2a1a3a"><div class="dt-sk-hd">'+(ni?'<img src="'+ni+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b style="color:#ffd700">'+escf(np["中文名"]||"")+'</b> <span style="color:#aaa;font-size:10px">'+(ci?'<img src="'+ci+'" style="width:14px;height:14px;vertical-align:middle">':'')+' '+escf(nc)+' '+escf(np["类型"]||"")+' '+escf(np["阶级"]||"")+'</span></div>';
-["效果A","效果B","效果C","效果D"].forEach(function(ek){if(np[ek]){var lk=ek.replace("效果","数值");var vk=lk+"1";var vals=np[vk]?np[vk].split("|").map(function(x){var p=x.split("=");return p[p.length-1]}).slice(0,5).join(" / "):"-";h+='<div class="dt-ef">'+escf(np[ek])+": "+vals+'</div>'}});h+='</div>'});h+='</div>'}
-var profs=d.profiles||[];if(profs.length>0){var pf=profs[0];h+='<div class="dt-sec"><div class="dt-sec-tl" onclick="var n=this.nextElementSibling;n.style.display=n.style.display==\'none\'?\'block\':\'none\'" style="cursor:pointer">背景故事 ▾</div><div style="display:none">';["资料1","资料2","资料3","资料4","资料5","资料6"].forEach(function(k){if(pf[k])h+='<div class="dt-pr"><b>'+k+'</b>：'+escf(pf[k]).replace(/\n/g,"<br>")+'</div>'});h+='</div></div>'}
+nps.slice(0,2).forEach(function(np){var nc=np["卡色"]||"";var ci2=ICO+"cards/"+nc+".png";var ni=iconFor(np["效果A"]||"",np["中文名"]||"");h+='<div class="dt-sk" style="background:#2a1a3a"><div class="dt-sk-hd">'+(ni?'<img src="'+ni+'" class="dt-ico" onerror="this.style.display=\'none\'">':'')+'<b style="color:#ffd700">'+escf(np["中文名"]||"")+'</b> <span style="color:#aaa;font-size:10px">'+(ci2?'<img src="'+ci2+'" style="width:14px;height:14px;vertical-align:middle">':'')+' '+escf(nc)+' '+escf(np["类型"]||"")+' '+escf(np["阶级"]||"")+'</span></div>';
+["效果A","效果B","效果C","效果D"].forEach(function(ek){if(np[ek]){var lk=ek.replace("效果","数值");var vk=lk+"1";var vals=np[vk]?np[vk].split("|").map(function(x){var p=x.split("=");return p[p.length-1]}).slice(0,5).join(" / "):"-";var ei=iconFor(np[ek]||"");h+='<div class="dt-ef">'+(ei?'<img src="'+ei+'" style="width:14px;height:14px;vertical-align:middle;margin-right:3px" onerror="this.style.display=\'none\'">':'')+escf(np[ek])+": "+vals+'</div>'}});h+='</div>'});h+='</div>'}
+var profs=d.profiles||[];if(profs.length>0){var pf=profs[0];h+='<div class="dt-sec"><div class="dt-sec-tl">背景故事</div>';["资料1","资料2","资料3","资料4","资料5","资料6"].forEach(function(k){if(pf[k])h+='<div class="dt-pr"><b>'+k+'</b>：'+escf(pf[k]).replace(/\n/g,"<br>")+'</div>'});h+='</div>'}
 var tr=d.trait_list||[];if(tr.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">特性</div><div style="display:flex;flex-wrap:wrap;gap:4px">';tr.forEach(function(t){h+='<span style="background:#333;padding:2px 8px;border-radius:10px;font-size:10px">'+escf(t)+'</span>'});h+='</div></div>'}
 var b=d.basic||{};
 var cards=[];["第一张卡","第二张卡","第三张卡","第四张卡","第五张卡"].forEach(function(ck){if(b[ck]){var v=b[ck];if(Array.isArray(v)&&v.length>1)v=v[1];if(typeof v==="string")cards.push(v);else if(v&&v.name)cards.push(v.name)}});
-if(cards.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">指令卡</div><div style="display:flex;gap:6px;align-items:center">';cards.forEach(function(c){var ci=ICO+"cards/"+c+".png";h+='<div style="display:flex;align-items:center;gap:2px;font-size:11px"><img src="'+ci+'" style="width:16px;height:16px;vertical-align:middle" onerror="this.style.display=\'none\'">'+c+'</div>'});var qa=b["Q卡np率"]||b["A卡np率"]||"";var qh=b["Q卡hit数"]||"";var ah=b["A卡hit数"]||"";var bh=b["B卡hit数"]||"";if(qa||qh){h+='<div style="font-size:10px;color:#888;margin-left:12px">';if(qa)h+='NP率: '+qa;if(qh)h+=' Hit: '+qh+'/'+ah+'/'+bh;h+='</div>'}h+='</div></div>'}
+if(cards.length>0){h+='<div class="dt-sec"><div class="dt-sec-tl">指令卡</div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">';cards.forEach(function(c){var ci3=ICO+"cards/"+c+".png";h+='<div style="display:flex;align-items:center;gap:2px;font-size:11px"><img src="'+ci3+'" style="width:16px;height:16px;vertical-align:middle" onerror="this.style.display=\'none\'">'+c+'</div>'});var qa=b["Q卡np率"]||b["A卡np率"]||"";var qh=b["Q卡hit数"]||"";var ah=b["A卡hit数"]||"";var bh=b["B卡hit数"]||"";if(qa||qh){h+='<div style="font-size:10px;color:#888;margin-left:8px">';if(qa)h+='NP率: '+qa;if(qh)h+=' Hit: '+qh+'/'+ah+'/'+bh;h+='</div>'}h+='</div></div>'}
 h+='<div style="text-align:center;margin-top:12px"><button onclick="closeModal()" style="background:#7aa2f7;border:none;color:#000;padding:6px 20px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:bold">关闭</button></div>';
 me.innerHTML=h}).catch(function(e){me.innerHTML='<div style="text-align:center;color:#e55;padding:20px">加载失败: '+escf(e.message)+'</div><div style="text-align:center;margin-top:10px"><button onclick="closeModal()" style="background:#7aa2f7;border:none;color:#000;padding:5px 14px;border-radius:6px;cursor:pointer">关闭</button></div>'})}
 
