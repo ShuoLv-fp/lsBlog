@@ -26,13 +26,33 @@ h2{font-size:16px;margin-bottom:10px;color:#aaa}
 .card-ph{width:100%;aspect-ratio:1;display:none;flex-direction:column;align-items:center;justify-content:center;background:#1e2a4a}
 .card-ph .ph-cl{font-size:36px;font-weight:bold;color:#7aa2f7}
 .card-ph .ph-star{font-size:10px;color:#ffd700;margin-top:4px}
-.modal-bg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:100;justify-content:center;align-items:center}
+.modal-bg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:100;justify-content:center;align-items:flex-start;overflow-y:auto;padding:20px 0}
 .modal-bg.on{display:flex}
-.modal{background:#16213e;border-radius:12px;padding:20px;max-width:360px;width:90%;text-align:center}
-.modal img{width:150px;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+.modal{background:#16213e;border-radius:12px;padding:20px;max-width:780px;width:95%;text-align:left;margin:auto}
+.modal img.mimg{width:150px;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px}
 .modal h3{color:#fff;font-size:16px;margin-bottom:6px}
 .modal p{font-size:13px;color:#bbb;margin-bottom:4px}
-.modal .cls{margin-top:12px}
+.modal .cls-btn{margin-top:12px}
+/* Detail panel styles */
+.dt-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.dt-card-wrap{flex-shrink:0;width:200px;position:relative;border-radius:8px;overflow:hidden;background:#1a1a2e}
+.dt-card{width:100%;display:block}
+.dt-card-fb{position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(transparent,#1a1a2e)}
+.dt-info{flex:1;min-width:0}
+.dt-sec{margin-bottom:14px}
+.dt-sec-tl{color:#7aa2f7;font-size:13px;font-weight:bold;margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid #333}
+.dt-sk{background:#1e2a4a;padding:8px 10px;border-radius:6px;margin-bottom:4px}
+.dt-sk-hd{display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:12px}
+.dt-sk-ef{color:#ccc;font-size:11px;margin-left:24px}
+.dt-ef{color:#aaa;font-size:10px;margin-left:24px;margin-top:2px}
+.dt-ico{width:22px;height:22px;object-fit:contain;flex-shrink:0}
+.dt-pr{margin-bottom:6px;padding:6px;background:#1e2a4a;border-radius:4px;font-size:11px;color:#bbb;line-height:1.6}
+@media(max-width:600px){
+.modal{max-width:100%;border-radius:0;padding:12px}
+.dt-top{flex-direction:column;align-items:center}
+.dt-card-wrap{width:150px}
+.dt-info{text-align:center}
+}
 .trait-box{max-height:200px;overflow-y:auto;background:#16213e;border:1px solid #444;border-radius:6px;padding:8px;display:flex;flex-wrap:wrap;gap:4px;max-width:400px}
 .trait-box label{font-size:12px;display:flex;align-items:center;gap:3px;cursor:pointer;padding:2px 4px;border-radius:3px}
 .trait-box label:hover{background:#333}
