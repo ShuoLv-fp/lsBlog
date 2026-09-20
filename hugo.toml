@@ -1,4 +1,4 @@
-baseURL = 'https://ShuoLvfp.github.io/lsBlog/'
+baseURL = 'https://ShuoLv-fp.github.io/lsBlog/'
 # Language settings
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
@@ -41,7 +41,7 @@ pagination = { pagerSize = 5 }
       # Social icons
       [[languages.en.params.socialIcons]]
         name = "github"
-        url = "https://github.com/ShuoLvfp"
+        url = "https://github.com/ShuoLv-fp"
       
       [[languages.en.params.socialIcons]]
         name = "twitter"
