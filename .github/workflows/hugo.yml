@@ -30,7 +30,15 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify --gc
+        run: |
+          set +e
+          hugo --minify --gc 2>&1 | tee /tmp/build.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            msg=$(tail -c 1000 /tmp/build.log | tr '\n' ' ')
+            echo "::error title=Hugo%20build%20failed::$msg"
+            exit "$status"
+          fi
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
