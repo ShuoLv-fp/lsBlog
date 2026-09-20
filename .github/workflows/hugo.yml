@@ -26,26 +26,11 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"
+          hugo-version: "0.166.0"
           extended: true
 
-      - name: Diagnose
-        run: |
-          echo "which hugo: $(command -v hugo || echo MISSING)"
-          echo "::notice title=hugo-version::$(hugo version 2>&1 | head -c 300)"
-          echo "::notice title=hugo-env::$(hugo env 2>&1 | tr '\n' ' ' | head -c 900)"
-          echo "::notice title=layout-check::theme=$(test -d themes/PaperMod && echo present || echo MISSING) root-config=$(ls hugo.toml config.yml 2>/dev/null | tr '\n' ',')"
-
       - name: Build
-        run: |
-          set +e
-          timeout 240 hugo --minify --gc 2>&1 | tee /tmp/build.log
-          status=${PIPESTATUS[0]}
-          if [ "$status" -ne 0 ]; then
-            msg=$(tail -c 1000 /tmp/build.log | tr '\n' ' ')
-            echo "::error title=Hugo%20build%20failed%20(status%20$status)::$msg"
-            exit 1
-          fi
+        run: hugo --minify --gc
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
