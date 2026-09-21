@@ -1,0 +1,300 @@
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Research Draft on Cognitive Neuroscience | Ls's Blog</title><meta name=keywords content="Research"><meta name=description content="
+计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。
+
+Canonical sources
+
+	
+			
+					Rank
+					来源
+					用途
+			
+	
+	
+			
+					1
+					BISPLab 官网
+					团队使命、研究版图、成果
+			
+			
+					1
+					ULF MRI 研究页
+					技术路线、0.05–0.055 T 项目
+			
+			
+					1
+					人员页
+					PI、Co-PI 和团队能力结构
+			
+			
+					1
+					招聘页
+					团队实际重视的技能
+			
+			
+					1–2
+					BISPLab 论文清单
+					论文方向与时间线
+			
+			
+					1
+					Nature Communications 2021
+					0.055 T、无屏蔽脑 MRI 原始论文
+			
+			
+					1
+					Science Advances 2023
+					0.055 T 快速 3D 脑 MRI 原始论文
+			
+			
+					1
+					Science 2024
+					0.05 T 全身 MRI 原始论文
+			
+			
+					3
+					你的个人主页
+					个人经历、技能和自述研究方向
+			
+	
+
+Findings ledger
+
+	
+			
+					编号
+					发现
+					证据
+					回答
+			
+	
+	
+			
+					F1
+					BISPLab 有两条主线：计算驱动的 ULF MRI，以及光遗传学结合高场 fMRI 的神经科学研究
+					研究主页、研究区 2
+					Q1
+			
+			
+					F2
+					ULF 主线聚焦约 0.05 T 的永磁体、梯度线圈、RF 线圈和低场 MRI 工程
+					ULF 研究页
+					Q1/Q2
+			
+			
+					F3
+					核心计算任务包括快速 3D MRI、超分辨率、深度学习重建和无监督域适配
+					ULF 研究页、Science Advances 2023
+					Q1/Q2
+			
+			
+					F4
+					无 RF 屏蔽 MRI 依靠多线圈主动 EMI 感知、信号预测和消除，而不是单纯图像去噪
+					Nature Communications 2021、ULF 研究页
+					Q1/Q2
+			
+			
+					F5
+					团队已扩展到全身 MRI、DWI、bSSFP、磁化传递成像和 MRA
+					论文清单
+					Q1
+			
+			
+					F6
+					代表性硬件平台是 0.055 T 永磁脑 MRI 和 0.05 T 全身 MRI；共振频率约为 2.1–2.3 MHz
+					Nature Communications 2021、Science 2024
+					Q1/Q2
+			
+			
+					F7
+					PI Ed X. Wu 的公开简介覆盖 MRI 物理、数据采集、重建算法、ULF 工程、高场 fMRI 和神经回路研究
+					人员页
+					Q1
+			
+			
+					F8
+					团队成员能力横跨 MRI 物理/工程、信号处理、AI 重建、神经影像和动物光遗传学
+					人员页
+					Q2
+			
+			
+					F9
+					招聘信息明确重视 Python/C++/MATLAB、PyTorch/TensorFlow、Git、Linux、信号处理、脉冲序列、图像重建和电磁/机械系统
+					招聘页
+					Q2
+			
+			
+					F10
+					你目前具备数据科学、Python/C++、PyTorch、fMRIPrep/Nilearn/FSL、复杂脑网络和 fMRI 研究经验
+					个人主页
+					Q3
+			
+			
+					F11
+					你的研究已经涉及 CPCA、脑时空动力学、个体化功能分区、规范化建模和机器学习验证
+					个人主页
+					Q3
+			
+			
+					F12
+					你的 AI-agent、测试时扩展、评测和科研流程工程能力可迁移到可复现重建、模型评测和医学影像工作流
+					个人主页
+					Q3/Q4
+			
+	
+
+Scope filter
+没有丢弃核心证据。需要限定的是：BISPLab 的“AI 驱动 MRI”不是一般计算机视觉任务，而是受 MRI 物理、采样过程、k-space 一致性和临床风险约束的逆问题。"><meta name=author content="Shuo Lv"><link rel=canonical href=https://ShuoLv-fp.github.io/lsBlog/drafts/ulf_mri_exercise/><link crossorigin=anonymous href=/lsBlog/assets/css/stylesheet.ed42a47c2de72c05bf93ef053b29fa2dd6f1838928545be0be357c9ab66f8ec6.css integrity="sha256-7UKkfC3nLAW/k+8FOyn6Ldbxg4koVFvgvjV8mrZvjsY=" rel="preload stylesheet" as=style><link rel=icon href=https://ShuoLv-fp.github.io/lsBlog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://ShuoLv-fp.github.io/lsBlog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://ShuoLv-fp.github.io/lsBlog/favicon-32x32.png><link rel=apple-touch-icon href=https://ShuoLv-fp.github.io/lsBlog/apple-touch-icon.png><link rel=mask-icon href=https://ShuoLv-fp.github.io/lsBlog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://ShuoLv-fp.github.io/lsBlog/drafts/ulf_mri_exercise/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://ShuoLv-fp.github.io/lsBlog/drafts/ulf_mri_exercise/"><meta property="og:site_name" content="Ls's Blog"><meta property="og:title" content="Research Draft on Cognitive Neuroscience"><meta property="og:description" content=" 计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。
+Canonical sources Rank 来源 用途 1 BISPLab 官网 团队使命、研究版图、成果 1 ULF MRI 研究页 技术路线、0.05–0.055 T 项目 1 人员页 PI、Co-PI 和团队能力结构 1 招聘页 团队实际重视的技能 1–2 BISPLab 论文清单 论文方向与时间线 1 Nature Communications 2021 0.055 T、无屏蔽脑 MRI 原始论文 1 Science Advances 2023 0.055 T 快速 3D 脑 MRI 原始论文 1 Science 2024 0.05 T 全身 MRI 原始论文 3 你的个人主页 个人经历、技能和自述研究方向 Findings ledger 编号 发现 证据 回答 F1 BISPLab 有两条主线：计算驱动的 ULF MRI，以及光遗传学结合高场 fMRI 的神经科学研究 研究主页、研究区 2 Q1 F2 ULF 主线聚焦约 0.05 T 的永磁体、梯度线圈、RF 线圈和低场 MRI 工程 ULF 研究页 Q1/Q2 F3 核心计算任务包括快速 3D MRI、超分辨率、深度学习重建和无监督域适配 ULF 研究页、Science Advances 2023 Q1/Q2 F4 无 RF 屏蔽 MRI 依靠多线圈主动 EMI 感知、信号预测和消除，而不是单纯图像去噪 Nature Communications 2021、ULF 研究页 Q1/Q2 F5 团队已扩展到全身 MRI、DWI、bSSFP、磁化传递成像和 MRA 论文清单 Q1 F6 代表性硬件平台是 0.055 T 永磁脑 MRI 和 0.05 T 全身 MRI；共振频率约为 2.1–2.3 MHz Nature Communications 2021、Science 2024 Q1/Q2 F7 PI Ed X. Wu 的公开简介覆盖 MRI 物理、数据采集、重建算法、ULF 工程、高场 fMRI 和神经回路研究 人员页 Q1 F8 团队成员能力横跨 MRI 物理/工程、信号处理、AI 重建、神经影像和动物光遗传学 人员页 Q2 F9 招聘信息明确重视 Python/C++/MATLAB、PyTorch/TensorFlow、Git、Linux、信号处理、脉冲序列、图像重建和电磁/机械系统 招聘页 Q2 F10 你目前具备数据科学、Python/C++、PyTorch、fMRIPrep/Nilearn/FSL、复杂脑网络和 fMRI 研究经验 个人主页 Q3 F11 你的研究已经涉及 CPCA、脑时空动力学、个体化功能分区、规范化建模和机器学习验证 个人主页 Q3 F12 你的 AI-agent、测试时扩展、评测和科研流程工程能力可迁移到可复现重建、模型评测和医学影像工作流 个人主页 Q3/Q4 Scope filter 没有丢弃核心证据。需要限定的是：BISPLab 的“AI 驱动 MRI”不是一般计算机视觉任务，而是受 MRI 物理、采样过程、k-space 一致性和临床风险约束的逆问题。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="drafts"><meta property="article:published_time" content="2026-04-07T00:00:00+00:00"><meta property="article:modified_time" content="2026-04-07T00:00:00+00:00"><meta property="article:tag" content="Research"><meta name=twitter:card content="summary"><meta name=twitter:title content="Research Draft on Cognitive Neuroscience"><meta name=twitter:description content="
+计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。
+
+Canonical sources
+
+	
+			
+					Rank
+					来源
+					用途
+			
+	
+	
+			
+					1
+					BISPLab 官网
+					团队使命、研究版图、成果
+			
+			
+					1
+					ULF MRI 研究页
+					技术路线、0.05–0.055 T 项目
+			
+			
+					1
+					人员页
+					PI、Co-PI 和团队能力结构
+			
+			
+					1
+					招聘页
+					团队实际重视的技能
+			
+			
+					1–2
+					BISPLab 论文清单
+					论文方向与时间线
+			
+			
+					1
+					Nature Communications 2021
+					0.055 T、无屏蔽脑 MRI 原始论文
+			
+			
+					1
+					Science Advances 2023
+					0.055 T 快速 3D 脑 MRI 原始论文
+			
+			
+					1
+					Science 2024
+					0.05 T 全身 MRI 原始论文
+			
+			
+					3
+					你的个人主页
+					个人经历、技能和自述研究方向
+			
+	
+
+Findings ledger
+
+	
+			
+					编号
+					发现
+					证据
+					回答
+			
+	
+	
+			
+					F1
+					BISPLab 有两条主线：计算驱动的 ULF MRI，以及光遗传学结合高场 fMRI 的神经科学研究
+					研究主页、研究区 2
+					Q1
+			
+			
+					F2
+					ULF 主线聚焦约 0.05 T 的永磁体、梯度线圈、RF 线圈和低场 MRI 工程
+					ULF 研究页
+					Q1/Q2
+			
+			
+					F3
+					核心计算任务包括快速 3D MRI、超分辨率、深度学习重建和无监督域适配
+					ULF 研究页、Science Advances 2023
+					Q1/Q2
+			
+			
+					F4
+					无 RF 屏蔽 MRI 依靠多线圈主动 EMI 感知、信号预测和消除，而不是单纯图像去噪
+					Nature Communications 2021、ULF 研究页
+					Q1/Q2
+			
+			
+					F5
+					团队已扩展到全身 MRI、DWI、bSSFP、磁化传递成像和 MRA
+					论文清单
+					Q1
+			
+			
+					F6
+					代表性硬件平台是 0.055 T 永磁脑 MRI 和 0.05 T 全身 MRI；共振频率约为 2.1–2.3 MHz
+					Nature Communications 2021、Science 2024
+					Q1/Q2
+			
+			
+					F7
+					PI Ed X. Wu 的公开简介覆盖 MRI 物理、数据采集、重建算法、ULF 工程、高场 fMRI 和神经回路研究
+					人员页
+					Q1
+			
+			
+					F8
+					团队成员能力横跨 MRI 物理/工程、信号处理、AI 重建、神经影像和动物光遗传学
+					人员页
+					Q2
+			
+			
+					F9
+					招聘信息明确重视 Python/C++/MATLAB、PyTorch/TensorFlow、Git、Linux、信号处理、脉冲序列、图像重建和电磁/机械系统
+					招聘页
+					Q2
+			
+			
+					F10
+					你目前具备数据科学、Python/C++、PyTorch、fMRIPrep/Nilearn/FSL、复杂脑网络和 fMRI 研究经验
+					个人主页
+					Q3
+			
+			
+					F11
+					你的研究已经涉及 CPCA、脑时空动力学、个体化功能分区、规范化建模和机器学习验证
+					个人主页
+					Q3
+			
+			
+					F12
+					你的 AI-agent、测试时扩展、评测和科研流程工程能力可迁移到可复现重建、模型评测和医学影像工作流
+					个人主页
+					Q3/Q4
+			
+	
+
+Scope filter
+没有丢弃核心证据。需要限定的是：BISPLab 的“AI 驱动 MRI”不是一般计算机视觉任务，而是受 MRI 物理、采样过程、k-space 一致性和临床风险约束的逆问题。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Drafts","item":"https://ShuoLv-fp.github.io/lsBlog/drafts/"},{"@type":"ListItem","position":2,"name":"Research Draft on Cognitive Neuroscience","item":"https://ShuoLv-fp.github.io/lsBlog/drafts/ulf_mri_exercise/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Research Draft on Cognitive Neuroscience","name":"Research Draft on Cognitive Neuroscience","description":" 计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。\nCanonical sources Rank 来源 用途 1 BISPLab 官网 团队使命、研究版图、成果 1 ULF MRI 研究页 技术路线、0.05–0.055 T 项目 1 人员页 PI、Co-PI 和团队能力结构 1 招聘页 团队实际重视的技能 1–2 BISPLab 论文清单 论文方向与时间线 1 Nature Communications 2021 0.055 T、无屏蔽脑 MRI 原始论文 1 Science Advances 2023 0.055 T 快速 3D 脑 MRI 原始论文 1 Science 2024 0.05 T 全身 MRI 原始论文 3 你的个人主页 个人经历、技能和自述研究方向 Findings ledger 编号 发现 证据 回答 F1 BISPLab 有两条主线：计算驱动的 ULF MRI，以及光遗传学结合高场 fMRI 的神经科学研究 研究主页、研究区 2 Q1 F2 ULF 主线聚焦约 0.05 T 的永磁体、梯度线圈、RF 线圈和低场 MRI 工程 ULF 研究页 Q1/Q2 F3 核心计算任务包括快速 3D MRI、超分辨率、深度学习重建和无监督域适配 ULF 研究页、Science Advances 2023 Q1/Q2 F4 无 RF 屏蔽 MRI 依靠多线圈主动 EMI 感知、信号预测和消除，而不是单纯图像去噪 Nature Communications 2021、ULF 研究页 Q1/Q2 F5 团队已扩展到全身 MRI、DWI、bSSFP、磁化传递成像和 MRA 论文清单 Q1 F6 代表性硬件平台是 0.055 T 永磁脑 MRI 和 0.05 T 全身 MRI；共振频率约为 2.1–2.3 MHz Nature Communications 2021、Science 2024 Q1/Q2 F7 PI Ed X. Wu 的公开简介覆盖 MRI 物理、数据采集、重建算法、ULF 工程、高场 fMRI 和神经回路研究 人员页 Q1 F8 团队成员能力横跨 MRI 物理/工程、信号处理、AI 重建、神经影像和动物光遗传学 人员页 Q2 F9 招聘信息明确重视 Python/C++/MATLAB、PyTorch/TensorFlow、Git、Linux、信号处理、脉冲序列、图像重建和电磁/机械系统 招聘页 Q2 F10 你目前具备数据科学、Python/C++、PyTorch、fMRIPrep/Nilearn/FSL、复杂脑网络和 fMRI 研究经验 个人主页 Q3 F11 你的研究已经涉及 CPCA、脑时空动力学、个体化功能分区、规范化建模和机器学习验证 个人主页 Q3 F12 你的 AI-agent、测试时扩展、评测和科研流程工程能力可迁移到可复现重建、模型评测和医学影像工作流 个人主页 Q3/Q4 Scope filter 没有丢弃核心证据。需要限定的是：BISPLab 的“AI 驱动 MRI”不是一般计算机视觉任务，而是受 MRI 物理、采样过程、k-space 一致性和临床风险约束的逆问题。\n","keywords":["Research"],"articleBody":" 计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。\nCanonical sources Rank 来源 用途 1 BISPLab 官网 团队使命、研究版图、成果 1 ULF MRI 研究页 技术路线、0.05–0.055 T 项目 1 人员页 PI、Co-PI 和团队能力结构 1 招聘页 团队实际重视的技能 1–2 BISPLab 论文清单 论文方向与时间线 1 Nature Communications 2021 0.055 T、无屏蔽脑 MRI 原始论文 1 Science Advances 2023 0.055 T 快速 3D 脑 MRI 原始论文 1 Science 2024 0.05 T 全身 MRI 原始论文 3 你的个人主页 个人经历、技能和自述研究方向 Findings ledger 编号 发现 证据 回答 F1 BISPLab 有两条主线：计算驱动的 ULF MRI，以及光遗传学结合高场 fMRI 的神经科学研究 研究主页、研究区 2 Q1 F2 ULF 主线聚焦约 0.05 T 的永磁体、梯度线圈、RF 线圈和低场 MRI 工程 ULF 研究页 Q1/Q2 F3 核心计算任务包括快速 3D MRI、超分辨率、深度学习重建和无监督域适配 ULF 研究页、Science Advances 2023 Q1/Q2 F4 无 RF 屏蔽 MRI 依靠多线圈主动 EMI 感知、信号预测和消除，而不是单纯图像去噪 Nature Communications 2021、ULF 研究页 Q1/Q2 F5 团队已扩展到全身 MRI、DWI、bSSFP、磁化传递成像和 MRA 论文清单 Q1 F6 代表性硬件平台是 0.055 T 永磁脑 MRI 和 0.05 T 全身 MRI；共振频率约为 2.1–2.3 MHz Nature Communications 2021、Science 2024 Q1/Q2 F7 PI Ed X. Wu 的公开简介覆盖 MRI 物理、数据采集、重建算法、ULF 工程、高场 fMRI 和神经回路研究 人员页 Q1 F8 团队成员能力横跨 MRI 物理/工程、信号处理、AI 重建、神经影像和动物光遗传学 人员页 Q2 F9 招聘信息明确重视 Python/C++/MATLAB、PyTorch/TensorFlow、Git、Linux、信号处理、脉冲序列、图像重建和电磁/机械系统 招聘页 Q2 F10 你目前具备数据科学、Python/C++、PyTorch、fMRIPrep/Nilearn/FSL、复杂脑网络和 fMRI 研究经验 个人主页 Q3 F11 你的研究已经涉及 CPCA、脑时空动力学、个体化功能分区、规范化建模和机器学习验证 个人主页 Q3 F12 你的 AI-agent、测试时扩展、评测和科研流程工程能力可迁移到可复现重建、模型评测和医学影像工作流 个人主页 Q3/Q4 Scope filter 没有丢弃核心证据。需要限定的是：BISPLab 的“AI 驱动 MRI”不是一般计算机视觉任务，而是受 MRI 物理、采样过程、k-space 一致性和临床风险约束的逆问题。\n官网使用了“诊断质量”“普惠医疗”等愿景式表述，但这不等同于已经完成大规模临床等效性验证。因此，学习计划应把“可复现的图像形成”和“临床可用性”分开。\nObject filter 需要把两个研究对象区分开：\nULF MRI for healthcare：重点是硬件、EMI、序列、重建、临床协议和部署。 Optogenetic fMRI for neuroscience：重点是高场动物 MRI、光遗传学、电生理、神经回路和因果机制。 你的现有神经科学背景与第二条主线天然接近，但你当前明确想进入 ULF-MRI，因此第一阶段应优先选择计算驱动的 ULF MRI，而不是直接从动物光遗传学切入。\nConclusions 1. BISPLab 的真正研究链条是端到端 MRI 系统 BISPLab 的 ULF 路线可以概括为：\n磁体与线圈 → 脉冲序列与采集 → EMI 感知/消除 → k-space 重建 → 深度学习图像形成 → 临床协议 → 自动分析与部署。\n这意味着，单独掌握 PyTorch 或医学图像分割并不足够。你需要理解数据在“物理世界”中是如何产生的，再研究神经网络如何介入。依据：F2–F6。\n2. 你最有竞争力的入口是“计算 ULF MRI”，不是纯硬件 你的优势集中在：\n脑影像数据分析； 时空动态与复杂网络； Python、PyTorch、科学计算； 机器学习模型评估； 研究代码和科研流程； 将复杂任务拆成可验证模块。 这些能力适合：\nULF MRI 重建； EMI 信号预测与抑制； 低场到高场的域适配； 不确定性评估； 低场图像上的脑区、病灶或网络分析。 3. 你的核心缺口不是“更多 AI”，而是 MRI 原理与原始数据能力 最需要补齐的能力依次是：\nMRI 信号方程、Bloch 方程、T1/T2、弛豫与 SNR； k-space、Fourier 成像、采样轨迹和复数信号； 多线圈成像、并行成像、压缩感知和数据一致性； GRE、FSE、EPI、bSSFP、DWI、MT、MRA 等序列； 低场 MRI 的 EMI、漂移、噪声和频率选择性； 脉冲序列仿真、采集参数设计和基础硬件测试； 医学图像重建中的幻觉、偏差、域外泛化和临床验证。 4. 你应优先形成一个“物理约束的计算研究作品” 最推荐的第一个方向是：\nEMI-aware self-supervised reconstruction for shielding-free ultra-low-field MRI\n具体可以研究：\n用模拟或公开低场 k-space 数据构造非平稳 EMI； 比较频域滤波、正交投影、传统估计和深度学习预测； 加入 data consistency，避免网络凭空生成结构； 用合成病灶、外部扫描数据和任务指标检查幻觉； 输出噪声功率、重建质量、结构保真度和下游任务性能，而不仅是 PSNR/SSIM。 这个方向同时连接了你的 AI、信号处理和脑影像背景，也直接贴合 BISPLab 的核心工作。\n学习蓝图 0–3 周：建立 MRI 物理和 k-space 基础 目标不是读完所有 MRI 教材，而是能够自己解释并实现一个最小 MRI 成像系统。\n学习内容：\n线性代数、复数信号、傅里叶变换； Bloch 方程和旋转坐标系； T1/T2、T2*、翻转角、TR/TE； k-space 与图像的关系； 采样不足、噪声、卷积和点扩散函数； 低场下的信号、噪声和 EMI 问题。 必须完成的作品：\n用 Python 实现 Bloch simulation； 从 Shepp–Logan phantom 生成 k-space 并反演图像； 模拟欠采样、噪声、部分 Fourier 和运动伪影； 写一篇 5–8 页技术笔记，解释“为什么低场 MRI 不是简单的低分辨率 MRI”。 验收标准：\n能从采样矩阵推导图像伪影； 能区分图像域去噪和 k-space 重建； 能解释为什么一个视觉上更锐利的图像不一定更可信。 3–9 周：进入医学图像重建 学习内容：\nSENSE、GRAPPA 和并行成像； compressed sensing； conjugate gradient、TV regularization； complex-valued CNN； unrolled networks； self-supervised reconstruction； uncertainty estimation； MRI 中的 data consistency。 建议项目：\n从多线圈 k-space 到可解释的低场 MRI 重建基线\n你需要实现至少三类方法：\n传统 Fourier/插值基线； 压缩感知或变分优化基线； 一个带 data consistency 的深度展开网络。 不要一开始训练大型模型。先确保每个模型都能解释：\n使用了什么物理假设； 使用了什么采样假设； 在什么条件下失败； 是否会产生不存在的结构。 输出：\n一个干净的 GitHub repository； 一份复现实验报告； 一张模型、采样、数据一致性和评估指标的关系图。 9–18 周：专攻 ULF-specific 问题 这一阶段开始进入 BISPLab 的真正技术语境。\n重点一：EMI elimination\n多传感线圈与主接收线圈的关系； 非平稳噪声和窄带干扰； 信号预测、投影、频域抑制； 训练后逐次扫描适配； 传统方法与深度学习方法的公平比较。 重点二：低场图像形成\n低场 3D FSE、GRE、bSSFP； partial Fourier； 单次采集与多次 NEX 的权衡； 低分辨率采集到高分辨率重建； 低场域与高场域之间的 domain shift。 重点三：任务驱动评估\n不要只问“图像看起来是否清晰”，还要问：\n解剖结构是否保持？ 小病灶是否被制造或消失？ 下游分割、分类、配准是否稳定？ 模型在不同患者、扫描协议和 EMI 条件下是否泛化？ 建议形成一个明确的硕士后期项目：\nUncertainty-calibrated deep reconstruction for 0.05–0.055 T brain MRI\n可加入：\n结构保真度损失； k-space data consistency； uncertainty map； lesion-preservation benchmark； high-field reference 只作为参考，不作为“真实图像生成器”。 18–36 周：形成博士申请级研究方向 此时再选择主线：\n方向 与你的匹配度 需要补充 ULF AI 重建与 EMI 抑制 很高 MRI 物理、原始数据、实验验证 低场 MRI 临床脑影像分析 高 临床协议、病灶任务、医学统计 MRI 硬件与电磁系统 中等 电磁仿真、RF/梯度、CAD、仪器测试 光遗传学高场 fMRI 中高 动物实验、光遗传学、电生理 低场 fMRI 脑网络动力学 高但风险较高 低场功能信号、时间序列 SNR、实验协议 对你来说，最稳妥的博士叙事是：\n我有脑时空动力学和计算神经影像基础，现在希望把这些能力延伸到 MRI 的物理数据生成和计算图像形成，研究低场条件下的 EMI 抑制、物理一致性重建和面向临床任务的不确定性建模。\n这比“我想把大模型应用到 MRI”更接近 BISPLab 的实际研究语言。\n推荐的四个项目阶梯 项目 A：MRI 物理模拟器 输入：采样轨迹、TR、TE、翻转角、T1/T2。\n输出：模拟 k-space、重建图像和伪影。\n验收：能复现欠采样、噪声和弛豫变化。\n项目 B：低场 k-space 重建基线 输入：多线圈、欠采样或低信噪比 k-space。\n输出：Fourier、压缩感知、深度展开三类重建。\n验收：公开数据、固定划分、可复现实验和失败案例。\n项目 C：EMI 感知与消除 输入：MRI 接收线圈和辅助 EMI sensing coils。\n输出：传统投影、滤波、CNN 预测三类 EMI 消除结果。\n验收：在不同干扰频率、幅度和非平稳条件下保持结构真实性。\n项目 D：面向脑影像任务的 ULF 重建 输入：低场脑 MRI。\n输出：重建图像、病灶/脑区任务、uncertainty map。\n验收：重建质量与下游任务不能互相掩盖；必须报告模型失败和不确定区域。\n每周投入建议 如果你每周能稳定投入 12–15 小时：\n4 小时：MRI 物理和教材； 4 小时：实现和复现实验； 3 小时：阅读 BISPLab 和低场 MRI 论文； 2 小时：整理实验记录、失败案例和研究笔记； 1–2 小时：补充硬件、序列或医学统计知识。 你的 AI-agent 能力可以用来自动化实验管理、超参数记录、评测和文献整理，但不要让 agent 替代你理解 MRI 信号模型。\n需要重点阅读的顺序 BISPLab 的 ULF 研究页； A low-cost and shielding-free ultra-low-field brain MRI scanner； Deep learning enabled fast 3D brain MRI at 0.055 tesla； Whole-body magnetic resonance imaging at 0.05 Tesla； BISPLab 论文清单中的 EMI、M4Raw、bSSFP、MT 和 MRA 论文； 再系统学习 MRI 重建、并行成像和脉冲序列。 Risks / Unanswered BISPLab 官网展示的是团队公开版图，具体博士项目、仪器开放程度、导师当前招生名额和数据权限仍需单独确认。 你的个人主页属于个人自述来源；我没有把主页中的论文状态、奖项和未来日期信息当作独立验证的外部事实。 ULF MRI 的临床价值不能仅由图像视觉质量判断，需要病灶检测、重复性、跨设备泛化和临床读片研究。 你目前在高层计算神经影像方面较强，但还没有公开显示出 MRI 原始 k-space、脉冲序列或硬件实验经历。这是最可能影响申请竞争力的短板。 如果未来目标是 BISPLab 的硬件方向，需要额外补充电磁仿真、RF/梯度线圈、3D CAD 和仪器测试；如果目标是 AI 方向，则优先完成项目 B/C/D。 证据审查结果：主要研究方向和代表性成果由团队官网与原始论文支持；你的优势和短板由个人主页与招聘要求进行映射；学习时长、项目顺序和优先级属于基于证据的规划建议，不是外部事实。\n","wordCount":"617","inLanguage":"en","datePublished":"2026-04-07T00:00:00Z","dateModified":"2026-04-07T00:00:00Z","author":{"@type":"Person","name":"Shuo Lv"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ShuoLv-fp.github.io/lsBlog/drafts/ulf_mri_exercise/"},"publisher":{"@type":"Organization","name":"Ls's Blog","logo":{"@type":"ImageObject","url":"https://ShuoLv-fp.github.io/lsBlog/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://ShuoLv-fp.github.io/lsBlog/ accesskey=h title="Ls's Blog (Alt + H)">Ls's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://ShuoLv-fp.github.io/lsBlog/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://ShuoLv-fp.github.io/lsBlog/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://ShuoLv-fp.github.io/lsBlog/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://ShuoLv-fp.github.io/lsBlog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://ShuoLv-fp.github.io/lsBlog/>Home</a>&nbsp;»&nbsp;<a href=https://ShuoLv-fp.github.io/lsBlog/drafts/>Drafts</a></div><h1 class="post-title entry-hint-parent">Research Draft on Cognitive Neuroscience</h1><div class=post-meta><span title='2026-04-07 00:00:00 +0000 UTC'>April 7, 2026</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Shuo Lv</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#canonical-sources aria-label="Canonical sources">Canonical sources</a></li><li><a href=#findings-ledger aria-label="Findings ledger">Findings ledger</a></li><li><a href=#scope-filter aria-label="Scope filter">Scope filter</a></li><li><a href=#object-filter aria-label="Object filter">Object filter</a></li><li><a href=#conclusions aria-label=Conclusions>Conclusions</a><ul><li><a href=#1-bisplab-%e7%9a%84%e7%9c%9f%e6%ad%a3%e7%a0%94%e7%a9%b6%e9%93%be%e6%9d%a1%e6%98%af%e7%ab%af%e5%88%b0%e7%ab%af-mri-%e7%b3%bb%e7%bb%9f aria-label="1. BISPLab 的真正研究链条是端到端 MRI 系统">1. BISPLab 的真正研究链条是端到端 MRI 系统</a></li><li><a href=#2-%e4%bd%a0%e6%9c%80%e6%9c%89%e7%ab%9e%e4%ba%89%e5%8a%9b%e7%9a%84%e5%85%a5%e5%8f%a3%e6%98%af%e8%ae%a1%e7%ae%97-ulf-mri%e4%b8%8d%e6%98%af%e7%ba%af%e7%a1%ac%e4%bb%b6 aria-label="2. 你最有竞争力的入口是“计算 ULF MRI”，不是纯硬件">2. 你最有竞争力的入口是“计算 ULF MRI”，不是纯硬件</a></li><li><a href=#3-%e4%bd%a0%e7%9a%84%e6%a0%b8%e5%bf%83%e7%bc%ba%e5%8f%a3%e4%b8%8d%e6%98%af%e6%9b%b4%e5%a4%9a-ai%e8%80%8c%e6%98%af-mri-%e5%8e%9f%e7%90%86%e4%b8%8e%e5%8e%9f%e5%a7%8b%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b aria-label="3. 你的核心缺口不是“更多 AI”，而是 MRI 原理与原始数据能力">3. 你的核心缺口不是“更多 AI”，而是 MRI 原理与原始数据能力</a></li><li><a href=#4-%e4%bd%a0%e5%ba%94%e4%bc%98%e5%85%88%e5%bd%a2%e6%88%90%e4%b8%80%e4%b8%aa%e7%89%a9%e7%90%86%e7%ba%a6%e6%9d%9f%e7%9a%84%e8%ae%a1%e7%ae%97%e7%a0%94%e7%a9%b6%e4%bd%9c%e5%93%81 aria-label="4. 你应优先形成一个“物理约束的计算研究作品”">4. 你应优先形成一个“物理约束的计算研究作品”</a></li></ul></li><li><a href=#%e5%ad%a6%e4%b9%a0%e8%93%9d%e5%9b%be aria-label=学习蓝图>学习蓝图</a><ul><li><a href=#03-%e5%91%a8%e5%bb%ba%e7%ab%8b-mri-%e7%89%a9%e7%90%86%e5%92%8c-k-space-%e5%9f%ba%e7%a1%80 aria-label="0–3 周：建立 MRI 物理和 k-space 基础">0–3 周：建立 MRI 物理和 k-space 基础</a></li><li><a href=#39-%e5%91%a8%e8%bf%9b%e5%85%a5%e5%8c%bb%e5%ad%a6%e5%9b%be%e5%83%8f%e9%87%8d%e5%bb%ba aria-label="3–9 周：进入医学图像重建">3–9 周：进入医学图像重建</a></li><li><a href=#918-%e5%91%a8%e4%b8%93%e6%94%bb-ulf-specific-%e9%97%ae%e9%a2%98 aria-label="9–18 周：专攻 ULF-specific 问题">9–18 周：专攻 ULF-specific 问题</a></li><li><a href=#1836-%e5%91%a8%e5%bd%a2%e6%88%90%e5%8d%9a%e5%a3%ab%e7%94%b3%e8%af%b7%e7%ba%a7%e7%a0%94%e7%a9%b6%e6%96%b9%e5%90%91 aria-label="18–36 周：形成博士申请级研究方向">18–36 周：形成博士申请级研究方向</a></li></ul></li><li><a href=#%e6%8e%a8%e8%8d%90%e7%9a%84%e5%9b%9b%e4%b8%aa%e9%a1%b9%e7%9b%ae%e9%98%b6%e6%a2%af aria-label=推荐的四个项目阶梯>推荐的四个项目阶梯</a><ul><li><a href=#%e9%a1%b9%e7%9b%ae-amri-%e7%89%a9%e7%90%86%e6%a8%a1%e6%8b%9f%e5%99%a8 aria-label="项目 A：MRI 物理模拟器">项目 A：MRI 物理模拟器</a></li><li><a href=#%e9%a1%b9%e7%9b%ae-b%e4%bd%8e%e5%9c%ba-k-space-%e9%87%8d%e5%bb%ba%e5%9f%ba%e7%ba%bf aria-label="项目 B：低场 k-space 重建基线">项目 B：低场 k-space 重建基线</a></li><li><a href=#%e9%a1%b9%e7%9b%ae-cemi-%e6%84%9f%e7%9f%a5%e4%b8%8e%e6%b6%88%e9%99%a4 aria-label="项目 C：EMI 感知与消除">项目 C：EMI 感知与消除</a></li><li><a href=#%e9%a1%b9%e7%9b%ae-d%e9%9d%a2%e5%90%91%e8%84%91%e5%bd%b1%e5%83%8f%e4%bb%bb%e5%8a%a1%e7%9a%84-ulf-%e9%87%8d%e5%bb%ba aria-label="项目 D：面向脑影像任务的 ULF 重建">项目 D：面向脑影像任务的 ULF 重建</a></li></ul></li><li><a href=#%e6%af%8f%e5%91%a8%e6%8a%95%e5%85%a5%e5%bb%ba%e8%ae%ae aria-label=每周投入建议>每周投入建议</a></li><li><a href=#%e9%9c%80%e8%a6%81%e9%87%8d%e7%82%b9%e9%98%85%e8%af%bb%e7%9a%84%e9%a1%ba%e5%ba%8f aria-label=需要重点阅读的顺序>需要重点阅读的顺序</a></li><li><a href=#risks--unanswered aria-label="Risks / Unanswered">Risks / Unanswered</a></li></ul></div></details></div><div class=post-content><blockquote><p><strong>计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。</strong></p></blockquote><h2 id=canonical-sources>Canonical sources<a hidden class=anchor aria-hidden=true href=#canonical-sources>#</a></h2><table><thead><tr><th>Rank</th><th>来源</th><th>用途</th></tr></thead><tbody><tr><td>1</td><td><a href=https://www4.hku.hk/bisplab/>BISPLab 官网</a></td><td>团队使命、研究版图、成果</td></tr><tr><td>1</td><td><a href=https://www4.hku.hk/bisplab/research-area1.html>ULF MRI 研究页</a></td><td>技术路线、0.05–0.055 T 项目</td></tr><tr><td>1</td><td><a href=https://www4.hku.hk/bisplab/people.html>人员页</a></td><td>PI、Co-PI 和团队能力结构</td></tr><tr><td>1</td><td><a href=https://www4.hku.hk/bisplab/join.html>招聘页</a></td><td>团队实际重视的技能</td></tr><tr><td>1–2</td><td><a href=https://www4.hku.hk/bisplab/publications.html>BISPLab 论文清单</a></td><td>论文方向与时间线</td></tr><tr><td>1</td><td><a href=https://doi.org/10.1038/s41467-021-27317-1>Nature Communications 2021</a></td><td>0.055 T、无屏蔽脑 MRI 原始论文</td></tr><tr><td>1</td><td><a href=https://doi.org/10.1126/sciadv.adi9327>Science Advances 2023</a></td><td>0.055 T 快速 3D 脑 MRI 原始论文</td></tr><tr><td>1</td><td><a href=https://doi.org/10.1126/science.adm7168>Science 2024</a></td><td>0.05 T 全身 MRI 原始论文</td></tr><tr><td>3</td><td><a href=https://shuolv-fp.github.io/>你的个人主页</a></td><td>个人经历、技能和自述研究方向</td></tr></tbody></table><h2 id=findings-ledger>Findings ledger<a hidden class=anchor aria-hidden=true href=#findings-ledger>#</a></h2><table><thead><tr><th>编号</th><th>发现</th><th>证据</th><th>回答</th></tr></thead><tbody><tr><td>F1</td><td>BISPLab 有两条主线：计算驱动的 ULF MRI，以及光遗传学结合高场 fMRI 的神经科学研究</td><td><a href=https://www4.hku.hk/bisplab/>研究主页</a>、<a href=https://www4.hku.hk/bisplab/research-area2.html>研究区 2</a></td><td>Q1</td></tr><tr><td>F2</td><td>ULF 主线聚焦约 0.05 T 的永磁体、梯度线圈、RF 线圈和低场 MRI 工程</td><td><a href=https://www4.hku.hk/bisplab/research-area1.html>ULF 研究页</a></td><td>Q1/Q2</td></tr><tr><td>F3</td><td>核心计算任务包括快速 3D MRI、超分辨率、深度学习重建和无监督域适配</td><td><a href=https://www4.hku.hk/bisplab/research-area1.html>ULF 研究页</a>、<a href=https://doi.org/10.1126/sciadv.adi9327>Science Advances 2023</a></td><td>Q1/Q2</td></tr><tr><td>F4</td><td>无 RF 屏蔽 MRI 依靠多线圈主动 EMI 感知、信号预测和消除，而不是单纯图像去噪</td><td><a href=https://doi.org/10.1038/s41467-021-27317-1>Nature Communications 2021</a>、<a href=https://www4.hku.hk/bisplab/research-area1.html>ULF 研究页</a></td><td>Q1/Q2</td></tr><tr><td>F5</td><td>团队已扩展到全身 MRI、DWI、bSSFP、磁化传递成像和 MRA</td><td><a href=https://www4.hku.hk/bisplab/publications.html>论文清单</a></td><td>Q1</td></tr><tr><td>F6</td><td>代表性硬件平台是 0.055 T 永磁脑 MRI 和 0.05 T 全身 MRI；共振频率约为 2.1–2.3 MHz</td><td><a href=https://doi.org/10.1038/s41467-021-27317-1>Nature Communications 2021</a>、<a href=https://doi.org/10.1126/science.adm7168>Science 2024</a></td><td>Q1/Q2</td></tr><tr><td>F7</td><td>PI Ed X. Wu 的公开简介覆盖 MRI 物理、数据采集、重建算法、ULF 工程、高场 fMRI 和神经回路研究</td><td><a href=https://www4.hku.hk/bisplab/people.html>人员页</a></td><td>Q1</td></tr><tr><td>F8</td><td>团队成员能力横跨 MRI 物理/工程、信号处理、AI 重建、神经影像和动物光遗传学</td><td><a href=https://www4.hku.hk/bisplab/people.html>人员页</a></td><td>Q2</td></tr><tr><td>F9</td><td>招聘信息明确重视 Python/C++/MATLAB、PyTorch/TensorFlow、Git、Linux、信号处理、脉冲序列、图像重建和电磁/机械系统</td><td><a href=https://www4.hku.hk/bisplab/join.html>招聘页</a></td><td>Q2</td></tr><tr><td>F10</td><td>你目前具备数据科学、Python/C++、PyTorch、fMRIPrep/Nilearn/FSL、复杂脑网络和 fMRI 研究经验</td><td><a href=https://shuolv-fp.github.io/>个人主页</a></td><td>Q3</td></tr><tr><td>F11</td><td>你的研究已经涉及 CPCA、脑时空动力学、个体化功能分区、规范化建模和机器学习验证</td><td><a href=https://shuolv-fp.github.io/>个人主页</a></td><td>Q3</td></tr><tr><td>F12</td><td>你的 AI-agent、测试时扩展、评测和科研流程工程能力可迁移到可复现重建、模型评测和医学影像工作流</td><td><a href=https://shuolv-fp.github.io/>个人主页</a></td><td>Q3/Q4</td></tr></tbody></table><h2 id=scope-filter>Scope filter<a hidden class=anchor aria-hidden=true href=#scope-filter>#</a></h2><p>没有丢弃核心证据。需要限定的是：BISPLab 的“AI 驱动 MRI”不是一般计算机视觉任务，而是受 MRI 物理、采样过程、k-space 一致性和临床风险约束的逆问题。</p><p>官网使用了“诊断质量”“普惠医疗”等愿景式表述，但这不等同于已经完成大规模临床等效性验证。因此，学习计划应把“可复现的图像形成”和“临床可用性”分开。</p><h2 id=object-filter>Object filter<a hidden class=anchor aria-hidden=true href=#object-filter>#</a></h2><p>需要把两个研究对象区分开：</p><ol><li><strong>ULF MRI for healthcare</strong>：重点是硬件、EMI、序列、重建、临床协议和部署。</li><li><strong>Optogenetic fMRI for neuroscience</strong>：重点是高场动物 MRI、光遗传学、电生理、神经回路和因果机制。</li></ol><p>你的现有神经科学背景与第二条主线天然接近，但你当前明确想进入 ULF-MRI，因此第一阶段应优先选择计算驱动的 ULF MRI，而不是直接从动物光遗传学切入。</p><h2 id=conclusions>Conclusions<a hidden class=anchor aria-hidden=true href=#conclusions>#</a></h2><h3 id=1-bisplab-的真正研究链条是端到端-mri-系统>1. BISPLab 的真正研究链条是端到端 MRI 系统<a hidden class=anchor aria-hidden=true href=#1-bisplab-的真正研究链条是端到端-mri-系统>#</a></h3><p>BISPLab 的 ULF 路线可以概括为：</p><blockquote><p>磁体与线圈 → 脉冲序列与采集 → EMI 感知/消除 → k-space 重建 → 深度学习图像形成 → 临床协议 → 自动分析与部署。</p></blockquote><p>这意味着，单独掌握 PyTorch 或医学图像分割并不足够。你需要理解数据在“物理世界”中是如何产生的，再研究神经网络如何介入。依据：F2–F6。</p><h3 id=2-你最有竞争力的入口是计算-ulf-mri不是纯硬件>2. 你最有竞争力的入口是“计算 ULF MRI”，不是纯硬件<a hidden class=anchor aria-hidden=true href=#2-你最有竞争力的入口是计算-ulf-mri不是纯硬件>#</a></h3><p>你的优势集中在：</p><ul><li>脑影像数据分析；</li><li>时空动态与复杂网络；</li><li>Python、PyTorch、科学计算；</li><li>机器学习模型评估；</li><li>研究代码和科研流程；</li><li>将复杂任务拆成可验证模块。</li></ul><p>这些能力适合：</p><ul><li>ULF MRI 重建；</li><li>EMI 信号预测与抑制；</li><li>低场到高场的域适配；</li><li>不确定性评估；</li><li>低场图像上的脑区、病灶或网络分析。</li></ul><h3 id=3-你的核心缺口不是更多-ai而是-mri-原理与原始数据能力>3. 你的核心缺口不是“更多 AI”，而是 MRI 原理与原始数据能力<a hidden class=anchor aria-hidden=true href=#3-你的核心缺口不是更多-ai而是-mri-原理与原始数据能力>#</a></h3><p>最需要补齐的能力依次是：</p><ol><li>MRI 信号方程、Bloch 方程、T1/T2、弛豫与 SNR；</li><li>k-space、Fourier 成像、采样轨迹和复数信号；</li><li>多线圈成像、并行成像、压缩感知和数据一致性；</li><li>GRE、FSE、EPI、bSSFP、DWI、MT、MRA 等序列；</li><li>低场 MRI 的 EMI、漂移、噪声和频率选择性；</li><li>脉冲序列仿真、采集参数设计和基础硬件测试；</li><li>医学图像重建中的幻觉、偏差、域外泛化和临床验证。</li></ol><h3 id=4-你应优先形成一个物理约束的计算研究作品>4. 你应优先形成一个“物理约束的计算研究作品”<a hidden class=anchor aria-hidden=true href=#4-你应优先形成一个物理约束的计算研究作品>#</a></h3><p>最推荐的第一个方向是：</p><blockquote><p><strong>EMI-aware self-supervised reconstruction for shielding-free ultra-low-field MRI</strong></p></blockquote><p>具体可以研究：</p><ul><li>用模拟或公开低场 k-space 数据构造非平稳 EMI；</li><li>比较频域滤波、正交投影、传统估计和深度学习预测；</li><li>加入 data consistency，避免网络凭空生成结构；</li><li>用合成病灶、外部扫描数据和任务指标检查幻觉；</li><li>输出噪声功率、重建质量、结构保真度和下游任务性能，而不仅是 PSNR/SSIM。</li></ul><p>这个方向同时连接了你的 AI、信号处理和脑影像背景，也直接贴合 BISPLab 的核心工作。</p><h2 id=学习蓝图>学习蓝图<a hidden class=anchor aria-hidden=true href=#学习蓝图>#</a></h2><h3 id=03-周建立-mri-物理和-k-space-基础>0–3 周：建立 MRI 物理和 k-space 基础<a hidden class=anchor aria-hidden=true href=#03-周建立-mri-物理和-k-space-基础>#</a></h3><p>目标不是读完所有 MRI 教材，而是能够自己解释并实现一个最小 MRI 成像系统。</p><p>学习内容：</p><ul><li>线性代数、复数信号、傅里叶变换；</li><li>Bloch 方程和旋转坐标系；</li><li>T1/T2、T2*、翻转角、TR/TE；</li><li>k-space 与图像的关系；</li><li>采样不足、噪声、卷积和点扩散函数；</li><li>低场下的信号、噪声和 EMI 问题。</li></ul><p>必须完成的作品：</p><ol><li>用 Python 实现 Bloch simulation；</li><li>从 Shepp–Logan phantom 生成 k-space 并反演图像；</li><li>模拟欠采样、噪声、部分 Fourier 和运动伪影；</li><li>写一篇 5–8 页技术笔记，解释“为什么低场 MRI 不是简单的低分辨率 MRI”。</li></ol><p>验收标准：</p><ul><li>能从采样矩阵推导图像伪影；</li><li>能区分图像域去噪和 k-space 重建；</li><li>能解释为什么一个视觉上更锐利的图像不一定更可信。</li></ul><h3 id=39-周进入医学图像重建>3–9 周：进入医学图像重建<a hidden class=anchor aria-hidden=true href=#39-周进入医学图像重建>#</a></h3><p>学习内容：</p><ul><li>SENSE、GRAPPA 和并行成像；</li><li>compressed sensing；</li><li>conjugate gradient、TV regularization；</li><li>complex-valued CNN；</li><li>unrolled networks；</li><li>self-supervised reconstruction；</li><li>uncertainty estimation；</li><li>MRI 中的 data consistency。</li></ul><p>建议项目：</p><blockquote><p><strong>从多线圈 k-space 到可解释的低场 MRI 重建基线</strong></p></blockquote><p>你需要实现至少三类方法：</p><ol><li>传统 Fourier/插值基线；</li><li>压缩感知或变分优化基线；</li><li>一个带 data consistency 的深度展开网络。</li></ol><p>不要一开始训练大型模型。先确保每个模型都能解释：</p><ul><li>使用了什么物理假设；</li><li>使用了什么采样假设；</li><li>在什么条件下失败；</li><li>是否会产生不存在的结构。</li></ul><p>输出：</p><ul><li>一个干净的 GitHub repository；</li><li>一份复现实验报告；</li><li>一张模型、采样、数据一致性和评估指标的关系图。</li></ul><h3 id=918-周专攻-ulf-specific-问题>9–18 周：专攻 ULF-specific 问题<a hidden class=anchor aria-hidden=true href=#918-周专攻-ulf-specific-问题>#</a></h3><p>这一阶段开始进入 BISPLab 的真正技术语境。</p><p>重点一：EMI elimination</p><ul><li>多传感线圈与主接收线圈的关系；</li><li>非平稳噪声和窄带干扰；</li><li>信号预测、投影、频域抑制；</li><li>训练后逐次扫描适配；</li><li>传统方法与深度学习方法的公平比较。</li></ul><p>重点二：低场图像形成</p><ul><li>低场 3D FSE、GRE、bSSFP；</li><li>partial Fourier；</li><li>单次采集与多次 NEX 的权衡；</li><li>低分辨率采集到高分辨率重建；</li><li>低场域与高场域之间的 domain shift。</li></ul><p>重点三：任务驱动评估</p><p>不要只问“图像看起来是否清晰”，还要问：</p><ul><li>解剖结构是否保持？</li><li>小病灶是否被制造或消失？</li><li>下游分割、分类、配准是否稳定？</li><li>模型在不同患者、扫描协议和 EMI 条件下是否泛化？</li></ul><p>建议形成一个明确的硕士后期项目：</p><blockquote><p><strong>Uncertainty-calibrated deep reconstruction for 0.05–0.055 T brain MRI</strong></p></blockquote><p>可加入：</p><ul><li>结构保真度损失；</li><li>k-space data consistency；</li><li>uncertainty map；</li><li>lesion-preservation benchmark；</li><li>high-field reference 只作为参考，不作为“真实图像生成器”。</li></ul><h3 id=1836-周形成博士申请级研究方向>18–36 周：形成博士申请级研究方向<a hidden class=anchor aria-hidden=true href=#1836-周形成博士申请级研究方向>#</a></h3><p>此时再选择主线：</p><table><thead><tr><th>方向</th><th style=text-align:right>与你的匹配度</th><th>需要补充</th></tr></thead><tbody><tr><td>ULF AI 重建与 EMI 抑制</td><td style=text-align:right>很高</td><td>MRI 物理、原始数据、实验验证</td></tr><tr><td>低场 MRI 临床脑影像分析</td><td style=text-align:right>高</td><td>临床协议、病灶任务、医学统计</td></tr><tr><td>MRI 硬件与电磁系统</td><td style=text-align:right>中等</td><td>电磁仿真、RF/梯度、CAD、仪器测试</td></tr><tr><td>光遗传学高场 fMRI</td><td style=text-align:right>中高</td><td>动物实验、光遗传学、电生理</td></tr><tr><td>低场 fMRI 脑网络动力学</td><td style=text-align:right>高但风险较高</td><td>低场功能信号、时间序列 SNR、实验协议</td></tr></tbody></table><p>对你来说，最稳妥的博士叙事是：</p><blockquote><p>我有脑时空动力学和计算神经影像基础，现在希望把这些能力延伸到 MRI 的物理数据生成和计算图像形成，研究低场条件下的 EMI 抑制、物理一致性重建和面向临床任务的不确定性建模。</p></blockquote><p>这比“我想把大模型应用到 MRI”更接近 BISPLab 的实际研究语言。</p><h2 id=推荐的四个项目阶梯>推荐的四个项目阶梯<a hidden class=anchor aria-hidden=true href=#推荐的四个项目阶梯>#</a></h2><h3 id=项目-amri-物理模拟器>项目 A：MRI 物理模拟器<a hidden class=anchor aria-hidden=true href=#项目-amri-物理模拟器>#</a></h3><p>输入：采样轨迹、TR、TE、翻转角、T1/T2。<br>输出：模拟 k-space、重建图像和伪影。<br>验收：能复现欠采样、噪声和弛豫变化。</p><h3 id=项目-b低场-k-space-重建基线>项目 B：低场 k-space 重建基线<a hidden class=anchor aria-hidden=true href=#项目-b低场-k-space-重建基线>#</a></h3><p>输入：多线圈、欠采样或低信噪比 k-space。<br>输出：Fourier、压缩感知、深度展开三类重建。<br>验收：公开数据、固定划分、可复现实验和失败案例。</p><h3 id=项目-cemi-感知与消除>项目 C：EMI 感知与消除<a hidden class=anchor aria-hidden=true href=#项目-cemi-感知与消除>#</a></h3><p>输入：MRI 接收线圈和辅助 EMI sensing coils。<br>输出：传统投影、滤波、CNN 预测三类 EMI 消除结果。<br>验收：在不同干扰频率、幅度和非平稳条件下保持结构真实性。</p><h3 id=项目-d面向脑影像任务的-ulf-重建>项目 D：面向脑影像任务的 ULF 重建<a hidden class=anchor aria-hidden=true href=#项目-d面向脑影像任务的-ulf-重建>#</a></h3><p>输入：低场脑 MRI。<br>输出：重建图像、病灶/脑区任务、uncertainty map。<br>验收：重建质量与下游任务不能互相掩盖；必须报告模型失败和不确定区域。</p><h2 id=每周投入建议>每周投入建议<a hidden class=anchor aria-hidden=true href=#每周投入建议>#</a></h2><p>如果你每周能稳定投入 12–15 小时：</p><ul><li>4 小时：MRI 物理和教材；</li><li>4 小时：实现和复现实验；</li><li>3 小时：阅读 BISPLab 和低场 MRI 论文；</li><li>2 小时：整理实验记录、失败案例和研究笔记；</li><li>1–2 小时：补充硬件、序列或医学统计知识。</li></ul><p>你的 AI-agent 能力可以用来自动化实验管理、超参数记录、评测和文献整理，但不要让 agent 替代你理解 MRI 信号模型。</p><h2 id=需要重点阅读的顺序>需要重点阅读的顺序<a hidden class=anchor aria-hidden=true href=#需要重点阅读的顺序>#</a></h2><ol><li>BISPLab 的 <a href=https://www4.hku.hk/bisplab/research-area1.html>ULF 研究页</a>；</li><li><a href=https://doi.org/10.1038/s41467-021-27317-1>A low-cost and shielding-free ultra-low-field brain MRI scanner</a>；</li><li><a href=https://doi.org/10.1126/sciadv.adi9327>Deep learning enabled fast 3D brain MRI at 0.055 tesla</a>；</li><li><a href=https://doi.org/10.1126/science.adm7168>Whole-body magnetic resonance imaging at 0.05 Tesla</a>；</li><li>BISPLab 论文清单中的 EMI、M4Raw、bSSFP、MT 和 MRA 论文；</li><li>再系统学习 MRI 重建、并行成像和脉冲序列。</li></ol><h2 id=risks--unanswered>Risks / Unanswered<a hidden class=anchor aria-hidden=true href=#risks--unanswered>#</a></h2><ul><li>BISPLab 官网展示的是团队公开版图，具体博士项目、仪器开放程度、导师当前招生名额和数据权限仍需单独确认。</li><li>你的个人主页属于个人自述来源；我没有把主页中的论文状态、奖项和未来日期信息当作独立验证的外部事实。</li><li>ULF MRI 的临床价值不能仅由图像视觉质量判断，需要病灶检测、重复性、跨设备泛化和临床读片研究。</li><li>你目前在高层计算神经影像方面较强，但还没有公开显示出 MRI 原始 k-space、脉冲序列或硬件实验经历。这是最可能影响申请竞争力的短板。</li><li>如果未来目标是 BISPLab 的硬件方向，需要额外补充电磁仿真、RF/梯度线圈、3D CAD 和仪器测试；如果目标是 AI 方向，则优先完成项目 B/C/D。</li></ul><p><strong>证据审查结果：主要研究方向和代表性成果由团队官网与原始论文支持；你的优势和短板由个人主页与招聘要求进行映射；学习时长、项目顺序和优先级属于基于证据的规划建议，不是外部事实。</strong></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://ShuoLv-fp.github.io/lsBlog/tags/research/>Research</a></li></ul><nav class=paginav><a class=prev href=https://ShuoLv-fp.github.io/lsBlog/drafts/research_draft/><span class=title>« Prev</span><br><span>Research Draft on Cognitive Neuroscience</span></a></nav><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on x" href="https://x.com/intent/tweet/?text=Research%20Draft%20on%20Cognitive%20Neuroscience&amp;url=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f&amp;hashtags=Research"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentColor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f&amp;title=Research%20Draft%20on%20Cognitive%20Neuroscience&amp;summary=Research%20Draft%20on%20Cognitive%20Neuroscience&amp;source=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentColor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f&title=Research%20Draft%20on%20Cognitive%20Neuroscience"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentColor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentColor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on whatsapp" href="https://api.whatsapp.com/send?text=Research%20Draft%20on%20Cognitive%20Neuroscience%20-%20https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentColor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on telegram" href="https://telegram.me/share/url?text=Research%20Draft%20on%20Cognitive%20Neuroscience&amp;url=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentColor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Research Draft on Cognitive Neuroscience on ycombinator" href="https://news.ycombinator.com/submitlink?t=Research%20Draft%20on%20Cognitive%20Neuroscience&u=https%3a%2f%2fShuoLv-fp.github.io%2flsBlog%2fdrafts%2fulf_mri_exercise%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentColor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://ShuoLv-fp.github.io/lsBlog/>Ls's Blog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
