@@ -72,6 +72,7 @@ Research summaries, practical experience, and occasional notes from life beyond 
 
 # Main content settings
 [params]
+  mainSections = ["notes"]
   # Environment settings
   env = "production"
   

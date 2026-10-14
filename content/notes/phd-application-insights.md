@@ -1,9 +1,11 @@
 ---
-title: "PhD Application Insights"
+title: "PhD Application Interview Notes"
 date: 2026-09-20
 draft: false
-tags: ["Blog", "Hugo"]
+summary: "Questions and reflections collected from a PhD interview process."
+tags: ["PhD Applications", "Interviews"]
 categories: ["Personal Experience"]
+aliases: ["/drafts/phd_application_insights/"]
 ---
 
 # Question in the interview

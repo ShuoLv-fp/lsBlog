@@ -8,8 +8,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 NOTE_BODIES = {
-    "agent-engineering.md": "52c0df0564264dfad612527553e658030a93e449a7a8a10dd4f97b179bf3193b",
-    "games.md": "52c0df0564264dfad612527553e658030a93e449a7a8a10dd4f97b179bf3193b",
+    "agent-engineering.md": "785cf3ab903ed505dfb412eedd106fb0d50faa41689bf1f4852bb708db43a2dd",
+    "games.md": "785cf3ab903ed505dfb412eedd106fb0d50faa41689bf1f4852bb708db43a2dd",
     "phd-application-insights.md": "1374d21ce962c52e6b6251905a979b3dd8913f3beeb0ae4da979fb895c6ae51f",
     "ulf-mri-learning-blueprint.md": "a0927f1f6294ab51d75f89988a8d48ea13e4d1f8574501fa0542eaba5cf04cef",
     "functional-connectivity-notes.md": "2c30e197f0548d9e5b4eeca32ad94c86a5ab43e187b39d59b2c1175fd0595577",

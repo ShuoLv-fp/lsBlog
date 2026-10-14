@@ -1,9 +1,11 @@
 ---
-title: "Research Draft on Cognitive Neuroscience"
+title: "Functional Connectivity and Its Generation Methods"
 date: 2026-04-07
 draft: false
-tags: ["Research"]
+summary: "Working notes on functional connectivity generation, spatial statistics, and permutation testing."
+tags: ["Connectomics", "Neuroscience", "Statistics"]
 categories: ["Research Synthesis"]
+aliases: ["/drafts/research_draft/"]
 ---
 
 # Functional Connectivity and its Generation Methods

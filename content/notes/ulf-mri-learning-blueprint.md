@@ -1,9 +1,12 @@
 ---
-title: "Research Draft on Cognitive Neuroscience"
-date: 2026-04-07
+title: "A Learning Blueprint for Computational Ultra-Low-Field MRI"
+date: 2026-09-21
 draft: false
-tags: ["Research"]
+summary: "A staged roadmap from MRI physics and k-space foundations to EMI-aware reconstruction and reliable low-field neuroimaging."
+tags: ["MRI", "AI for Science", "Neuroimaging"]
 categories: ["Research Synthesis"]
+aliases: ["/drafts/ulf_mri_exercise/"]
+math: true
 ---
 
 > **计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。**
