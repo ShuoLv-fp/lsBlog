@@ -49,25 +49,25 @@ Research summaries, practical experience, and occasional notes from life beyond 
   [[languages.en.menu.main]]
     identifier = "categories"
     name = "Categories"
-    url = "/categories/"
+    url = "categories/"
     weight = 10
   
   [[languages.en.menu.main]]
     identifier = "tags"
     name = "Tags"
-    url = "/tags/"
+    url = "tags/"
     weight = 20
   
   [[languages.en.menu.main]]
     identifier = "archives"
     name = "Archives"
-    url = "/archives/"
+    url = "archives/"
     weight = 30
   
   [[languages.en.menu.main]]
     identifier = "search"
     name = "Search"
-    url = "/search/"
+    url = "search/"
     weight = 40
 
 # Main content settings

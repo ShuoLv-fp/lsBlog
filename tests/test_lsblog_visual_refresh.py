@@ -48,6 +48,34 @@ class SourceContractTests(unittest.TestCase):
         self.assertIn("@media (max-width: 768px)", css)
         self.assertIn("prefers-reduced-motion", css)
 
+    def test_public_copy_has_no_placeholder_identity(self):
+        paths = [ROOT / "hugo.toml", ROOT / "content/_index.md",
+                 ROOT / "content/page/about.md", ROOT / "content/posts/my-first-post.md"]
+        text = "\n".join(path.read_text() for path in paths)
+        for stale in ("aaron.jpg", "Aaron", "[Your Name]", "My Blog", "Welcome to My Blog"):
+            self.assertNotIn(stale, text)
+        for path in (ROOT / "layouts").rglob("*.html"):
+            self.assertNotIn("/my-blog/", path.read_text())
+
+    def test_search_uses_one_script_and_has_an_empty_state(self):
+        template = (ROOT / "layouts/_default/search.html").read_text()
+        self.assertNotIn("resources.Get", template)
+        self.assertNotIn("loadSearch", template)
+        script = (ROOT / "assets/js/fastsearch.js").read_text()
+        self.assertIn("No matching notes", script)
+        self.assertIn("search-result", script)
+
+    def test_skip_link_has_a_main_target(self):
+        header = (ROOT / "layouts/partials/header.html").read_text()
+        base = (ROOT / "layouts/_default/baseof.html").read_text()
+        self.assertIn('href="#notebook-main"', header)
+        self.assertIn('id="notebook-main"', base)
+
+    def test_menu_links_remain_under_the_blog_base_path(self):
+        config = (ROOT / "hugo.toml").read_text()
+        for path in ("categories", "tags", "archives", "search"):
+            self.assertNotIn(f'url = "/{path}/"', config)
+
 
 if __name__ == "__main__":
     unittest.main()
