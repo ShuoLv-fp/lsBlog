@@ -3,7 +3,7 @@ title: "Research Draft on Cognitive Neuroscience"
 date: 2026-04-07
 draft: false
 tags: ["Research"]
-categories: ["Technology"]
+categories: ["Research Synthesis"]
 ---
 
 > **计算驱动的超低场 MRI：EMI 抑制、低场图像重建、域适配与脑影像分析。**

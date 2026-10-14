@@ -6,3 +6,6 @@ hugo_stats.json
 
 # 临时锁文件
 .hugo_build.lock
+
+# Local visual design sessions
+.superpowers/

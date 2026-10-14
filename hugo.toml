@@ -23,19 +23,16 @@ pagination = { pagerSize = 5 }
   [languages.en]
     languageName = "English"
     weight = 1
-    title = "Ls's Blog"
-    description = "My Personal Blog"
+    title = "Shuo Lv / Field Notes"
+    description = "Research notes, practical experience, and life beyond the lab."
     [languages.en.params]
       author = "Shuo Lv"
       
       # Home page information
       [languages.en.params.homeInfoParams]
-        Title = "Welcome to Ls's Blog"
+        Title = "A working notebook for research, code, and unfinished questions."
         Content = """
-        Hi, I'm Shuo Lv! This is my personal blog where I share my thoughts and experiences.
-
-        - I write about technology, programming, and personal interests
-        - Feel free to explore my posts and get in touch
+Research summaries, practical experience, and occasional notes from life beyond the lab.
         """
       
       # Social icons
@@ -85,6 +82,16 @@ pagination = { pagerSize = 5 }
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
+  description = "Research notes, practical experience, and life beyond the lab."
+  notebookHomeTitle = "A working notebook for research, code, and unfinished questions."
+  notebookHomeDescription = "Research summaries, practical experience, and occasional notes from life beyond the lab."
+  personalHomepage = "https://ShuoLv-fp.github.io/"
+  authorImage = "https://ShuoLv-fp.github.io/images/profile_202609.png"
+  notebookCategories = [
+    { key = "research-synthesis", label = "Research Synthesis", description = "Literature, methods, and research notes." },
+    { key = "personal-experience", label = "Personal Experience", description = "Applications, engineering practice, and lessons learned." },
+    { key = "life-elsewhere", label = "Life & Elsewhere", description = "Notes from outside the lab." }
+  ]
   
   # Enable archive page
   disableArchive = false
@@ -102,6 +109,9 @@ pagination = { pagerSize = 5 }
     threshold = 0.4
     minMatchCharLength = 0
     keys = ["title", "permalink", "summary", "content"]
+
+  [params.label]
+    text = "Shuo Lv / Field Notes"
 
 # Markdown rendering settings
 [markup]

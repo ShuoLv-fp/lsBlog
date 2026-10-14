@@ -1,3 +1,3 @@
 ---
-title: "My Blog"
+title: "Shuo Lv / Field Notes"
 ---

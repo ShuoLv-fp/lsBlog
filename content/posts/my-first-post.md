@@ -1,9 +1,9 @@
 ---
 title: "My First Blog Post"
 date: 2026-04-07
-draft: false
+draft: true
 tags: ["Blog", "Hugo"]
-categories: ["Personal"]
+categories: ["Personal Experience"]
 ---
 
 # Welcome to My Blog

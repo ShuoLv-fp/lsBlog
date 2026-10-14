@@ -3,7 +3,7 @@ title: "PhD Application Insights"
 date: 2026-09-20
 draft: false
 tags: ["Blog", "Hugo"]
-categories: ["Personal"]
+categories: ["Personal Experience"]
 ---
 
 # Question in the interview
