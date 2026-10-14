@@ -1,0 +1,42 @@
+{{- $current := . -}}
+{{- $sections := site.Params.mainSections | default site.MainSections -}}
+{{- $notes := where site.RegularPages "Section" "in" $sections -}}
+{{- $allActive := $current.IsHome -}}
+{{- $taxonomy := site.Taxonomies.categories -}}
+<aside class="category-map" aria-labelledby="category-map-title">
+    <div class="category-map__eyebrow">Browse by type</div>
+    <h2 class="category-map__title" id="category-map-title">A map of<br>the notebook.</h2>
+    <nav class="category-map__links" aria-label="Notebook categories">
+        <a class="category-map__link{{ if $allActive }} is-active{{ end }}" href="{{ site.Home.RelPermalink }}"{{ if $allActive }} aria-current="page"{{ end }}>
+            <span>All notes</span><span class="category-map__count">{{ printf "%02d" (len $notes) }}</span>
+        </a>
+        {{- range site.Params.notebookCategories }}
+        {{- $term := index $taxonomy .key -}}
+        {{- if $term }}
+        {{- with site.GetPage (printf "/categories/%s" .key) }}
+        {{- $active := and (eq $current.Kind "term") (eq $current.Data.Term .Data.Term) -}}
+        <a class="category-map__link{{ if $active }} is-active{{ end }}" href="{{ .RelPermalink }}"{{ if $active }} aria-current="page"{{ end }}>
+            <span>{{ .LinkTitle }}</span><span class="category-map__count">{{ printf "%02d" (len $term) }}</span>
+        </a>
+        {{- end }}
+        {{- end }}
+        {{- end }}
+    </nav>
+    <p class="category-map__note"><strong>Types</strong> explain why a note exists. Tags describe subjects such as MRI, agents, and PhD applications.</p>
+    <a class="category-map__author" href="{{ site.Params.personalHomepage }}">
+        <img src="{{ site.Params.authorImage }}" alt="Shuo Lv" width="48" height="48">
+        <span><strong>Shuo Lv</strong><small>Academic homepage</small></span>
+    </a>
+</aside>
+<nav class="category-map__mobile" aria-label="Notebook categories">
+    <a class="category-map__chip{{ if $allActive }} is-active{{ end }}" href="{{ site.Home.RelPermalink }}"{{ if $allActive }} aria-current="page"{{ end }}>All · {{ len $notes }}</a>
+    {{- range site.Params.notebookCategories }}
+    {{- $term := index $taxonomy .key -}}
+    {{- if $term }}
+    {{- with site.GetPage (printf "/categories/%s" .key) }}
+    {{- $active := and (eq $current.Kind "term") (eq $current.Data.Term .Data.Term) -}}
+    <a class="category-map__chip{{ if $active }} is-active{{ end }}" href="{{ .RelPermalink }}"{{ if $active }} aria-current="page"{{ end }}>{{ .LinkTitle }} · {{ len $term }}</a>
+    {{- end }}
+    {{- end }}
+    {{- end }}
+</nav>

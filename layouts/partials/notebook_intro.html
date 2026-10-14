@@ -1,0 +1,10 @@
+<header class="notebook-intro">
+    <p class="notebook-intro__eyebrow">Computational neuroscience · AI for science</p>
+    <h1>{{ site.Params.notebookHomeTitle }}</h1>
+    <p class="notebook-intro__description">{{ site.Params.notebookHomeDescription }}</p>
+    {{- with site.Params.homeInfoParams }}
+    {{- if site.Params.socialIcons }}
+    <div class="notebook-intro__social">{{ partial "social_icons.html" (dict "align" .AlignSocialIconsTo) }}</div>
+    {{- end }}
+    {{- end }}
+</header>

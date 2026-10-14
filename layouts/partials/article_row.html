@@ -1,0 +1,19 @@
+{{- $page := .page -}}
+{{- $number := add (.index | default 0) 1 -}}
+{{- $category := "Unsorted" -}}
+{{- with $page.Params.categories -}}{{- $category = index . 0 -}}{{- end -}}
+<article class="article-row">
+    <span class="article-row__number" aria-hidden="true">{{ printf "%02d" $number }}</span>
+    <div class="article-row__body">
+        <p class="article-row__category">{{ $category }}</p>
+        <h2 class="article-row__title">{{ $page.Title | markdownify }}</h2>
+        {{- if ne ($page.Param "hideSummary") true }}
+        <p class="article-row__summary">{{ $page.Summary | plainify | htmlUnescape }}{{ if $page.Truncated }}…{{ end }}</p>
+        {{- end }}
+    </div>
+    <p class="article-row__meta">
+        <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "02 Jan 2006" }}</time>
+        {{- if not ($page.Param "hideMeta") }}<span>{{ $page.ReadingTime }} min read</span>{{ end }}
+    </p>
+    <a class="article-row__link" href="{{ $page.RelPermalink }}" aria-label="Read {{ $page.Title | plainify }}"></a>
+</article>
