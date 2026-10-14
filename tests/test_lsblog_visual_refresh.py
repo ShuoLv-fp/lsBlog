@@ -40,6 +40,14 @@ class SourceContractTests(unittest.TestCase):
                        "translation_list.html", "edit_post.html", "post_canonical.html"):
             self.assertIn(marker, text)
 
+    def test_css_contains_approved_tokens_and_mobile_layout(self):
+        css = (ROOT / "assets/css/extended/lsblog.css").read_text()
+        for token in ("#224b8d", "#fbfcfe", "#29313a", "Georgia", "Trebuchet MS",
+                      "grid-template-columns: 220px", ".dark", ":focus-visible"):
+            self.assertIn(token, css)
+        self.assertIn("@media (max-width: 768px)", css)
+        self.assertIn("prefers-reduced-motion", css)
+
 
 if __name__ == "__main__":
     unittest.main()
