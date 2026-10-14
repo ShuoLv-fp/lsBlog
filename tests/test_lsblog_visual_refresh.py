@@ -1,10 +1,23 @@
 import json
+import hashlib
 from pathlib import Path
 import re
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+NOTE_BODIES = {
+    "agent-engineering.md": "52c0df0564264dfad612527553e658030a93e449a7a8a10dd4f97b179bf3193b",
+    "games.md": "52c0df0564264dfad612527553e658030a93e449a7a8a10dd4f97b179bf3193b",
+    "phd-application-insights.md": "1374d21ce962c52e6b6251905a979b3dd8913f3beeb0ae4da979fb895c6ae51f",
+    "ulf-mri-learning-blueprint.md": "a0927f1f6294ab51d75f89988a8d48ea13e4d1f8574501fa0542eaba5cf04cef",
+    "functional-connectivity-notes.md": "2c30e197f0548d9e5b4eeca32ad94c86a5ab43e187b39d59b2c1175fd0595577",
+}
+
+
+def markdown_body(text):
+    return text.split("---", 2)[2].lstrip("\n")
 
 
 class SourceContractTests(unittest.TestCase):
@@ -180,6 +193,69 @@ class SourceContractTests(unittest.TestCase):
         css = (ROOT / "assets/css/extended/lsblog.css").read_text()
         self.assertIn("#searchResults .search-result > a", css)
         self.assertIn("position: static", css)
+
+    def test_repository_has_one_public_note_section(self):
+        notes = ROOT / "content/notes"
+        self.assertEqual({path.name for path in notes.glob("*.md")}, set(NOTE_BODIES))
+        self.assertFalse((ROOT / "content/drafts").exists())
+        self.assertFalse((ROOT / "content/posts").exists())
+        self.assertIn('mainSections = ["notes"]', (ROOT / "hugo.toml").read_text())
+
+    def test_note_bodies_survive_the_move(self):
+        for name, expected in NOTE_BODIES.items():
+            with self.subTest(note=name):
+                text = (ROOT / "content/notes" / name).read_text()
+                digest = hashlib.sha256(markdown_body(text).encode()).hexdigest()
+                self.assertEqual(digest, expected)
+
+    def test_notes_have_unique_metadata_and_legacy_aliases(self):
+        text = "\n".join(path.read_text() for path in (ROOT / "content/notes").glob("*.md"))
+        for title in (
+            "A Learning Blueprint for Computational Ultra-Low-Field MRI",
+            "Functional Connectivity and Its Generation Methods",
+            "Agent Engineering Notes",
+            "PhD Application Interview Notes",
+            "Games and Interactive Worlds",
+        ):
+            self.assertEqual(text.count(f'title: "{title}"'), 1)
+        for route in (
+            "/drafts/ulf_mri_exercise/",
+            "/drafts/research_draft/",
+            "/drafts/agent_engineering/",
+            "/drafts/phd_application_insights/",
+            "/drafts/games/",
+        ):
+            self.assertIn(route, text)
+
+    def test_retired_project_paths_are_absent(self):
+        for relative in (
+            ".DS_Store", "content/.DS_Store", "static/fgo-wiki", "static/images",
+            "config.yml", "deploy.sh", "deploy.ps1", "DEPLOY_GUIDE.md", "hugo_tmp",
+            "content/posts/my-first-post.md", "layouts/_default/social.html",
+        ):
+            self.assertFalse((ROOT / relative).exists(), relative)
+
+    def test_research_experiments_are_archived(self):
+        archive = ROOT / "archive/research-experiments"
+        for relative in (
+            "README.md", "CauchyKovalevskaya_bac3ecd234c3497cba4cf4e3efefc330.lean",
+            "DeepSeek-Prover-V2.py", "MathNL.md", "Valid_models.md", "bench.md.txt",
+            "lean_proof.txt", "lean_proof_Goedel-Prover-V2.txt",
+            "Lean_AI_research/Goedel_1.png", "Lean_AI_research/Goedel_2.png",
+            "Lean_AI_research/Goedel_3.png", "Lean_AI_research/Goedel_4.png",
+        ):
+            self.assertTrue((archive / relative).exists(), relative)
+
+    def test_formatting_reference_and_shortcodes_exist(self):
+        reference = (ROOT / "content/page/formatting-reference.md").read_text()
+        for marker in (
+            "math: true", "searchHidden: true", "## Typography", "## Lists",
+            "## Code", "## Mathematics", "## Rich blocks", "## Media",
+            "## Stress tests",
+        ):
+            self.assertIn(marker, reference)
+        for name in ("callout", "columns", "timeline", "pullquote", "gallery"):
+            self.assertTrue((ROOT / "layouts/shortcodes" / f"{name}.html").exists())
 
 
 if __name__ == "__main__":
