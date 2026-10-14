@@ -6,6 +6,9 @@
     --ink: #29313a;
     --muted-ink: #68727d;
     --rule: #dfe5ed;
+    --signal-tip: #2f6f5e;
+    --signal-warning: #8a5a00;
+    --signal-danger: #a73932;
     --theme: var(--paper);
     --entry: var(--surface);
     --primary: var(--ink);
@@ -27,6 +30,9 @@
     --ink: #e7ebf0;
     --muted-ink: #a8b0ba;
     --rule: #363d47;
+    --signal-tip: #79c7ad;
+    --signal-warning: #e6b85c;
+    --signal-danger: #f39a93;
     --theme: var(--paper);
     --entry: var(--surface);
     --primary: var(--ink);
@@ -515,6 +521,250 @@ input:focus-visible {
     border-radius: 4px;
 }
 
+.notebook-reading table,
+.notebook-reading pre,
+.notebook-reading .highlight,
+.notebook-reading .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.notebook-reading table {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.notebook-reading mark {
+    padding: 1px 3px;
+    background: color-mix(in srgb, var(--signal-warning) 24%, var(--surface));
+    color: var(--ink);
+}
+
+.notebook-reading abbr[title] {
+    text-decoration-color: var(--research-blue);
+    text-underline-offset: 3px;
+}
+
+.notebook-reading kbd {
+    padding: 2px 6px;
+    border: 1px solid var(--rule);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: Monaco, Consolas, monospace;
+    font-size: 0.82em;
+    white-space: nowrap;
+}
+
+.reference-callout,
+.reference-pullquote {
+    margin: 24px 0;
+    padding: 14px 18px;
+    border-left: 3px solid var(--research-blue);
+    background: var(--surface);
+}
+
+.reference-callout--tip {
+    border-left-color: var(--signal-tip);
+}
+
+.reference-callout--warning {
+    border-left-color: var(--signal-warning);
+}
+
+.reference-callout--danger {
+    border-left-color: var(--signal-danger);
+}
+
+.reference-callout__label {
+    margin: 0 0 6px;
+    color: var(--research-blue);
+    font-family: Monaco, Consolas, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.reference-callout--tip .reference-callout__label {
+    color: var(--signal-tip);
+}
+
+.reference-callout--warning .reference-callout__label {
+    color: var(--signal-warning);
+}
+
+.reference-callout--danger .reference-callout__label {
+    color: var(--signal-danger);
+}
+
+.reference-callout__content > :first-child,
+.reference-pullquote blockquote > :first-child {
+    margin-top: 0;
+}
+
+.reference-callout__content > :last-child,
+.reference-pullquote blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+.reference-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 26px 0;
+}
+
+.notebook-reading .reference-columns > blockquote {
+    margin: 0;
+    padding: 18px 0 4px;
+    border-top: 2px solid var(--research-blue);
+    border-left: 0;
+    color: var(--content);
+}
+
+.reference-columns h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.reference-timeline {
+    margin: 28px 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--rule);
+}
+
+.reference-timeline ol {
+    margin: 0;
+    padding: 0;
+    counter-reset: reference-step;
+    list-style: none;
+}
+
+.reference-timeline li {
+    position: relative;
+    min-height: 42px;
+    padding: 0 0 20px 16px;
+    counter-increment: reference-step;
+}
+
+.reference-timeline li:last-child {
+    padding-bottom: 0;
+}
+
+.reference-timeline li::before {
+    position: absolute;
+    top: 1px;
+    left: -38px;
+    display: grid;
+    width: 27px;
+    height: 27px;
+    place-items: center;
+    border: 1px solid var(--research-blue);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--research-blue);
+    content: counter(reference-step, decimal-leading-zero);
+    font-family: Monaco, Consolas, monospace;
+    font-size: 9px;
+}
+
+.reference-pullquote {
+    padding-top: 20px;
+    padding-bottom: 18px;
+}
+
+.notebook-reading .reference-pullquote blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    line-height: 1.45;
+}
+
+.reference-pullquote figcaption,
+.reference-media figcaption,
+.reference-gallery__caption {
+    margin-top: 10px;
+    color: var(--muted-ink);
+    font-family: Monaco, Consolas, monospace;
+    font-size: 10px;
+    line-height: 1.55;
+}
+
+.reference-pullquote figcaption::before {
+    content: "Source: ";
+}
+
+.reference-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.reference-gallery > p {
+    margin: 0;
+}
+
+.reference-gallery__caption {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+}
+
+.reference-gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--rule);
+    object-fit: cover;
+}
+
+.reference-media {
+    margin: 24px 0;
+}
+
+.reference-media img {
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--rule);
+    object-fit: cover;
+}
+
+.notebook-reading details {
+    margin: 24px 0;
+    padding: 13px 16px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.notebook-reading details summary {
+    color: var(--ink);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.notebook-reading details summary:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--research-blue) 42%, transparent);
+    outline-offset: 4px;
+}
+
+.reference-overflow {
+    max-width: 100%;
+    padding: 12px 14px;
+    overflow-wrap: anywhere;
+    border-left: 2px solid var(--rule);
+    background: var(--surface);
+    font-family: Monaco, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
 .post-tags a,
 .terms-tags a {
     border: 1px solid var(--rule);
@@ -742,6 +992,19 @@ input:focus-visible {
 
     .notebook-reading {
         font-size: 15px;
+    }
+
+    .reference-columns,
+    .reference-gallery {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .reference-gallery__caption {
+        grid-column: auto;
+    }
+
+    .notebook-reading .reference-pullquote blockquote {
+        font-size: 20px;
     }
 }
 

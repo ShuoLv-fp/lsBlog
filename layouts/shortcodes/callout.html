@@ -1,0 +1,10 @@
+{{- $type := .Get "type" | default "note" -}}
+{{- $allowed := slice "note" "tip" "warning" "danger" -}}
+{{- if not (in $allowed $type) -}}
+  {{- errorf "Unsupported callout type %q at %s" $type .Position -}}
+{{- end -}}
+{{- $labelID := printf "reference-callout-label-%d" .Ordinal -}}
+<aside class="reference-callout reference-callout--{{ $type }}" aria-labelledby="{{ $labelID }}">
+  <p class="reference-callout__label" id="{{ $labelID }}">{{ .Get "title" | default ($type | title) }}</p>
+  <div class="reference-callout__content">{{ .Page.RenderString .Inner }}</div>
+</aside>

@@ -1,0 +1,6 @@
+<figure class="reference-pullquote">
+  <blockquote>{{ .Page.RenderString .Inner }}</blockquote>
+  {{- with .Get "cite" }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>

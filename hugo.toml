@@ -91,7 +91,7 @@ Research summaries, practical experience, and occasional notes from life beyond 
   notebookCategories = [
     { key = "research-synthesis", label = "Research Synthesis", description = "Literature, methods, and research notes." },
     { key = "personal-experience", label = "Personal Experience", description = "Applications, engineering practice, and lessons learned." },
-    { key = "life-elsewhere", label = "Life & Elsewhere", description = "Notes from outside the lab." }
+    { key = "Life & Elsewhere", label = "Life & Elsewhere", description = "Notes from outside the lab." }
   ]
   
   # Enable archive page
@@ -126,6 +126,12 @@ Research summaries, practical experience, and occasional notes from life beyond 
 # Markdown rendering settings
 [markup]
   [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
     [markup.goldmark.renderer]
       unsafe = true
 

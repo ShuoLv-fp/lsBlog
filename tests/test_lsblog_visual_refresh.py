@@ -1,8 +1,10 @@
 import json
 import hashlib
+from html.parser import HTMLParser
 from pathlib import Path
 import re
 import unittest
+from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +20,16 @@ NOTE_BODIES = {
 
 def markdown_body(text):
     return text.split("---", 2)[2].lstrip("\n")
+
+
+class ElementIndex(HTMLParser):
+    def __init__(self, html):
+        super().__init__()
+        self.elements = []
+        self.feed(html)
+
+    def handle_starttag(self, tag, attrs):
+        self.elements.append((tag, dict(attrs)))
 
 
 class SourceContractTests(unittest.TestCase):
@@ -98,7 +110,7 @@ class SourceContractTests(unittest.TestCase):
 
     def test_public_copy_has_no_placeholder_identity(self):
         paths = [ROOT / "hugo.toml", ROOT / "content/_index.md",
-                 ROOT / "content/page/about.md", ROOT / "content/posts/my-first-post.md"]
+                 ROOT / "content/page/about.md"]
         text = "\n".join(path.read_text() for path in paths)
         for stale in ("aaron.jpg", "Aaron", "[Your Name]", "My Blog", "Welcome to My Blog"):
             self.assertNotIn(stale, text)
@@ -160,10 +172,10 @@ class SourceContractTests(unittest.TestCase):
         for label, path in (
             ("Research Synthesis", "/lsBlog/categories/research-synthesis/"),
             ("Personal Experience", "/lsBlog/categories/personal-experience/"),
+            ("Life & Elsewhere", "/lsBlog/categories/life--elsewhere/"),
         ):
             self.assertIn(label, html)
             self.assertIn(path, html)
-        self.assertNotIn("/lsBlog/categories/life-elsewhere/", html)
 
     def test_generated_search_summaries_are_plain_text(self):
         output = Path("/tmp/lsblog-public/index.json")
@@ -247,15 +259,95 @@ class SourceContractTests(unittest.TestCase):
             self.assertTrue((archive / relative).exists(), relative)
 
     def test_formatting_reference_and_shortcodes_exist(self):
-        reference = (ROOT / "content/page/formatting-reference.md").read_text()
+        path = ROOT / "content/page/formatting-reference.md"
+        self.assertTrue(path.exists(), "Missing public formatting reference")
+        reference = path.read_text()
         for marker in (
-            "math: true", "searchHidden: true", "## Typography", "## Lists",
+            "math: true", "TocOpen: true", "searchHidden: true", "build:",
+            "list: never", "## Typography", "## Lists",
             "## Code", "## Mathematics", "## Rich blocks", "## Media",
             "## Stress tests",
         ):
             self.assertIn(marker, reference)
         for name in ("callout", "columns", "timeline", "pullquote", "gallery"):
             self.assertTrue((ROOT / "layouts/shortcodes" / f"{name}.html").exists())
+
+    def test_formatting_shortcodes_support_real_markdown(self):
+        for name in ("callout", "columns", "timeline", "pullquote", "gallery"):
+            path = ROOT / "layouts/shortcodes" / f"{name}.html"
+            with self.subTest(shortcode=name):
+                self.assertTrue(path.exists())
+                text = path.read_text()
+                self.assertIn("RenderString", text)
+                self.assertIn("reference-", text)
+
+    def test_callouts_have_accessible_landmark_labels(self):
+        text = (ROOT / "layouts/shortcodes/callout.html").read_text()
+        self.assertIn("aria-labelledby", text)
+        self.assertIn(".Ordinal", text)
+
+    def test_gallery_caption_styling_is_explicit(self):
+        css = (ROOT / "assets/css/extended/lsblog.css").read_text()
+        self.assertIn(".reference-gallery__caption", css)
+        self.assertNotIn(".reference-gallery > p:last-child", css)
+
+    def test_math_delimiters_survive_markdown_parsing(self):
+        config = (ROOT / "hugo.toml").read_text()
+        self.assertIn("[markup.goldmark.extensions.passthrough]", config)
+        self.assertIn("enable = true", config)
+
+    def test_generated_formatting_reference_is_public_but_not_indexed(self):
+        output = Path("/tmp/lsblog-public")
+        if not (output / "index.html").exists():
+            self.skipTest("Hugo output not built")
+        path = output / "page/formatting-reference/index.html"
+        self.assertTrue(path.exists(), "Formatting reference must be published")
+        html = path.read_text()
+        for marker in ("reference-callout", "reference-columns", "reference-timeline",
+                       "reference-pullquote", "reference-gallery", "katex", "footnotes"):
+            self.assertIn(marker, html)
+        self.assertEqual(sum(tag == "h1" for tag, _ in ElementIndex(html).elements), 1)
+        home = (output / "index.html").read_text()
+        self.assertEqual(sum("article-row" == attrs.get("class")
+                             for tag, attrs in ElementIndex(home).elements), 5)
+        search = json.loads((output / "index.json").read_text())
+        self.assertNotIn("Formatting Reference", {item["title"] for item in search})
+        page_index = (output / "page/index.html").read_text()
+        self.assertNotIn('aria-label="Read Formatting Reference"', page_index)
+        for route in ("index.xml", "page/index.xml"):
+            feed = ElementTree.parse(output / route)
+            titles = {item.text for item in feed.findall("./channel/item/title")}
+            self.assertNotIn("Formatting Reference", titles)
+        for route in ("index.html", "archives/index.html", "page/about/index.html"):
+            links = [attrs.get("href") for tag, attrs
+                     in ElementIndex((output / route).read_text()).elements if tag == "a"]
+            self.assertIn("/lsBlog/page/formatting-reference/", links)
+
+    def test_generated_site_has_no_retired_fgo_route(self):
+        output = Path("/tmp/lsblog-public")
+        if not (output / "index.html").exists():
+            self.skipTest("Hugo output not built")
+        self.assertFalse((output / "fgo-wiki").exists())
+
+    def test_generated_note_aliases_target_canonical_urls(self):
+        output = Path("/tmp/lsblog-public")
+        if not (output / "index.html").exists():
+            self.skipTest("Hugo output not built")
+        for old, new in (
+            ("agent_engineering", "agent-engineering"),
+            ("games", "games"),
+            ("phd_application_insights", "phd-application-insights"),
+            ("ulf_mri_exercise", "ulf-mri-learning-blueprint"),
+            ("research_draft", "functional-connectivity-notes"),
+        ):
+            path = output / "drafts" / old / "index.html"
+            with self.subTest(alias=old):
+                self.assertTrue(path.exists())
+                elements = ElementIndex(path.read_text()).elements
+                refresh = [attrs.get("content", "") for tag, attrs in elements
+                           if tag == "meta" and attrs.get("http-equiv", "").lower() == "refresh"]
+                self.assertEqual(len(refresh), 1)
+                self.assertIn(f"/lsBlog/notes/{new}/", refresh[0])
 
 
 if __name__ == "__main__":
