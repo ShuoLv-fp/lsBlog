@@ -97,6 +97,9 @@ window.addEventListener('load', function () {
         }
 
         fuse = new Fuse(data, options);
+        if (searchInput.value.trim()) {
+            searchInput.dispatchEvent(new Event('input'));
+        }
     };
     request.open('GET', '../index.json');
     request.send();

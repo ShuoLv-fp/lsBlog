@@ -4,7 +4,7 @@
     --paper: #fbfcfe;
     --surface: #ffffff;
     --ink: #29313a;
-    --muted-ink: #717b86;
+    --muted-ink: #68727d;
     --rule: #dfe5ed;
     --theme: var(--paper);
     --entry: var(--surface);
@@ -560,12 +560,20 @@ input:focus-visible {
     list-style: none;
 }
 
-.search-result {
+#searchResults .search-result {
+    position: relative;
+    margin: 0;
+    padding: 0;
     border-bottom: 1px solid var(--rule);
+    border-radius: 0;
+    font-weight: 400;
 }
 
-.search-result a {
+#searchResults .search-result > a {
+    position: static;
     display: grid;
+    width: auto;
+    height: auto;
     gap: 7px;
     padding: 21px 0;
 }
@@ -738,17 +746,6 @@ input:focus-visible {
 }
 
 @media (max-width: 430px) {
-    .notebook-home-link {
-        width: 40px;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-
-    .notebook-home-link span {
-        display: inline-block;
-        margin-left: 20px;
-    }
-
     .notebook-header #menu {
         justify-content: space-between;
     }

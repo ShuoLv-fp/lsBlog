@@ -21,7 +21,7 @@ pagination = { pagerSize = 5 }
 # Language settings
 [languages]
   [languages.en]
-    languageName = "English"
+    label = "English"
     weight = 1
     title = "Shuo Lv / Field Notes"
     description = "Research notes, practical experience, and life beyond the lab."
@@ -112,6 +112,15 @@ Research summaries, practical experience, and occasional notes from life beyond 
 
   [params.label]
     text = "Shuo Lv / Field Notes"
+
+  [params.assets]
+    favicon = "https://ShuoLv-fp.github.io/assets/icons/favicon-32x32_new.png"
+    favicon16x16 = "https://ShuoLv-fp.github.io/assets/icons/favicon-16x16_new.png"
+    favicon32x32 = "https://ShuoLv-fp.github.io/assets/icons/favicon-32x32_new.png"
+    apple_touch_icon = "https://ShuoLv-fp.github.io/assets/icons/apple-touch-icon_new.png"
+    safari_pinned_tab = "https://ShuoLv-fp.github.io/assets/icons/academic-icon_new.svg"
+    theme_color = "#fbfcfe"
+    msapplication_TileColor = "#fbfcfe"
 
 # Markdown rendering settings
 [markup]

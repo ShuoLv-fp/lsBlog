@@ -28,7 +28,7 @@
         <div class="notebook-section-heading"><span>{{ if .IsHome }}Recent entries{{ else }}Entries{{ end }}</span></div>
         <div class="notebook-list">
             {{- range $index, $page := $paginator.Pages }}
-            {{- partial "article_row.html" (dict "page" $page "index" (add $index (mul (sub $paginator.PageNumber 1) $paginator.PageSize))) }}
+            {{- partial "article_row.html" (dict "page" $page "index" (add $index (mul (sub $paginator.PageNumber 1) $paginator.PagerSize))) }}
             {{- end }}
         </div>
         {{- if gt $paginator.TotalPages 1 }}
