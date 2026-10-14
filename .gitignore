@@ -1,11 +1,18 @@
-# Hugo默认输出目录
+# Hugo output
 /public/
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
 
-# 临时锁文件
+# Hugo lock file
 .hugo_build.lock
+
+# Operating-system metadata
+.DS_Store
+**/.DS_Store
 
 # Local visual design sessions
 .superpowers/
+
+# Local Hugo downloads
+/hugo_tmp/
