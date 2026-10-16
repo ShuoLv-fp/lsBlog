@@ -29,6 +29,11 @@ if [[ "$current_branch" != "main" ]]; then
   exit 1
 fi
 
+if [[ -n "$(git ls-files -- public)" || -n "$(git ls-tree --name-only HEAD -- public)" ]]; then
+  printf 'Publishing rejected: public/ contains indexed or tracked generated output. Remove it from Git before publishing.\n' >&2
+  exit 1
+fi
+
 git remote get-url origin >/dev/null
 git fetch origin main
 
@@ -47,7 +52,8 @@ printf '\nRunning the complete test suite...\n'
 python3 -m unittest discover -s tests -v
 
 printf '\nStaging validated changes...\n'
-git add --all
+# Glob spelling avoids Git treating an excluded literal ignored directory as an error.
+git add --all -- . ':(top,exclude,glob)[p]ublic' ':(top,exclude,glob)[p]ublic/**'
 
 if git diff --cached --quiet; then
   ahead_count="$(git rev-list --count origin/main..HEAD)"

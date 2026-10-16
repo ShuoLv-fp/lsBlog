@@ -61,7 +61,7 @@ class BlogMaintenanceTests(unittest.TestCase):
             "git diff --check HEAD --",
             "hugo --minify --gc --cleanDestinationDir",
             "python3 -m unittest discover -s tests -v",
-            "git add --all",
+            "git add --all -- . ':(top,exclude,glob)[p]ublic' ':(top,exclude,glob)[p]ublic/**'",
             "git diff --cached --quiet",
             "git rev-list --count origin/main..HEAD",
             'git commit -m "$commit_message"',
@@ -224,6 +224,55 @@ exit "${PUBLISH_TEST_SUITE_EXIT:-0}"
         ])
         self.assert_untouched()
 
+    def assert_public_path_is_rejected(self):
+        head = self.git("rev-parse", "HEAD").stdout
+        index = self.git("ls-files", "--stage").stdout
+        staged = self.git("diff", "--cached", "--binary").stdout
+        fetch_head = self.repo / ".git/FETCH_HEAD"
+        self.assertFalse(fetch_head.exists())
+        result = self.publish("content: must reject generated output")
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("public/", result.stderr)
+        self.assertFalse(self.calls.exists(), "Reject generated output before validation")
+        self.assertFalse(fetch_head.exists(), "Reject generated output before fetching")
+        self.assertEqual(self.git("rev-parse", "HEAD").stdout, head)
+        self.assertEqual(self.git("ls-files", "--stage").stdout, index)
+        self.assertEqual(self.git("diff", "--cached", "--binary").stdout, staged)
+        self.assertEqual(self.git("rev-parse", "main", cwd=self.remote).stdout.strip(),
+                         self.initial)
+        self.assertNotIn("public/", self.git("ls-tree", "-r", "--name-only", "main",
+                                             cwd=self.remote).stdout)
+
+    def stage_generated_file(self):
+        generated = self.repo / "public/accidentally-staged.html"
+        generated.parent.mkdir()
+        generated.write_text("Accidentally staged output\n")
+        self.git("add", "--force", "--", "public/accidentally-staged.html")
+
+    def test_force_staged_public_file_is_rejected_without_changing_git_state(self):
+        self.stage_generated_file()
+        self.assert_public_path_is_rejected()
+
+    def test_tracked_public_file_is_rejected_without_pushing_existing_commit(self):
+        self.stage_generated_file()
+        self.git("commit", "-m", "Accidentally committed output")
+        self.assert_public_path_is_rejected()
+
+    def test_staged_deletion_of_tracked_public_file_still_requires_cleanup(self):
+        self.stage_generated_file()
+        self.git("commit", "-m", "Accidentally committed output")
+        self.git("rm", "--", "public/accidentally-staged.html")
+        self.assert_public_path_is_rejected()
+
+    def test_generated_output_is_excluded_even_without_a_gitignore_rule(self):
+        (self.repo / ".gitignore").write_text("")
+        result = self.publish("chore: revise ignore rules")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for repository in (self.repo, self.remote):
+            self.assertNotIn("public/", self.git("ls-tree", "-r", "--name-only", "main",
+                                                 cwd=repository).stdout)
+        self.assertEqual(self.git("ls-files", "--", "public").stdout, "")
+
     def test_content_and_image_are_committed_and_pushed_to_local_remote(self):
         (self.repo / "content/notes/existing.md").write_text("Revised note\n")
         (self.repo / "content/notes/new.md").write_text("New note\n")
@@ -283,23 +332,45 @@ class AuthoringWorkflowTests(unittest.TestCase):
                          "Every generated-page check must fail when public/ is absent")
 
     def test_new_note_edited_note_and_image_pass_the_site_contracts(self):
+        self.check_authoring_workflow(existing_fixture=False)
+
+    def test_authoring_accepts_an_existing_maintenance_example_note(self):
+        self.check_authoring_workflow(existing_fixture=True)
+
+    def check_authoring_workflow(self, existing_fixture):
         with tempfile.TemporaryDirectory(prefix="lsblog-authoring-") as directory:
             site = Path(directory) / "site"
             shutil.copytree(ROOT, site, ignore=shutil.ignore_patterns(
                 ".git", ".superpowers", "public", "resources", "__pycache__",
                 ".hugo_build.lock"))
-            created = subprocess.run(["hugo", "new", "content", "notes/maintenance-example.md"],
+            occupied_note = site / "content/notes/maintenance-example.md"
+            if existing_fixture and not occupied_note.exists():
+                occupied_note.write_text(
+                    '+++\ntitle = "Existing Maintenance Example"\n'
+                    'date = "2020-01-01"\ndraft = false\n+++\n\n'
+                    'A legitimate existing note.\n')
+            occupied_content = occupied_note.read_bytes() if occupied_note.exists() else None
+            slug = "maintenance-example"
+            suffix = 0
+            while any(path.exists() for path in (
+                site / "content/notes" / f"{slug}.md",
+                site / "content/notes" / slug,
+                site / "static/images" / slug,
+            )):
+                suffix += 1
+                slug = f"maintenance-example-{suffix}"
+            created = subprocess.run(["hugo", "new", "content", f"notes/{slug}.md"],
                                      cwd=site, capture_output=True, text=True)
             self.assertEqual(created.returncode, 0, created.stderr)
-            note = site / "content/notes/maintenance-example.md"
+            note = site / "content/notes" / f"{slug}.md"
             note.write_text(note.read_text().replace("draft = true", "draft = false")
                             + "\nA new maintenance note.\n\n"
-                            + "![Example figure](/lsBlog/images/maintenance-example/figure.png)\n")
+                            + f"![Example figure](/lsBlog/images/{slug}/figure.png)\n")
             existing = site / "content/notes/agent-engineering.md"
             existing.write_text(existing.read_text().replace("Agent Engineering Notes",
                                                            "Revised Agent Engineering Notes")
                                 + "\nAn ordinary author revision.\n")
-            image = site / "static/images/maintenance-example/figure.png"
+            image = site / "static/images" / slug / "figure.png"
             image.parent.mkdir(parents=True)
             image.write_bytes(bytes.fromhex(
                 "89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c489"
@@ -313,11 +384,13 @@ class AuthoringWorkflowTests(unittest.TestCase):
                 cwd=site, capture_output=True, text=True)
             self.assertEqual(contracts.returncode, 0, contracts.stdout + contracts.stderr)
             self.assertIn("A new maintenance note.",
-                          (site / "public/notes/maintenance-example/index.html").read_text())
+                          (site / "public/notes" / slug / "index.html").read_text())
             self.assertIn("An ordinary author revision.",
                           (site / "public/notes/agent-engineering/index.html").read_text())
-            self.assertEqual((site / "public/images/maintenance-example/figure.png").read_bytes(),
+            self.assertEqual((site / "public/images" / slug / "figure.png").read_bytes(),
                              image.read_bytes())
+            if occupied_content is not None:
+                self.assertEqual(occupied_note.read_bytes(), occupied_content)
 
 
 if __name__ == "__main__":
