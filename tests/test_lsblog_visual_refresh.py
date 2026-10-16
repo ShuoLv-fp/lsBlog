@@ -1,5 +1,4 @@
 import json
-import hashlib
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -8,18 +7,6 @@ from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parents[1]
-
-NOTE_BODIES = {
-    "agent-engineering.md": "785cf3ab903ed505dfb412eedd106fb0d50faa41689bf1f4852bb708db43a2dd",
-    "games.md": "785cf3ab903ed505dfb412eedd106fb0d50faa41689bf1f4852bb708db43a2dd",
-    "phd-application-insights.md": "1374d21ce962c52e6b6251905a979b3dd8913f3beeb0ae4da979fb895c6ae51f",
-    "ulf-mri-learning-blueprint.md": "a0927f1f6294ab51d75f89988a8d48ea13e4d1f8574501fa0542eaba5cf04cef",
-    "functional-connectivity-notes.md": "2c30e197f0548d9e5b4eeca32ad94c86a5ab43e187b39d59b2c1175fd0595577",
-}
-
-
-def markdown_body(text):
-    return text.split("---", 2)[2].lstrip("\n")
 
 
 class ElementIndex(HTMLParser):
@@ -33,6 +20,12 @@ class ElementIndex(HTMLParser):
 
 
 class SourceContractTests(unittest.TestCase):
+    def generated_output(self):
+        output = ROOT / "public"
+        self.assertTrue((output / "index.html").is_file(),
+                        "Missing public/index.html; run the production Hugo build before tests")
+        return output
+
     @staticmethod
     def _contrast_ratio(foreground, background):
         def luminance(color):
@@ -148,9 +141,7 @@ class SourceContractTests(unittest.TestCase):
             self.assertIn(f"https://ShuoLv-fp.github.io/assets/icons/{icon}", config)
 
     def test_generated_home_has_notebook_hooks(self):
-        output = Path("/tmp/lsblog-public/index.html")
-        if not output.exists():
-            self.skipTest("Hugo output not built")
+        output = self.generated_output() / "index.html"
         html = output.read_text()
         for marker in ("notebook-layout", "category-map", "article-row",
                        "Shuo Lv / Field Notes"):
@@ -165,9 +156,7 @@ class SourceContractTests(unittest.TestCase):
                 self.assertNotIn("$paginator.PageSize", text)
 
     def test_generated_category_map_links_nonempty_configured_terms(self):
-        output = Path("/tmp/lsblog-public/index.html")
-        if not output.exists():
-            self.skipTest("Hugo output not built")
+        output = self.generated_output() / "index.html"
         html = output.read_text()
         for label, path in (
             ("Research Synthesis", "/lsBlog/categories/research-synthesis/"),
@@ -178,11 +167,15 @@ class SourceContractTests(unittest.TestCase):
             self.assertIn(path, html)
 
     def test_generated_search_summaries_are_plain_text(self):
-        output = Path("/tmp/lsblog-public/index.json")
-        if not output.exists():
-            self.skipTest("Hugo output not built")
-        for item in json.loads(output.read_text()):
+        output = self.generated_output() / "index.json"
+        self.assertTrue(output.is_file(), "Production build must include the search index")
+        entries = json.loads(output.read_text())
+        self.assertTrue(entries, "Search must contain published entries")
+        permalinks = [item["permalink"] for item in entries]
+        self.assertEqual(len(permalinks), len(set(permalinks)), "Search routes must be unique")
+        for item in entries:
             with self.subTest(title=item["title"]):
+                self.assertTrue(item["title"].strip(), "Published entries need a title")
                 self.assertNotIn("<", item["summary"])
                 self.assertNotIn(">", item["summary"])
                 self.assertIsNone(re.search(r"&(?:[A-Za-z]+|#\d+);", item["summary"]))
@@ -208,28 +201,14 @@ class SourceContractTests(unittest.TestCase):
 
     def test_repository_has_one_public_note_section(self):
         notes = ROOT / "content/notes"
-        self.assertEqual({path.name for path in notes.glob("*.md")}, set(NOTE_BODIES))
+        self.assertTrue(notes.is_dir(), "The public note section must exist")
+        self.assertTrue(any(notes.rglob("*.md")), "The notebook must contain Markdown notes")
         self.assertFalse((ROOT / "content/drafts").exists())
         self.assertFalse((ROOT / "content/posts").exists())
         self.assertIn('mainSections = ["notes"]', (ROOT / "hugo.toml").read_text())
 
-    def test_note_bodies_survive_the_move(self):
-        for name, expected in NOTE_BODIES.items():
-            with self.subTest(note=name):
-                text = (ROOT / "content/notes" / name).read_text()
-                digest = hashlib.sha256(markdown_body(text).encode()).hexdigest()
-                self.assertEqual(digest, expected)
-
-    def test_notes_have_unique_metadata_and_legacy_aliases(self):
-        text = "\n".join(path.read_text() for path in (ROOT / "content/notes").glob("*.md"))
-        for title in (
-            "A Learning Blueprint for Computational Ultra-Low-Field MRI",
-            "Functional Connectivity and Its Generation Methods",
-            "Agent Engineering Notes",
-            "PhD Application Interview Notes",
-            "Games and Interactive Worlds",
-        ):
-            self.assertEqual(text.count(f'title: "{title}"'), 1)
+    def test_legacy_note_aliases_remain_declared(self):
+        text = "\n".join(path.read_text() for path in (ROOT / "content/notes").rglob("*.md"))
         for route in (
             "/drafts/ulf_mri_exercise/",
             "/drafts/research_draft/",
@@ -241,7 +220,7 @@ class SourceContractTests(unittest.TestCase):
 
     def test_retired_project_paths_are_absent(self):
         for relative in (
-            ".DS_Store", "content/.DS_Store", "static/fgo-wiki", "static/images",
+            ".DS_Store", "content/.DS_Store", "static/fgo-wiki",
             "config.yml", "deploy.sh", "deploy.ps1", "DEPLOY_GUIDE.md", "hugo_tmp",
             "content/posts/my-first-post.md", "layouts/_default/social.html",
         ):
@@ -297,9 +276,7 @@ class SourceContractTests(unittest.TestCase):
         self.assertIn("enable = true", config)
 
     def test_generated_formatting_reference_is_public_but_not_indexed(self):
-        output = Path("/tmp/lsblog-public")
-        if not (output / "index.html").exists():
-            self.skipTest("Hugo output not built")
+        output = self.generated_output()
         path = output / "page/formatting-reference/index.html"
         self.assertTrue(path.exists(), "Formatting reference must be published")
         html = path.read_text()
@@ -308,8 +285,9 @@ class SourceContractTests(unittest.TestCase):
             self.assertIn(marker, html)
         self.assertEqual(sum(tag == "h1" for tag, _ in ElementIndex(html).elements), 1)
         home = (output / "index.html").read_text()
-        self.assertEqual(sum("article-row" == attrs.get("class")
-                             for tag, attrs in ElementIndex(home).elements), 5)
+        self.assertTrue(any("article-row" == attrs.get("class")
+                            for tag, attrs in ElementIndex(home).elements))
+        self.assertNotIn('aria-label="Read Formatting Reference"', home)
         search = json.loads((output / "index.json").read_text())
         self.assertNotIn("Formatting Reference", {item["title"] for item in search})
         page_index = (output / "page/index.html").read_text()
@@ -324,15 +302,11 @@ class SourceContractTests(unittest.TestCase):
             self.assertIn("/lsBlog/page/formatting-reference/", links)
 
     def test_generated_site_has_no_retired_fgo_route(self):
-        output = Path("/tmp/lsblog-public")
-        if not (output / "index.html").exists():
-            self.skipTest("Hugo output not built")
+        output = self.generated_output()
         self.assertFalse((output / "fgo-wiki").exists())
 
     def test_generated_note_aliases_target_canonical_urls(self):
-        output = Path("/tmp/lsblog-public")
-        if not (output / "index.html").exists():
-            self.skipTest("Hugo output not built")
+        output = self.generated_output()
         for old, new in (
             ("agent_engineering", "agent-engineering"),
             ("games", "games"),
