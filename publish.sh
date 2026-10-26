@@ -6,15 +6,15 @@ script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd "$script_dir"
 
 usage() {
-  printf 'Usage: %s "commit message"\n' "${0##*/}" >&2
+  printf 'Usage: %s ["commit message"]\n' "${0##*/}" >&2
 }
 
-if [[ $# -ne 1 || -z "${1//[[:space:]]/}" ]]; then
+commit_message="${1-chore: publish blog updates}"
+
+if [[ $# -gt 1 || -z "${commit_message//[[:space:]]/}" ]]; then
   usage
   exit 64
 fi
-
-commit_message="$1"
 
 for command_name in git hugo python3; do
   if ! command -v "$command_name" >/dev/null 2>&1; then

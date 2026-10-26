@@ -143,6 +143,18 @@ git diff --check
 Confirm that `git status --short` contains only the intended changes, then run:
 
 ```bash
+./publish.sh
+```
+
+不带参数时使用默认提交说明 `chore: publish blog updates`，提交并推送所有未被忽略的改动（不包含 `public/`）。没有新改动时只推送已有的本地提交；完全同步时不创建空提交。
+
+Without arguments, the default commit message is `chore: publish blog updates`. All non-ignored changes are committed and pushed, excluding `public/`. With no new changes, existing local commits are pushed; a fully synchronized checkout does not create an empty commit.
+
+也可以自定义提交说明：
+
+You can also provide a custom commit message:
+
+```bash
 ./publish.sh "content: add a new field note"
 ```
 

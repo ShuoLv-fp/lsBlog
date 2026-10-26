@@ -29,6 +29,7 @@ class BlogMaintenanceTests(unittest.TestCase):
             "hugo server --buildDrafts",
             "hugo --minify --gc --cleanDestinationDir",
             "python3 -m unittest discover -s tests -v",
+            "./publish.sh",
             './publish.sh "content: add a new field note"',
             ".github/workflows/hugo.yml",
             "gh-pages",
@@ -153,14 +154,25 @@ exit "${PUBLISH_TEST_SUITE_EXIT:-0}"
         self.assertEqual(self.git("rev-parse", "refs/heads/main", cwd=self.remote).stdout.strip(),
                          self.initial)
 
-    def test_empty_or_missing_message_is_rejected_before_validation(self):
-        for args in ((), ("",), (" \t\n",)):
+    def test_empty_message_is_rejected_before_validation(self):
+        for args in (("",), (" \t\n",)):
             with self.subTest(args=args):
                 result = self.publish(*args)
                 self.assertEqual(result.returncode, 64, result.stderr)
                 self.assertIn("Usage:", result.stderr)
                 self.assertFalse(self.calls.exists())
                 self.assert_untouched()
+
+    def test_missing_message_uses_default_and_publishes_all_changes(self):
+        (self.repo / "content/notes/new.md").write_text("New note\n")
+        result = self.publish()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.git("log", "-1", "--format=%s").stdout.strip(),
+                         "chore: publish blog updates")
+        self.assertEqual(self.git("rev-parse", "main", cwd=self.remote).stdout.strip(),
+                         self.git("rev-parse", "HEAD").stdout.strip())
+        self.assertIn("content/notes/new.md",
+                      self.git("show", "--format=", "--name-only", "HEAD").stdout)
 
     def test_wrong_or_detached_branch_is_rejected_before_validation(self):
         self.git("switch", "-c", "topic")
